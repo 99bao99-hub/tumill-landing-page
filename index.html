@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!-- theme by skinus - theme này được tạo từ skills của skinus -->
+<meta charset="UTF-8">
+<!--
+  ============================================================
+  LANDING PAGE — TUMILL EXOSOME TONE UP WHITENING CREAM
+  ------------------------------------------------------------
+  Bố cục lấy cảm hứng từ trang tapuho.vn (bảng giá tối + đồng hồ đếm ngược,
+  gói quà tặng theo tầng, dải bằng chứng thực tế, bảng thông số) — không
+  dùng lại theme "TikTok Shop hồng" của các landing page mỹ phẩm trước.
+  Ảnh dùng trong file này là ảnh thật của TUMILL (assets/images/tumill-*.png).
+  PLACEHOLDER cần c Thúy xác nhận trước khi deploy:
+    1. Giá / quà tặng — sửa ở .tm-priceboard, section "Chọn Gói Ưu Đãi",
+       và object `options` trong onBuyClick() cuối file.
+    2. fbq/ttq pixel ID đang DÙNG CHUNG với các landing page khác của shop.
+  ============================================================
+-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL | Tone Up Whitening Cream | THUY THANH NGUYEN</title>
+<meta name="description" content="TUMILL Exosome Tone Up Whitening Cream — kem ngày nâng tông trắng hồng tự nhiên, dưỡng sáng với Glutathione, Niacinamide, Panthenol B5. Mua 3 tặng 2 bông mút + 2 mặt nạ, freeship toàn quốc.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1212419910852343');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_ids:  ['TUMILL-EXOSOME-TONEUP'],
+  content_name: 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+  content_type: 'product',
+  value:        480000,
+  currency:     'VND'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1212419910852343&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- TikTok Pixel Code -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;
+  var ttq=w[t]=w[t]||[];
+  ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
+  ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+  for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+  ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+  ttq.load=function(e,n){
+    var i="https://analytics.tiktok.com/i18n/pixel/events.js";
+    ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i;
+    ttq._t=ttq._t||{},ttq._t[e]=+new Date;
+    ttq._o=ttq._o||{},ttq._o[e]=n||{};
+    var o=document.createElement("script");
+    o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;
+    var a=document.getElementsByTagName("script")[0];
+    a.parentNode.insertBefore(o,a)
+  };
+  ttq.load('D6L4IH3C77U5049JVR20');
+  ttq.page();
+  ttq.track('ViewContent', {
+    content_id:   'TUMILL-EXOSOME-TONEUP',
+    content_name: 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+    content_type: 'product',
+    value:        480000,
+    currency:     'VND'
+  });
+}(window, document, 'ttq');
+</script>
+<!-- End TikTok Pixel Code -->
+
+<style>
+/* ==========================================================================
+   TUMILL — Design Tokens (lấy cảm hứng bố cục tapuho.vn: bảng giá tối +
+   đếm ngược, gói quà theo tầng, dải bằng chứng thực tế, bảng thông số)
+   ========================================================================== */
+:root {
+  --tm-gold:        #B8935A;
+  --tm-gold-dark:   #8F6B2E;
+  --tm-gold-light:  #E4CFA0;
+  --tm-ivory:       #FBF8F3;
+  --tm-cream:       #FFFFFF;
+  --tm-charcoal:    #201A13;
+  --tm-charcoal-2:  #2E251A;
+  --tm-text:        #2B2318;
+  --tm-text-muted:  #7A7064;
+  --tm-text-onDark: #F3ECDD;
+  --tm-border:      #EAE0CE;
+  --tm-border-soft: #F0EAE0;
+  --tm-r-sm:        4px;
+  --tm-r-md:        10px;
+  --tm-r-lg:        16px;
+  --tm-r-xl:        22px;
+  --tm-r-pill:      999px;
+  --tm-shadow-sm:   0 1px 3px rgba(32,26,19,0.06);
+  --tm-shadow-md:   0 4px 16px rgba(32,26,19,0.10);
+  --tm-shadow-gold: 0 6px 20px rgba(184,147,90,0.35);
+  --tm-container:   480px;
+  --tm-tabnav-height: 46px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px; line-height: 1.5;
+  color: var(--tm-text);
+  background: #EFE9DD;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 84px;
+}
+h1, h2, h3, .tm-serif { font-family: 'Playfair Display', Georgia, serif; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+@media (max-width: 767px) {
+  input, select, textarea { font-size: 16px !important; }
+}
+
+.tts-page {
+  max-width: var(--tm-container);
+  margin: 0 auto;
+  background: var(--tm-ivory);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+@media (min-width: 768px) {
+  body { padding: 24px 0 84px; }
+  .tts-page { border-radius: 18px; box-shadow: 0 12px 40px rgba(32,26,19,0.14); overflow: hidden; }
+}
+
+/* Top bar tối giản — không dùng pill-tab ngang như các trang trước.
+   Chỉ có thanh tiến trình đọc mảnh (reading progress) chạy dọc theo scroll. */
+.tm-progress-track { position: sticky; top: 0; z-index: 51; height: 2px; background: var(--tm-border-soft); }
+.tm-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%); transition: width 0.1s linear; }
+
+/* Brand mark row */
+.tm-brandbar {
+  position: sticky; top: 2px; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--tm-border-soft);
+}
+.tm-brandmark { display: flex; align-items: center; gap: 8px; }
+.tm-brandmark-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--tm-charcoal);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--tm-gold-light); font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 14px;
+  flex-shrink: 0;
+}
+.tm-brandmark-text { display: flex; flex-direction: column; line-height: 1.2; }
+.tm-brandmark-name { font-size: 12.5px; font-weight: 700; color: var(--tm-charcoal); }
+.tm-brandmark-sub { font-size: 10px; color: var(--tm-text-muted); letter-spacing: 0.3px; }
+.tm-follow-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--tm-gold);
+  color: var(--tm-gold-dark);
+  font-size: 11.5px; font-weight: 700;
+  border-radius: var(--tm-r-pill);
+  transition: background 0.15s, color 0.15s;
+}
+.tm-follow-btn.following { background: var(--tm-charcoal); color: var(--tm-gold-light); border-color: var(--tm-charcoal); }
+
+/* Scroll reveal — chỉ áp dụng cho nội dung dưới màn hình đầu tiên */
+.tm-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.tm-reveal.in { opacity: 1; transform: translateY(0); }
+
+/* Hero Gallery */
+.tts-hero { position: relative; width: 100%; aspect-ratio: 1/1; background: var(--tm-ivory); overflow: hidden; }
+.tts-hero-track {
+  display: flex; width: 100%; height: 100%;
+  scroll-snap-type: x mandatory; overflow-x: auto;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.tts-hero-track::-webkit-scrollbar { display: none; }
+.tts-hero-slide { flex: 0 0 100%; width: 100%; height: 100%; scroll-snap-align: start; position: relative; }
+.tts-hero-img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
+.tts-hero-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(32,26,19,0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 3; backdrop-filter: blur(2px);
+}
+.tts-hero-arrow.prev { left: 8px; } .tts-hero-arrow.next { right: 8px; }
+.tts-hero-arrow svg { width: 18px; height: 18px; }
+.tts-hero-counter {
+  position: absolute; bottom: 12px; right: 12px;
+  padding: 3px 10px; background: rgba(32,26,19,0.55); color: var(--tm-text-onDark);
+  font-size: 11px; font-weight: 600; border-radius: var(--tm-r-pill); letter-spacing: 0.3px;
+}
+
+/* Hero — 1 ảnh full-bleed dạng editorial, không dùng carousel/đếm ảnh như các trang trước */
+.tm-hero-full { position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden; background: var(--tm-charcoal); }
+.tm-hero-full img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.tm-hero-scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(32,26,19,0) 38%, rgba(32,26,19,0.82) 100%);
+}
+.tm-hero-eyebrow {
+  position: absolute; top: 16px; left: 16px;
+  padding: 5px 12px; background: rgba(251,248,243,0.92); backdrop-filter: blur(4px);
+  border-radius: var(--tm-r-pill); font-size: 10.5px; font-weight: 700; letter-spacing: 0.4px; color: var(--tm-charcoal);
+}
+.tm-hero-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px 22px; color: #fff; }
+.tm-hero-title { font-size: 27px; font-weight: 800; line-height: 1.18; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.tm-hero-sub { font-size: 13px; color: rgba(255,255,255,0.82); margin-bottom: 14px; max-width: 280px; line-height: 1.5; }
+.tm-hero-pricetag {
+  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 8px 14px; background: rgba(32,26,19,0.5); backdrop-filter: blur(8px);
+  border: 1px solid rgba(228,207,160,0.35); border-radius: var(--tm-r-pill); margin-bottom: 14px;
+}
+.tm-hero-pricetag b { color: var(--tm-gold-light); font-size: 15px; font-weight: 800; }
+.tm-hero-pricetag span { font-size: 11px; color: rgba(255,255,255,0.8); }
+.tts-promo-countdown { display: inline-flex; align-items: center; }
+.tts-promo-countdown b {
+  display: inline-block; padding: 2px 7px;
+  background: rgba(0,0,0,0.4); border-radius: 4px;
+  font-size: 12.5px; font-weight: 800;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.5px; color: var(--tm-gold-light);
+  min-width: 74px; text-align: center;
+}
+.tm-hero-cta-row { display: flex; gap: 10px; }
+.tm-hero-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 12px 20px;
+  border-radius: var(--tm-r-pill); font-size: 13.5px; font-weight: 700;
+}
+.tm-hero-btn.primary { background: var(--tm-gold-light); color: var(--tm-charcoal); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+.tm-hero-btn.ghost { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(6px); }
+.tm-hero-btn svg { width: 16px; height: 16px; }
+
+/* Title block */
+.tm-titleblock { padding: 18px 16px 8px; background: var(--tm-cream); }
+.tm-tag-new {
+  display: inline-block; padding: 3px 10px; margin-bottom: 8px;
+  background: var(--tm-charcoal); color: var(--tm-gold-light);
+  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  border-radius: var(--tm-r-sm);
+}
+.tm-title { font-size: 21px; font-weight: 700; color: var(--tm-charcoal); line-height: 1.3; margin-bottom: 6px; }
+.tm-subtitle { font-size: 13.5px; color: var(--tm-text-muted); margin-bottom: 12px; line-height: 1.5; }
+.tm-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12px; color: var(--tm-text-muted); padding-bottom: 14px; }
+.tm-meta-rating { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: var(--tm-text); }
+.tm-meta-rating svg { width: 14px; height: 14px; fill: var(--tm-gold); }
+.tm-meta-divider { color: var(--tm-border); }
+
+/* Trust badges */
+.tm-trust-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px;
+  padding: 14px 16px 16px; background: var(--tm-cream);
+  border-top: 1px solid var(--tm-border-soft);
+}
+.tm-trust-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11.5px; font-weight: 600; color: var(--tm-text); letter-spacing: 0.1px;
+}
+.tm-trust-chip svg { width: 15px; height: 15px; color: var(--tm-gold-dark); flex-shrink: 0; }
+.tm-trust-chip:not(:last-child)::after {
+  content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--tm-border);
+  margin-left: 8px; display: inline-block;
+}
+
+/* Retail teaser line (in hero section) */
+.tm-retail-teaser {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 16px; background: var(--tm-ivory);
+  font-size: 12px; color: var(--tm-text); border-bottom: 1px solid var(--tm-border-soft);
+}
+.tm-retail-teaser b { color: var(--tm-gold-dark); }
+
+/* Inline CTA row */
+.tm-inline-cta { display: flex; gap: 10px; padding: 14px 16px 18px; background: var(--tm-cream); }
+.tm-btn {
+  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 13px 10px; font-size: 13px; font-weight: 700; border-radius: var(--tm-r-pill);
+  transition: filter 0.15s, transform 0.05s;
+}
+.tm-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.tm-btn.outline { flex: 0.85; background: var(--tm-cream); border: 1.5px solid var(--tm-charcoal); color: var(--tm-charcoal); }
+.tm-btn.solid {
+  flex: 1.2; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
+  color: #FFFFFF; box-shadow: var(--tm-shadow-gold);
+}
+.tm-btn:hover { filter: brightness(1.05); } .tm-btn:active { transform: translateY(1px); }
+
+.tm-divider { height: 10px; background: #EFE9DD; }
+
+/* Section title */
+.tm-section { padding: 30px 16px; }
+.tm-section.alt { background: var(--tm-cream); }
+.tm-section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--tm-gold-dark); text-align: center; margin-bottom: 6px;
+}
+.tm-section-title { font-size: 22px; font-weight: 700; color: var(--tm-charcoal); text-align: center; line-height: 1.3; margin-bottom: 8px; }
+.tm-section-sub { font-size: 13.5px; color: var(--tm-text-muted); text-align: center; margin-bottom: 20px; line-height: 1.55; }
+
+/* Pain points — danh sách chữ thuần + gạch chân mảnh, không dùng ô khung/thẻ */
+.tm-pain-grid { display: flex; flex-direction: column; margin-bottom: 20px; }
+.tm-pain-chip {
+  display: flex; align-items: baseline; gap: 10px; padding: 13px 2px;
+  border-bottom: 1px solid var(--tm-border-soft);
+  font-size: 14px; font-weight: 600; color: var(--tm-text); line-height: 1.4;
+}
+.tm-pain-chip:first-child { padding-top: 2px; }
+.tm-pain-chip:last-child { border-bottom: none; }
+.tm-pain-chip::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--tm-gold); flex-shrink: 0; align-self: center;
+}
+.tm-pain-photo { position: relative; }
+.tm-pain-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+.tm-pain-photo-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 14px 14px;
+  background: linear-gradient(0deg, rgba(32,26,19,0.85) 0%, rgba(32,26,19,0) 100%);
+  color: #fff; font-size: 13.5px; font-weight: 700; line-height: 1.4; font-family: 'Playfair Display', serif;
+}
+
+/* Feature / ingredient grid */
+.tm-img-wrap { overflow: hidden; border-radius: var(--tm-r-lg); cursor: zoom-in; box-shadow: var(--tm-shadow-md); margin-bottom: 18px; }
+.tm-img-wrap img { display: block; width: 100%; transition: transform 0.35s ease; }
+.tm-img-wrap:hover img { transform: scale(1.04); }
+/* Danh sách dưỡng chất kiểu editorial (số thứ tự serif + hàng kẻ mảnh) — không dùng lưới thẻ tròn icon */
+.tm-ing-list { display: flex; flex-direction: column; }
+.tm-ing-row { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--tm-border-soft); }
+.tm-ing-row:first-child { padding-top: 2px; }
+.tm-ing-row:last-child { border-bottom: none; padding-bottom: 2px; }
+.tm-ing-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--tm-gold-light); flex-shrink: 0; width: 34px; line-height: 1.1; }
+.tm-feat-name { font-size: 14px; font-weight: 700; color: var(--tm-charcoal); margin-bottom: 4px; }
+.tm-feat-desc { font-size: 12px; color: var(--tm-text-muted); line-height: 1.5; }
+
+/* Texture attrs — dòng chữ liền mạch có icon nét mảnh, không dùng ô khung như lưới tính năng */
+.tm-spec-inline { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 6px; padding-top: 6px; }
+.tm-spec-inline-item { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--tm-text); }
+.tm-spec-inline-item svg { width: 14px; height: 14px; color: var(--tm-gold-dark); flex-shrink: 0; }
+.tm-spec-inline-dot { color: var(--tm-gold-light); font-size: 8px; }
+
+/* Công dụng — danh sách kiểu "tuyên ngôn thương hiệu", chữ dẫn dắt bằng serif + gạch vàng nhỏ */
+.tm-benefit-list { display: flex; flex-direction: column; }
+.tm-benefit-row { padding: 18px 0; border-top: 1px solid var(--tm-border-soft); }
+.tm-benefit-row:first-child { border-top: none; padding-top: 0; }
+.tm-benefit-title {
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700;
+  color: var(--tm-charcoal); margin-bottom: 6px; position: relative; padding-left: 22px;
+}
+.tm-benefit-title::before {
+  content: ''; position: absolute; left: 0; top: 11px; width: 14px; height: 1.5px; background: var(--tm-gold);
+}
+.tm-benefit-desc { font-size: 12.5px; color: var(--tm-text-muted); line-height: 1.55; padding-left: 22px; }
+
+/* Ưu điểm — bảng so sánh 2 cột */
+.tm-compare { border: 1px solid var(--tm-border); border-radius: var(--tm-r-lg); overflow: hidden; background: var(--tm-cream); }
+.tm-compare-head { display: grid; grid-template-columns: 1fr 1fr; }
+.tm-compare-col-label { padding: 11px 8px; font-size: 10.5px; font-weight: 800; text-align: center; text-transform: uppercase; letter-spacing: 0.3px; }
+.tm-compare-col-label.muted { color: var(--tm-text-muted); background: var(--tm-ivory); }
+.tm-compare-col-label.gold { color: #fff; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%); }
+.tm-compare-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--tm-border-soft); }
+.tm-compare-cell { display: flex; align-items: center; gap: 6px; padding: 12px 10px; font-size: 11.5px; line-height: 1.4; }
+.tm-compare-cell.muted { color: var(--tm-text-muted); }
+.tm-compare-cell.muted svg { width: 13px; height: 13px; color: #B23A3A; flex-shrink: 0; }
+.tm-compare-cell.gold { color: var(--tm-text); font-weight: 600; background: rgba(228,207,160,0.14); }
+.tm-compare-cell.gold svg { width: 13px; height: 13px; color: var(--tm-gold-dark); flex-shrink: 0; }
+
+/* Retail proof gallery */
+.tm-retail-scroll {
+  display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 4px; scrollbar-width: none;
+}
+.tm-retail-scroll::-webkit-scrollbar { display: none; }
+.tm-retail-card {
+  position: relative; flex: 0 0 62%; scroll-snap-align: start;
+  aspect-ratio: 3/4; border-radius: var(--tm-r-lg); overflow: hidden;
+  box-shadow: var(--tm-shadow-md); cursor: zoom-in;
+}
+.tm-retail-card img { width: 100%; height: 100%; object-fit: cover; }
+.tm-retail-card-cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 20px 12px 12px;
+  background: linear-gradient(0deg, rgba(32,26,19,0.85) 0%, rgba(32,26,19,0) 100%);
+  color: #FFFFFF; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
+}
+
+/* Before/After */
+.tm-ba-wrap { position: relative; border-radius: var(--tm-r-lg); overflow: hidden; box-shadow: var(--tm-shadow-md); margin-bottom: 4px; }
+.tm-ba-wrap img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+.tm-ba-chip { position: absolute; top: 14px; padding: 4px 12px; font-size: 11px; font-weight: 700; border-radius: var(--tm-r-pill); background: rgba(32,26,19,0.65); color: #fff; letter-spacing: 0.3px; }
+.tm-ba-chip.before { left: 14px; }
+.tm-ba-chip.after { right: 14px; background: var(--tm-gold-dark); }
+
+/* Bộ chọn gói dạng segmented toggle + 1 khung hiển thị động — thay cho kiểu 3 thẻ giá xếp chồng */
+.tm-cfg-toggle {
+  display: flex; gap: 4px; padding: 4px;
+  background: var(--tm-ivory); border: 1px solid var(--tm-border); border-radius: var(--tm-r-pill);
+  margin-bottom: 16px;
+}
+.tm-cfg-opt {
+  flex: 1; padding: 10px 6px; border-radius: var(--tm-r-pill);
+  font-size: 13px; font-weight: 700; color: var(--tm-text-muted); text-align: center;
+  transition: background 0.15s, color 0.15s;
+}
+.tm-cfg-opt.active { background: var(--tm-charcoal); color: var(--tm-gold-light); }
+.tm-cfg-badge { display: block; font-size: 9px; font-weight: 800; color: var(--tm-gold-dark); margin-top: 1px; }
+.tm-cfg-opt.active .tm-cfg-badge { color: var(--tm-gold-light); }
+.tm-cfg-display {
+  background: var(--tm-cream); border: 1.5px solid var(--tm-gold-light); border-radius: var(--tm-r-lg);
+  padding: 22px 20px; text-align: center; box-shadow: var(--tm-shadow-gold);
+}
+.tm-cfg-price { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; color: var(--tm-gold-dark); margin-bottom: 14px; letter-spacing: -0.5px; }
+.tm-cfg-gifts { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 18px; }
+.tm-gift-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--tm-text); }
+.tm-gift-item svg { width: 14px; height: 14px; fill: var(--tm-gold-dark); flex-shrink: 0; }
+.tm-cfg-buy {
+  width: 100%; padding: 13px; border-radius: var(--tm-r-pill);
+  background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
+  color: #fff; font-weight: 700; font-size: 14px; box-shadow: var(--tm-shadow-gold);
+}
+
+/* Routine steps */
+.tm-steps { display: flex; flex-direction: column; gap: 8px; }
+.tm-step { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--tm-cream); border-radius: var(--tm-r-md); border: 1px solid var(--tm-border-soft); }
+.tm-step.hl { background: linear-gradient(90deg, var(--tm-ivory) 0%, var(--tm-cream) 100%); border-color: var(--tm-gold-light); }
+.tm-step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--tm-ivory); color: var(--tm-text); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tm-step.hl .tm-step-num { background: var(--tm-charcoal); color: var(--tm-gold-light); }
+.tm-step-name { font-size: 13.5px; font-weight: 700; color: var(--tm-text); }
+.tm-step-desc { font-size: 11.5px; color: var(--tm-text-muted); margin-top: 2px; }
+.tm-note-box { margin-top: 14px; padding: 11px 13px; background: var(--tm-ivory); border-radius: var(--tm-r-md); border: 1px dashed var(--tm-gold-light); font-size: 12px; color: var(--tm-text); text-align: center; line-height: 1.5; }
+.tm-note-box b { color: var(--tm-gold-dark); }
+
+/* Spec table */
+.tm-spec-table { background: var(--tm-cream); border: 1px solid var(--tm-border); border-radius: var(--tm-r-lg); overflow: hidden; }
+.tm-spec-row { display: flex; padding: 12px 14px; border-bottom: 1px dashed var(--tm-border); font-size: 12.5px; }
+.tm-spec-row:last-child { border-bottom: none; }
+.tm-spec-label { flex: 0 0 118px; font-weight: 700; color: var(--tm-text-muted); }
+.tm-spec-value { flex: 1; color: var(--tm-text); font-weight: 500; }
+
+/* Inline CTA block */
+.tm-cta-block { text-align: center; padding: 6px 0 4px; }
+.tm-cta-headline { font-size: 16px; font-weight: 700; color: var(--tm-charcoal); margin-bottom: 6px; }
+.tm-cta-headline b { color: var(--tm-gold-dark); }
+.tm-cta-sub { font-size: 12px; color: var(--tm-text-muted); margin-bottom: 14px; }
+.tm-cta-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 14px 34px;
+  background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
+  color: #fff; font-size: 14.5px; font-weight: 700; border-radius: var(--tm-r-pill); box-shadow: var(--tm-shadow-gold);
+}
+.tm-cta-btn svg { width: 18px; height: 18px; fill: #fff; }
+
+/* Reviews */
+.tm-rev-summary { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 16px; }
+.tm-rev-big { font-size: 26px; font-weight: 800; color: var(--tm-gold-dark); font-family: 'Playfair Display', serif; }
+.tm-rev-stars { color: var(--tm-gold); font-size: 14px; letter-spacing: 1px; }
+.tm-rev-count { font-size: 12px; color: var(--tm-text-muted); }
+.tm-rev-filters { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
+.tm-rev-chip { padding: 6px 14px; border-radius: var(--tm-r-pill); border: 1px solid var(--tm-border); font-size: 12px; font-weight: 600; color: var(--tm-text-muted); }
+.tm-rev-chip.active { background: var(--tm-charcoal); color: var(--tm-gold-light); border-color: var(--tm-charcoal); }
+.tm-rev-list { display: flex; flex-direction: column; gap: 10px; }
+.tm-rev-card { padding: 14px; background: var(--tm-ivory); border-radius: var(--tm-r-md); border: 1px solid var(--tm-border-soft); }
+.tm-rev-head { display: flex; align-items: center; gap: 8px; }
+.tm-rev-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--tm-charcoal); color: var(--tm-gold-light); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tm-rev-name { font-size: 13px; font-weight: 700; color: var(--tm-text); }
+.tm-rev-stars-sm { color: var(--tm-gold); font-size: 11px; letter-spacing: 1px; }
+.tm-rev-skin { margin-left: auto; font-size: 10px; background: var(--tm-gold-light); color: var(--tm-gold-dark); padding: 2px 8px; border-radius: var(--tm-r-pill); font-weight: 700; }
+.tm-rev-content { font-size: 12.5px; color: var(--tm-text); line-height: 1.55; margin-top: 8px; }
+.tm-rev-meta { font-size: 11px; color: var(--tm-text-muted); margin-top: 8px; }
+.tm-rev-empty { text-align: center; font-size: 12.5px; color: var(--tm-text-muted); padding: 20px 0; }
+
+/* FAQ */
+.tm-faq-item { background: var(--tm-cream); border: 1px solid var(--tm-border-soft); border-radius: var(--tm-r-md); overflow: hidden; margin-bottom: 8px; }
+.tm-faq-item[open] { border-color: var(--tm-gold-light); }
+.tm-faq-q { padding: 14px 16px; font-size: 13.5px; font-weight: 700; color: var(--tm-text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.tm-faq-q::-webkit-details-marker { display: none; }
+.tm-faq-q::after { content: '+'; font-size: 20px; font-weight: 700; color: var(--tm-gold-dark); transition: transform 0.2s; flex-shrink: 0; }
+.tm-faq-item[open] .tm-faq-q::after { transform: rotate(45deg); }
+.tm-faq-a { padding: 0 16px 14px; font-size: 12.5px; color: var(--tm-text-muted); line-height: 1.6; }
+
+/* Closing CTA dark band */
+.tm-closing { background: linear-gradient(160deg, var(--tm-charcoal) 0%, var(--tm-charcoal-2) 100%); padding: 30px 16px; text-align: center; }
+.tm-closing-title { font-size: 19px; font-weight: 700; color: var(--tm-text-onDark); margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+.tm-closing-title b { color: var(--tm-gold-light); }
+.tm-closing-sub { font-size: 12.5px; color: rgba(243,236,221,0.7); margin-bottom: 18px; }
+.tm-closing-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 14px 30px;
+  background: var(--tm-gold-light); color: var(--tm-charcoal);
+  font-size: 14px; font-weight: 800; border-radius: var(--tm-r-pill);
+}
+.tm-closing-btn svg { width: 17px; height: 17px; fill: var(--tm-charcoal); }
+
+/* Brand footer */
+.tm-brand-footer { padding: 26px 16px; text-align: center; background: var(--tm-ivory); }
+.tm-brand-footer-name { font-size: 20px; font-weight: 800; color: var(--tm-charcoal); letter-spacing: 0.5px; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+.tm-brand-footer-tag { font-size: 11px; font-weight: 700; color: var(--tm-gold-dark); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+.tm-brand-footer-text { font-size: 12.5px; color: var(--tm-text-muted); line-height: 1.6; max-width: 380px; margin: 0 auto 14px; }
+.tm-brand-certs { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
+.tm-brand-cert { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; background: var(--tm-cream); border: 1px solid var(--tm-border); border-radius: var(--tm-r-pill); font-size: 11px; font-weight: 600; color: var(--tm-text-muted); }
+.tm-brand-cert svg { width: 12px; height: 12px; fill: var(--tm-gold-dark); }
+
+/* Legal footer */
+.tm-legal-footer { background: #E7DFCF; padding: 18px 16px 22px; text-align: center; }
+.tm-legal-distrib { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #D8CCAF; }
+.tm-legal-label { font-size: 11px; color: var(--tm-text-muted); margin-bottom: 3px; }
+.tm-legal-company { font-size: 13px; font-weight: 800; color: var(--tm-text); }
+.tm-legal-links { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.tm-legal-link { font-size: 12px; color: var(--tm-gold-dark); font-weight: 700; }
+.tm-legal-link:hover { text-decoration: underline; }
+.tm-legal-sep { color: var(--tm-text-muted); font-size: 12px; }
+.tm-legal-copy { font-size: 10.5px; color: var(--tm-text-muted); line-height: 1.4; }
+
+/* Sticky CTA */
+.tts-sticky-cta {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: var(--tm-container); z-index: 40;
+  background: var(--tm-cream); border-top: 1px solid var(--tm-border);
+  padding: 10px 16px; display: flex; gap: 14px; align-items: center;
+  box-shadow: 0 -4px 16px rgba(32,26,19,0.10); box-sizing: border-box;
+}
+@media (min-width: 768px) { .tts-sticky-cta { border-radius: 0 0 18px 18px; } }
+.tts-cta-sidegroup { display: flex; gap: 16px; padding-right: 8px; border-right: 1px solid var(--tm-border); }
+.tts-cta-side { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 40px; color: var(--tm-text-muted); font-size: 10px; font-weight: 500; }
+.tts-cta-side:hover { color: var(--tm-gold-dark); }
+.tts-cta-side svg { width: 21px; height: 21px; fill: var(--tm-text-muted); }
+.tts-cta-side:hover svg { fill: var(--tm-gold-dark); }
+.tts-cta-buy { flex: 1; display: flex; gap: 10px; }
+.tts-btn-cart { flex: 1; padding: 12px 10px; background: var(--tm-cream); border: 1.5px solid var(--tm-charcoal); color: var(--tm-charcoal); font-size: 13px; font-weight: 700; border-radius: var(--tm-r-pill); white-space: nowrap; }
+.tts-btn-buy {
+  flex: 1.3; padding: 12px 14px; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
+  color: #fff; font-size: 14px; font-weight: 800; border-radius: var(--tm-r-pill); box-shadow: var(--tm-shadow-gold); white-space: nowrap; letter-spacing: 0.3px;
+}
+.tts-btn-buy:hover { filter: brightness(1.05); }
+
+/* Buy popup */
+.tts-popup-overlay {
+  position: fixed; inset: 0; background: rgba(32,26,19,0.55); z-index: 100;
+  display: none; align-items: flex-end; justify-content: center; opacity: 0; transition: opacity 0.25s ease;
+}
+.tts-popup-overlay.open { display: flex; opacity: 1; }
+.tts-popup {
+  width: 100%; max-width: 480px; max-height: 90vh; background: var(--tm-cream);
+  border-radius: var(--tm-r-xl) var(--tm-r-xl) 0 0; display: flex; flex-direction: column;
+  transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+}
+.tts-popup-overlay.open .tts-popup { transform: translateY(0); }
+@media (min-width: 768px) { .tts-popup-overlay { align-items: center; } .tts-popup { border-radius: var(--tm-r-xl); max-height: 80vh; } }
+.tts-popup-header { display: flex; gap: 12px; padding: 16px; border-bottom: 1px solid var(--tm-border-soft); }
+.tts-popup-img { width: 76px; height: 76px; border-radius: var(--tm-r-md); object-fit: cover; flex-shrink: 0; background: var(--tm-ivory); }
+.tts-popup-info { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.tts-popup-price { font-size: 21px; font-weight: 800; color: var(--tm-gold-dark); line-height: 1.2; }
+.tts-popup-price-old { font-size: 12px; color: var(--tm-text-muted); text-decoration: line-through; margin-top: 2px; }
+.tts-popup-stock { font-size: 12px; color: var(--tm-text-muted); margin-top: 4px; }
+.tts-popup-close { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(32,26,19,0.06); z-index: 1; }
+.tts-popup-close svg { width: 18px; height: 18px; fill: var(--tm-text-muted); }
+.tts-popup-body { flex: 1; overflow-y: auto; padding: 16px; }
+.tts-popup-section { margin-bottom: 16px; }
+.tts-popup-section:last-child { margin-bottom: 0; }
+.tts-popup-label { font-size: 13.5px; font-weight: 700; color: var(--tm-text); margin-bottom: 8px; display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; }
+.tts-popup-label .req { color: var(--tm-gold-dark); }
+.tts-popup-label-note { font-size: 11px; font-weight: 400; color: var(--tm-gold-dark); line-height: 1.4; }
+.tts-popup-options { display: flex; flex-direction: column; gap: 8px; }
+.tts-popup-option {
+  padding: 12px 14px; background: var(--tm-ivory); border: 1px solid var(--tm-border-soft);
+  border-radius: var(--tm-r-md); font-size: 12.5px; color: var(--tm-text); text-align: left; width: 100%; position: relative;
+}
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184,147,90,0.55); }
+  50%       { box-shadow: 0 0 0 5px rgba(184,147,90,0); }
+}
+.tts-popup-option-badge {
+  position: absolute; top: 50%; right: 8px; transform: translateY(-50%); padding: 2px 8px;
+  background: var(--tm-gold-dark); color: #fff; font-size: 10px; font-weight: 800; border-radius: var(--tm-r-pill);
+  animation: badge-glow 1.8s ease-in-out infinite;
+}
+.tts-popup-option.selected { background: #FBF3E6; border-color: var(--tm-gold); color: var(--tm-gold-dark); font-weight: 700; }
+.tts-popup-input, .tts-popup-textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--tm-border); border-radius: var(--tm-r-md);
+  font-size: 14px; font-family: inherit; color: var(--tm-text); background: var(--tm-cream); outline: none;
+}
+.tts-popup-input:focus, .tts-popup-textarea:focus { border-color: var(--tm-gold); }
+.tts-popup-input.error, .tts-popup-textarea.error { border-color: #B23A3A; }
+.tts-popup-textarea { resize: vertical; min-height: 60px; }
+.tts-popup-error-msg { font-size: 12px; color: #B23A3A; margin-top: 4px; }
+.tts-honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+.tts-popup-footer { padding: 12px 16px; border-top: 1px solid var(--tm-border-soft); background: var(--tm-cream); }
+.tts-popup-total { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.tts-popup-total-label { font-size: 13px; color: var(--tm-text-muted); }
+.tts-popup-total-value { font-size: 19px; font-weight: 800; color: var(--tm-gold-dark); }
+.tts-popup-submit {
+  width: 100%; padding: 14px; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
+  color: #fff; font-size: 15px; font-weight: 700; border-radius: var(--tm-r-pill); box-shadow: var(--tm-shadow-gold);
+}
+.tts-popup-submit:disabled { background: var(--tm-border); color: var(--tm-text-muted); box-shadow: none; }
+.tts-popup-success { padding: 32px 16px; text-align: center; }
+.tts-popup-success-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--tm-charcoal); color: var(--tm-gold-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 30px; font-weight: 800; }
+.tts-popup-success-title { font-size: 17px; font-weight: 700; color: var(--tm-text); margin-bottom: 8px; }
+.tts-popup-success-msg { font-size: 13px; color: var(--tm-text-muted); margin-bottom: 16px; }
+.tts-popup-order-code { display: inline-block; padding: 8px 16px; background: var(--tm-ivory); border-radius: var(--tm-r-md); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 14px; font-weight: 700; color: var(--tm-gold-dark); letter-spacing: 1px; }
+
+/* Lightbox */
+#tm-lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(20,16,11,0.92); padding: 20px; align-items: center; justify-content: center; cursor: zoom-out; }
+#tm-lightbox.open { display: flex; }
+#tm-lightbox-img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 10px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); pointer-events: none; }
+#tm-lightbox-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 50%; color: #fff; font-size: 24px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+<div class="tts-page">
+
+  <!-- ========== HEADER ZONE ========== -->
+  <div class="tm-progress-track"><div class="tm-progress-bar" id="tm-progress-bar"></div></div>
+  <div class="tm-brandbar">
+    <div class="tm-brandmark">
+      <div class="tm-brandmark-dot">T</div>
+      <div class="tm-brandmark-text">
+        <span class="tm-brandmark-name">TUMILL × THUY THANH NGUYEN</span>
+        <span class="tm-brandmark-sub">Mỹ phẩm nhập khẩu Hàn Quốc 🇰🇷</span>
+      </div>
+    </div>
+    <button class="tm-follow-btn" type="button">+ Theo dõi</button>
+  </div>
+
+  <section id="tongquan">
+    <!-- Hero — 1 ảnh full-bleed, tiêu đề + giá lồng trên ảnh, không dùng carousel/đếm ảnh -->
+    <div class="tm-hero-full">
+      <img src="./assets/images/tumill-before-after.png" alt="TUMILL Exosome Tone Up Whitening Cream — trước và sau khi thoa">
+      <div class="tm-hero-scrim"></div>
+      <span class="tm-hero-eyebrow">TUMILL · K-Beauty 2026</span>
+      <div class="tm-hero-content">
+        <h1 class="tm-hero-title">Kem Ngày Thắp Sáng<br>Hồng Da Exosome TUMILL</h1>
+        <p class="tm-hero-sub">Kem ngày thắp sáng hồng da — nâng tone nhẹ, dưỡng sáng, mềm mịn.</p>
+        <div class="tm-hero-pricetag">
+          <b>480.000đ</b><span>/ tuýp · còn</span>
+          <span class="tts-promo-countdown" data-duration="86400"><b>23:59:59</b></span>
+        </div>
+        <div class="tm-hero-cta-row">
+          <a class="tm-hero-btn ghost" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            Nhắn tin
+          </a>
+          <button class="tm-hero-btn primary" type="button" onclick="onBuyClick()">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>
+            Mua ngay
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-titleblock">
+      <span class="tm-tag-new">Mới</span>
+      <h2 class="tm-title">Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL</h2>
+      <p class="tm-subtitle">50ml / 1.69 fl.oz — Glutathione, Niacinamide, Panthenol B5, Vitamin Tree Fruit Extract.</p>
+      <div class="tm-meta">
+        <span class="tm-meta-rating"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>5.0/5</span>
+        <span class="tm-meta-divider">|</span>
+        <span>Chính hãng 100%</span>
+        <span class="tm-meta-divider">|</span>
+        <span>Miễn phí vận chuyển</span>
+      </div>
+    </div>
+
+    <div class="tm-trust-row">
+      <span class="tm-trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>Nhập khẩu chính hãng</span>
+      <span class="tm-trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 3 6.7M3 12v5h5"/></svg>Đổi trả 7 ngày</span>
+      <span class="tm-trust-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4z"/></svg>Tư vấn miễn phí</span>
+    </div>
+
+    <div class="tm-retail-teaser">
+      <span>📍 TUMILL có mặt tại <b>Olive Young, Aritaum, CHICOR</b> và các nhà thuốc lớn tại Hàn Quốc — xem ảnh thực tế bên dưới ↓</span>
+    </div>
+
+    <div class="tm-inline-cta">
+      <a class="tm-btn outline" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        Nhắn tin hỏi
+      </a>
+      <button class="tm-btn solid" type="button" onclick="onBuyClick()">
+        <svg viewBox="0 0 24 24"><path fill="#fff" d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>
+        Mua ngay · Từ 480.000đ
+      </button>
+    </div>
+  </section>
+
+  <div class="tm-divider"></div>
+
+  <!-- ========== ĐẶC ĐIỂM ========== -->
+  <section id="dacdiem">
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-section-eyebrow">Vì sao cần TUMILL</div>
+      <h2 class="tm-section-title">Ce đang gặp tình trạng này không?</h2>
+      <p class="tm-section-sub">Nếu ce gật đầu với 2 trong số này — TUMILL Exosome Tone Up sinh ra là để dành cho ce.</p>
+      <div class="tm-pain-grid">
+        <div class="tm-pain-chip">Da xỉn màu, thiếu sức sống</div>
+        <div class="tm-pain-chip">Không đều màu da</div>
+        <div class="tm-pain-chip">Buổi sáng vội, không kịp trang điểm</div>
+        <div class="tm-pain-chip">Da khô căng sau tone-up</div>
+        <div class="tm-pain-chip">Muốn "da mộc" kiểu Hàn Quốc mà không cần makeup cầu kỳ</div>
+      </div>
+      <div class="tm-img-wrap tm-pain-photo">
+        <img src="./assets/images/tumill-lifestyle-apply.png" alt="Thoa TUMILL Exosome Tone Up buổi sáng">
+        <div class="tm-pain-photo-cap">TUMILL Exosome Tone Up giải quyết cả 5 vấn đề — chỉ 1 bước buổi sáng</div>
+      </div>
+    </div>
+
+    <!-- Công dụng — trình bày kiểu "tuyên ngôn thương hiệu", không dùng icon/thẻ như các mục khác -->
+    <div class="tm-section alt tm-reveal">
+      <div class="tm-section-eyebrow">Công dụng</div>
+      <h2 class="tm-section-title">TUMILL Mang Lại Điều Gì Cho Làn Da?</h2>
+      <p class="tm-section-sub">4 công dụng chính khi dùng đều đặn mỗi sáng.</p>
+      <div class="tm-benefit-list">
+        <div class="tm-benefit-row">
+          <div class="tm-benefit-title">Nâng tông trắng hồng tự nhiên</div>
+          <div class="tm-benefit-desc">Da trông sáng và đều màu hơn ngay từ lần thoa đầu tiên, không cần lớp nền dày.</div>
+        </div>
+        <div class="tm-benefit-row">
+          <div class="tm-benefit-title">Hỗ trợ dưỡng sáng lâu dài</div>
+          <div class="tm-benefit-desc">Glutathione và Niacinamide hỗ trợ cải thiện cảm giác da xỉn màu khi dùng đều đặn.</div>
+        </div>
+        <div class="tm-benefit-row">
+          <div class="tm-benefit-title">Cấp ẩm, mềm mịn suốt ngày dài</div>
+          <div class="tm-benefit-desc">Panthenol B5 giữ ẩm, hạn chế cảm giác khô căng thường gặp ở kem tone-up thông thường.</div>
+        </div>
+        <div class="tm-benefit-row">
+          <div class="tm-benefit-title">Nền tảng hoàn hảo trước trang điểm</div>
+          <div class="tm-benefit-desc">Kết cấu mỏng nhẹ giúp lớp nền lên mượt, không vón, không bết dính.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-section-eyebrow">Thành phần nổi bật</div>
+      <h2 class="tm-section-title">4 Dưỡng Chất Chính Trong TUMILL</h2>
+      <p class="tm-section-sub">In rõ trên bao bì — kết hợp nâng tông tức thì và dưỡng sáng khi dùng đều đặn.</p>
+      <div class="tm-img-wrap"><img src="./assets/images/tumill-ingredient-hero.png" alt="TUMILL Exosome Tone Up Whitening Cream — Glutathione, Niacinamide, Panthenol B5, Vitamin Tree Fruit Extract"></div>
+      <div class="tm-ing-list">
+        <div class="tm-ing-row">
+          <span class="tm-ing-num">01</span>
+          <div><div class="tm-feat-name">Glutathione</div><div class="tm-feat-desc">Chống oxy hóa, hỗ trợ da trông rạng rỡ hơn</div></div>
+        </div>
+        <div class="tm-ing-row">
+          <span class="tm-ing-num">02</span>
+          <div><div class="tm-feat-name">Niacinamide</div><div class="tm-feat-desc">Hỗ trợ đều màu da, củng cố hàng rào bảo vệ</div></div>
+        </div>
+        <div class="tm-ing-row">
+          <span class="tm-ing-num">03</span>
+          <div><div class="tm-feat-name">Panthenol B5</div><div class="tm-feat-desc">Cấp ẩm, làm dịu — không khô sau tone-up</div></div>
+        </div>
+        <div class="tm-ing-row">
+          <span class="tm-ing-num">04</span>
+          <div><div class="tm-feat-name">Vitamin Tree Extract</div><div class="tm-feat-desc">Chiết xuất thực vật, hỗ trợ chống oxy hóa</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-section alt tm-reveal">
+      <div class="tm-section-eyebrow">Cảm nhận khi thoa</div>
+      <h2 class="tm-section-title">Kết Cấu Mềm Mịn, Dễ Tán</h2>
+      <p class="tm-section-sub">Tông trắng hồng nhẹ, không đục, không bết dính — hợp cả trước khi trang điểm.</p>
+      <div class="tm-img-wrap"><img src="./assets/images/tumill-texture-swatch.png" alt="Kết cấu kem TUMILL Exosome Tone Up trên da — mềm mịn, dễ tán"></div>
+      <div class="tm-spec-inline">
+        <span class="tm-spec-inline-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6.5 6.5 6.5 10.5a6.5 6.5 0 1 1-13 0C5.5 9.5 12 3 12 3z"/></svg>Không bết dính</span>
+        <span class="tm-spec-inline-dot">◆</span>
+        <span class="tm-spec-inline-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Tông trong veo</span>
+        <span class="tm-spec-inline-dot">◆</span>
+        <span class="tm-spec-inline-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l1.7 5.1L19 10l-5.3 1.9L12 17l-1.7-5.1L5 10l5.3-1.9L12 3z"/></svg>Thấm nhanh</span>
+        <span class="tm-spec-inline-dot">◆</span>
+        <span class="tm-spec-inline-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 16c2-2 4-2 6 0s4 2 6 0 4-2 4-2M4 10c2-2 4-2 6 0s4 2 6 0 4-2 4-2"/></svg>Lên lớp nền mượt</span>
+      </div>
+    </div>
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-section-eyebrow">Bằng chứng thực tế</div>
+      <h2 class="tm-section-title">TUMILL Xuất Hiện Ở Đâu?</h2>
+      <p class="tm-section-sub">Ảnh thực tế TUMILL Exosome Tone Up tại các điểm bán và cơ sở làm đẹp ở Hàn Quốc.</p>
+      <div class="tm-retail-scroll">
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-oliveyoung.png" alt="TUMILL tại Olive Young, Hàn Quốc"><div class="tm-retail-card-cap">Olive Young</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-aritaum.png" alt="TUMILL tại Aritaum Live, Hàn Quốc"><div class="tm-retail-card-cap">Aritaum Live</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-chicor.png" alt="TUMILL tại CHICOR, Hàn Quốc"><div class="tm-retail-card-cap">CHICOR</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-pharmacy.png" alt="TUMILL tại nhà thuốc Ready Young Pharmacy, Hàn Quốc"><div class="tm-retail-card-cap">Ready Young Pharmacy</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-spa.png" alt="TUMILL tại spa chăm sóc da, Myeongdong Seoul"><div class="tm-retail-card-cap">Spa Myeongdong, Seoul</div></div>
+      </div>
+    </div>
+
+    <!-- Ưu điểm — bảng so sánh 2 cột, dạng thuyết phục trực tiếp, không lặp lại kiểu list/lưới ở trên -->
+    <div class="tm-section alt tm-reveal">
+      <div class="tm-section-eyebrow">Ưu điểm</div>
+      <h2 class="tm-section-title">Vì Sao Chọn TUMILL?</h2>
+      <p class="tm-section-sub">So với kem tone-up thông thường trên thị trường.</p>
+      <div class="tm-compare">
+        <div class="tm-compare-head">
+          <div class="tm-compare-col-label muted">Tone-up thông thường</div>
+          <div class="tm-compare-col-label gold">TUMILL</div>
+        </div>
+        <div class="tm-compare-row">
+          <div class="tm-compare-cell muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Dễ vón, bết dính</div>
+          <div class="tm-compare-cell gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Mỏng nhẹ, lên nền mượt</div>
+        </div>
+        <div class="tm-compare-row">
+          <div class="tm-compare-cell muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Dễ khô căng sau vài giờ</div>
+          <div class="tm-compare-cell gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Panthenol B5 cấp ẩm cả ngày</div>
+        </div>
+        <div class="tm-compare-row">
+          <div class="tm-compare-cell muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Khó kiểm chứng nguồn gốc</div>
+          <div class="tm-compare-cell gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Có mặt tại Olive Young, Aritaum, CHICOR</div>
+        </div>
+        <div class="tm-compare-row">
+          <div class="tm-compare-cell muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Mua lẻ, không ưu đãi</div>
+          <div class="tm-compare-cell gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Mua 3 tặng 2 mút + 2 mặt nạ, freeship</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="tm-divider"></div>
+
+  <!-- ========== MÔ TẢ ========== -->
+  <section id="mota">
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-section-eyebrow">Hiệu quả</div>
+      <h2 class="tm-section-title">Trước &amp; Sau Khi Thoa</h2>
+      <p class="tm-section-sub">Hiệu ứng nâng tông tức thì — da trông đều màu và sáng hơn ngay sau khi thoa.</p>
+      <div class="tm-img-wrap tm-ba-wrap">
+        <img src="./assets/images/tumill-before-after.png" alt="So sánh da trước và sau khi thoa TUMILL Exosome Tone Up">
+        <span class="tm-ba-chip before">Chưa thoa</span>
+        <span class="tm-ba-chip after">Đã thoa TUMILL</span>
+      </div>
+    </div>
+
+    <div class="tm-section alt tm-reveal">
+      <div class="tm-section-eyebrow">Ưu đãi hôm nay</div>
+      <h2 class="tm-section-title">Chọn Gói Ưu Đãi</h2>
+      <p class="tm-section-sub">Mua càng nhiều — quà tặng càng nhiều. Miễn phí vận chuyển toàn quốc mọi đơn hàng.</p>
+      <!-- Bộ chọn gói dạng segmented toggle — không dùng 3 thẻ xếp chồng như các trang trước -->
+      <div class="tm-cfg-toggle" role="tablist" aria-label="Chọn gói mua">
+        <button class="tm-cfg-opt" type="button" data-qty="1">1 tuýp</button>
+        <button class="tm-cfg-opt" type="button" data-qty="2">2 tuýp</button>
+        <button class="tm-cfg-opt active" type="button" data-qty="3">3 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
+      </div>
+      <div class="tm-cfg-display">
+        <div class="tm-cfg-price" id="tm-cfg-price">1.400.000đ</div>
+        <div class="tm-cfg-gifts" id="tm-cfg-gifts"></div>
+        <button class="tm-cfg-buy" type="button" id="tm-cfg-buy-btn" onclick="onBuyClick(3)">Chọn mua — 1.400.000đ</button>
+      </div>
+    </div>
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-section-eyebrow">Cách dùng</div>
+      <h2 class="tm-section-title">Routine Sáng — Chỉ 1 Bước Thêm Vào</h2>
+      <p class="tm-section-sub">Dùng sau bước dưỡng ẩm, trước kem chống nắng.</p>
+      <div class="tm-img-wrap"><img src="./assets/images/tumill-apply-closeup.png" alt="Thoa TUMILL Exosome Tone Up vào buổi sáng"></div>
+      <div class="tm-steps">
+        <div class="tm-step"><span class="tm-step-num">1</span><div><div class="tm-step-name">Rửa mặt + Toner</div><div class="tm-step-desc">Làm sạch và cân bằng da trước khi dưỡng</div></div></div>
+        <div class="tm-step"><span class="tm-step-num">2</span><div><div class="tm-step-name">Serum / kem dưỡng ẩm</div><div class="tm-step-desc">Bước dưỡng quen thuộc của ce</div></div></div>
+        <div class="tm-step hl"><span class="tm-step-num">3</span><div><div class="tm-step-name">✦ TUMILL Exosome Tone Up — lượng hạt đậu</div><div class="tm-step-desc">Tán đều 2 bên má trước, rồi ra toàn mặt và cổ</div></div></div>
+        <div class="tm-step"><span class="tm-step-num">4</span><div><div class="tm-step-name">Kem chống nắng</div><div class="tm-step-desc">Sản phẩm không thay thế kem chống nắng</div></div></div>
+      </div>
+      <div class="tm-note-box"><b>☀️ Lưu ý:</b> TUMILL không chứa SPF — luôn thoa kem chống nắng sau bước tone-up trước khi ra ngoài.</div>
+    </div>
+
+    <div class="tm-section alt tm-reveal">
+      <div class="tm-section-eyebrow">Thông tin sản phẩm</div>
+      <h2 class="tm-section-title">Thông Số</h2>
+      <div class="tm-spec-table">
+        <div class="tm-spec-row"><div class="tm-spec-label">Thương hiệu</div><div class="tm-spec-value">TUMILL (Hàn Quốc)</div></div>
+        <div class="tm-spec-row"><div class="tm-spec-label">Dòng sản phẩm</div><div class="tm-spec-value">Exosome Tone Up Whitening Cream</div></div>
+        <div class="tm-spec-row"><div class="tm-spec-label">Dung tích</div><div class="tm-spec-value">50ml / 1.69 fl.oz.</div></div>
+        <div class="tm-spec-row"><div class="tm-spec-label">Thành phần chính</div><div class="tm-spec-value">Glutathione, Niacinamide, Panthenol (B5), Vitamin Tree Fruit Extract</div></div>
+        <div class="tm-spec-row"><div class="tm-spec-label">Loại da phù hợp</div><div class="tm-spec-value">Da thường, da khô, da hỗn hợp thiên khô</div></div>
+        <div class="tm-spec-row"><div class="tm-spec-label">Thời điểm dùng</div><div class="tm-spec-value">Buổi sáng, sau dưỡng ẩm — trước chống nắng</div></div>
+        <div class="tm-spec-row"><div class="tm-spec-label">Xuất xứ</div><div class="tm-spec-value">Hàng nhập khẩu Hàn Quốc</div></div>
+      </div>
+    </div>
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-cta-block">
+        <div class="tm-cta-headline">1 bước buổi sáng — <b>thắp sáng hồng da chuẩn Hàn</b></div>
+        <div class="tm-cta-sub">Từ 480.000đ/tuýp · Mua 3 tặng 2 mút + 2 mặt nạ · Freeship · COD</div>
+        <button class="tm-cta-btn" type="button" onclick="onBuyClick()">
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21 4.96 19.27 4H5.21l-.94-2H1z"/></svg>
+          Mua Ngay — Từ 480.000đ
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="tm-divider"></div>
+
+  <!-- ========== ĐỀ XUẤT ========== -->
+  <section id="dexuat">
+
+    <div class="tm-section tm-reveal">
+      <div class="tm-section-eyebrow">Khách hàng nói gì</div>
+      <h2 class="tm-section-title">Đánh Giá Từ Khách Hàng</h2>
+      <div class="tm-rev-summary">
+        <span class="tm-rev-big">5.0</span>
+        <span class="tm-rev-stars">★★★★★</span>
+        <span class="tm-rev-count">Đánh giá xác thực từ khách hàng</span>
+      </div>
+      <div class="tm-rev-filters">
+        <button class="tm-rev-chip active" type="button" data-filter="all">Tất cả (5)</button>
+        <button class="tm-rev-chip" type="button" data-filter="5star">5 sao (5)</button>
+        <button class="tm-rev-chip" type="button" data-filter="photo">Có ảnh (0)</button>
+      </div>
+      <div class="tm-rev-list" id="tm-rev-list">
+        <div class="tm-rev-card" data-stars="5" data-photo="false">
+          <div class="tm-rev-head"><div class="tm-rev-avatar">L</div><div><div class="tm-rev-name">Lan Anh</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 33t</span></div>
+          <div class="tm-rev-content">Mình mua thử 1 tuýp trước, dùng thấy da sáng hồng lên hẳn sau khi thoa, lớp nền lên mượt hơn hẳn. Thấm khá nhanh, không nhờn dính. Đặt thêm combo 3 tuýp luôn vì có tặng mút với mặt nạ nữa. THUY THANH NGUYEN tư vấn nhiệt tình, đóng hàng cẩn thận.</div>
+          <div class="tm-rev-meta">15-05-2026 · Đã mua 2 lần</div>
+        </div>
+        <div class="tm-rev-card" data-stars="5" data-photo="false">
+          <div class="tm-rev-head"><div class="tm-rev-avatar">H</div><div><div class="tm-rev-name">Hà My</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 28t</span></div>
+          <div class="tm-rev-content">Buổi sáng đi làm không có thời gian trang điểm nên mình rất cần loại kem tone-up nhẹ mà không bết. TUMILL đúng ý — thoa xong da đều màu hẳn, không thấy cảm giác bí da như vài loại mình dùng trước đây.</div>
+          <div class="tm-rev-meta">10-05-2026 · Khách hàng đã xác minh</div>
+        </div>
+        <div class="tm-rev-card" data-stars="5" data-photo="false">
+          <div class="tm-rev-head"><div class="tm-rev-avatar">T</div><div><div class="tm-rev-name">Thu Thảo</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da khô · 36t</span></div>
+          <div class="tm-rev-content">Da mình khô nên sợ dùng kem tone-up sẽ bị khô căng, nhưng TUMILL có Panthenol nên không bị vậy. Mua gói 2 tuýp được tặng bông mút dùng đánh kem cũng tiện. Sẽ ủng hộ tiếp.</div>
+          <div class="tm-rev-meta">05-05-2026 · Khách hàng đã xác minh</div>
+        </div>
+        <div class="tm-rev-card" data-stars="5" data-photo="false">
+          <div class="tm-rev-head"><div class="tm-rev-avatar">M</div><div><div class="tm-rev-name">Minh Trang</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da thường · 40t</span></div>
+          <div class="tm-rev-content">Đặt combo 3 tuýp vì thấy tặng nhiều quà nhất. Kem mỏng nhẹ, mùi dễ chịu, tông trắng hồng tự nhiên chứ không bị trắng bệch như lo lắng ban đầu. THUY THANH NGUYEN ship nhanh, đóng gói kỹ.</div>
+          <div class="tm-rev-meta">28-04-2026 · Đã mua 2 lần</div>
+        </div>
+        <div class="tm-rev-card" data-stars="5" data-photo="false">
+          <div class="tm-rev-head"><div class="tm-rev-avatar">B</div><div><div class="tm-rev-name">Bích Ngọc</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 31t</span></div>
+          <div class="tm-rev-content">Lần đầu biết đến brand TUMILL nên hơi ngại, nhưng THUY THANH NGUYEN tư vấn kỹ nên yên tâm đặt thử. Texture kem mình khá thích, tán đều tay là lên tone ngay, không cần dặm nhiều lớp nền.</div>
+          <div class="tm-rev-meta">20-04-2026 · Khách hàng đã xác minh</div>
+        </div>
+      </div>
+      <div class="tm-rev-empty" id="tm-rev-empty" style="display:none;">Chưa có đánh giá kèm ảnh — quay lại sau nhé!</div>
+    </div>
+
+    <div class="tm-section alt tm-reveal">
+      <div class="tm-section-eyebrow">Giải đáp</div>
+      <h2 class="tm-section-title">Câu Hỏi Thường Gặp</h2>
+      <details class="tm-faq-item">
+        <summary class="tm-faq-q">TUMILL Exosome Tone Up dùng như thế nào?</summary>
+        <div class="tm-faq-a">Dùng buổi sáng, sau bước dưỡng ẩm và trước kem chống nắng. Lấy lượng kem bằng hạt đậu, tán đều 2 bên má trước rồi lan ra toàn mặt và cổ. Có thể dùng thay lớp lót trang điểm cho ngày không makeup đậm.</div>
+      </details>
+      <details class="tm-faq-item">
+        <summary class="tm-faq-q">Da dầu / da khô dùng được không?</summary>
+        <div class="tm-faq-a">Sản phẩm phù hợp với da thường, da khô và da hỗn hợp thiên khô nhờ Panthenol B5 cấp ẩm. Da dầu vẫn dùng được nhưng nên thử ở vùng nhỏ trước. Da đang kích ứng, viêm cấp thì nên inbox THUY THANH NGUYEN để được tư vấn riêng trước khi dùng.</div>
+      </details>
+      <details class="tm-faq-item">
+        <summary class="tm-faq-q">Kem có thay được kem chống nắng không?</summary>
+        <div class="tm-faq-a">Không. TUMILL Exosome Tone Up không chứa SPF — đây là kem dưỡng nâng tông, cần thoa kem chống nắng riêng sau bước này trước khi ra ngoài.</div>
+      </details>
+      <details class="tm-faq-item">
+        <summary class="tm-faq-q">Mua 1, 2 hay 3 tuýp thì lợi hơn?</summary>
+        <div class="tm-faq-a">1 tuýp 480.000đ dùng thử. Mua 2 tuýp 940.000đ được tặng thêm 1 bông mút. Mua 3 tuýp 1.400.000đ (gói bán chạy nhất) được tặng 2 bông mút + 2 mặt nạ — hợp để dùng lâu dài hoặc tặng người thân. Tất cả đều được freeship toàn quốc.</div>
+      </details>
+      <details class="tm-faq-item">
+        <summary class="tm-faq-q">Hàng có chính hãng không?</summary>
+        <div class="tm-faq-a">TUMILL là thương hiệu K-Beauty đang có mặt tại Olive Young, Aritaum, CHICOR và các nhà thuốc lớn tại Hàn Quốc (xem ảnh thực tế ở mục Đặc điểm). THUY THANH NGUYEN nhập khẩu và phân phối trực tiếp — inbox để xem ảnh thực tế sản phẩm và video unbox.</div>
+      </details>
+      <details class="tm-faq-item">
+        <summary class="tm-faq-q">Giao hàng bao lâu? COD được không?</summary>
+        <div class="tm-faq-a">Giao 1-3 ngày toàn quốc (nội thành 1 ngày, tỉnh 2-3 ngày). Hỗ trợ COD — kiểm tra hàng trước khi thanh toán. Freeship toàn quốc cho mọi gói 1/2/3 tuýp. Đổi trả trong 7 ngày nếu có vấn đề về hàng.</div>
+      </details>
+    </div>
+
+    <div class="tm-closing">
+      <div class="tm-closing-title">🎁 Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL — <b>Từ 480.000đ</b></div>
+      <div class="tm-closing-sub">Thắp Sáng Hồng Da · Mua 3 Tặng 2 Mút + 2 Mặt Nạ · Freeship · COD</div>
+      <a class="tm-closing-btn" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        Inbox THUY THANH NGUYEN Ngay Để Đặt Hàng
+      </a>
+    </div>
+
+    <div class="tm-brand-footer">
+      <div class="tm-brand-footer-name">SKIN BY THUY THANH NGUYEN</div>
+      <div class="tm-brand-footer-tag">Phân Phối Mỹ Phẩm Nhập Khẩu</div>
+      <div class="tm-brand-footer-text">THUY THANH NGUYEN chuyên nhập khẩu và phân phối mỹ phẩm Hàn Quốc — có ảnh thực tế và video unbox khi khách yêu cầu. THUY THANH NGUYEN tư vấn miễn phí — không mua cũng không sao!</div>
+      <div class="tm-brand-certs">
+        <span class="tm-brand-cert"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Hàng nhập khẩu 🇰🇷</span>
+        <span class="tm-brand-cert"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Freeship toàn quốc</span>
+        <span class="tm-brand-cert"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Đổi trả 7 ngày</span>
+      </div>
+    </div>
+
+    <div class="tm-legal-footer">
+      <div class="tm-legal-distrib">
+        <div class="tm-legal-label">Phân phối bởi</div>
+        <div class="tm-legal-company">Thuythanhnguyen.cosme</div>
+      </div>
+      <div class="tm-legal-links">
+        <a class="tm-legal-link" href="https://www.facebook.com/ThuyThanhNguyennnn" target="_blank" rel="noopener">Facebook</a>
+        <span class="tm-legal-sep">·</span>
+        <a class="tm-legal-link" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">Inbox tư vấn</a>
+      </div>
+      <div class="tm-legal-copy">© 2026 Thuythanhnguyen.cosme · Mỹ phẩm nhập khẩu Hàn Quốc</div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- ========== STICKY CTA ========== -->
+<div class="tts-sticky-cta">
+  <div class="tts-cta-sidegroup">
+    <a class="tts-cta-side" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>Chat
+    </a>
+    <a class="tts-cta-side" href="https://www.facebook.com/ThuyThanhNguyennnn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>Cửa hàng
+    </a>
+  </div>
+  <div class="tts-cta-buy">
+    <button class="tts-btn-cart" type="button" onclick="onBuyClick()">Thêm giỏ</button>
+    <button class="tts-btn-buy" type="button" onclick="onBuyClick()">Mua ngay</button>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="tm-lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh lớn">
+  <button id="tm-lightbox-close" aria-label="Đóng">×</button>
+  <img id="tm-lightbox-img" src="" alt="">
+</div>
+
+<script>
+/* ============================================================
+ * SESSION + UTM + CAPI matching helpers (placed BEFORE buy popup IIFE)
+ * ============================================================ */
+var SESSION_START = Date.now();
+var CLIENT_IP = '';
+
+(function fetchClientIP(){
+  try {
+    fetch('https://api.ipify.org?format=json', { cache: 'no-store' })
+      .then(function(res){ return res.json(); })
+      .then(function(data){ CLIENT_IP = (data && data.ip) || ''; })
+      .catch(function(){ CLIENT_IP = ''; });
+  } catch(e) { CLIENT_IP = ''; }
+})();
+
+function getUTMParams(){
+  var p = new URLSearchParams(window.location.search);
+  return {
+    utm_source:   p.get('utm_source')   || '',
+    utm_campaign: p.get('utm_campaign') || '',
+    utm_medium:   p.get('utm_medium')   || '',
+    utm_term:     p.get('utm_term')     || '',
+    utm_content:  p.get('utm_content')  || ''
+  };
+}
+
+function getCookie(name){
+  var match = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[2]) : '';
+}
+
+function getFBC(){
+  var fbc = getCookie('_fbc');
+  if (fbc) return fbc;
+  var p = new URLSearchParams(window.location.search);
+  var fbclid = p.get('fbclid');
+  if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
+  return '';
+}
+
+function getFBP(){
+  return getCookie('_fbp');
+}
+
+function removeVN(s) {
+  return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
+}
+function reinitPixelMatching() {
+  if (typeof fbq === 'undefined') return;
+  var overlay = document.getElementById('tts-buy-popup-overlay');
+  if (!overlay) return;
+  var phEl = overlay.querySelector('[data-field="phone"]');
+  var fnEl = overlay.querySelector('[data-field="fullname"]');
+  var data = { country: 'vn' };
+  var hasData = false;
+  if (phEl && phEl.value) {
+    var p = phEl.value.replace(/[\s.\-()]/g, '');
+    if (/^(0\d{9}|\+84\d{9})$/.test(p)) {
+      data.ph = p.replace(/^\+?84/, '0');
+      hasData = true;
+    }
+  }
+  if (fnEl && fnEl.value) {
+    var parts = removeVN(fnEl.value).toLowerCase().trim().split(/\s+/);
+    if (parts.length && parts[0]) {
+      data.fn = parts[parts.length - 1];
+      if (parts.length > 1) data.ln = parts.slice(0, -1).join(' ');
+      hasData = true;
+    }
+  }
+  if (hasData) { try { fbq('init', '1212419910852343', data); } catch(e){} }
+}
+
+/* ============================================================
+ * Tab Nav with Scrollspy
+ * ============================================================ */
+(function (global) {
+  'use strict';
+  var TikTokTabNav = {
+    init: function (options) {
+      options = options || {};
+      var nav = document.querySelector(options.navSelector || '.tts-tabnav');
+      if (!nav) return;
+      var tabs = Array.prototype.slice.call(nav.querySelectorAll(options.tabSelector || '.tts-tab'));
+      var sections = tabs.map(function (tab) {
+        var hash = tab.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return null;
+        return document.getElementById(hash.slice(1));
+      }).filter(Boolean);
+      if (!sections.length) return;
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function (e) {
+          var hash = tab.getAttribute('href');
+          if (!hash || hash.charAt(0) !== '#') return;
+          var target = document.getElementById(hash.slice(1));
+          if (!target) return;
+          e.preventDefault();
+          var navHeight = nav.offsetHeight;
+          var top = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+          setActiveTab(tab);
+        });
+      });
+      function setActiveTab(activeTab) {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        activeTab.classList.add('active');
+      }
+      if (!('IntersectionObserver' in window)) return;
+      var navHeight = nav.offsetHeight;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = sections.indexOf(entry.target);
+            if (idx >= 0 && tabs[idx]) setActiveTab(tabs[idx]);
+          }
+        });
+      }, { rootMargin: '-' + (navHeight + 8) + 'px 0px -60% 0px', threshold: 0 });
+      sections.forEach(function (section) { observer.observe(section); });
+    }
+  };
+  global.TikTokTabNav = TikTokTabNav;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { TikTokTabNav.init(); });
+  } else { TikTokTabNav.init(); }
+})(window);
+
+/* ============================================================
+ * Hero Gallery
+ * ============================================================ */
+(function (global) {
+  'use strict';
+  function bind(gallery) {
+    var track = gallery.querySelector('.tts-hero-track');
+    var dots = gallery.querySelectorAll('.tts-hero-dot');
+    var counter = gallery.querySelector('.tts-hero-counter');
+    var prevBtn = gallery.querySelector('.tts-hero-arrow.prev');
+    var nextBtn = gallery.querySelector('.tts-hero-arrow.next');
+    if (!track) return;
+    var slides = track.querySelectorAll('.tts-hero-slide');
+    var total = slides.length;
+    if (!total) return;
+    function update() {
+      var idx = track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0;
+      if (idx < 0) idx = 0;
+      if (idx >= total) idx = total - 1;
+      if (dots && dots.length) {
+        Array.prototype.forEach.call(dots, function (d, i) {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+      if (counter) counter.textContent = (idx + 1) + '/' + total;
+    }
+    if (dots && dots.length) {
+      Array.prototype.forEach.call(dots, function (dot, i) {
+        dot.addEventListener('click', function () {
+          track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+        });
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+      });
+    }
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () { update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+    update();
+  }
+  function init() {
+    var galleries = document.querySelectorAll('.tts-hero');
+    Array.prototype.forEach.call(galleries, function (g) { bind(g); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})(window);
+
+/* ============================================================
+ * Promo Countdown
+ * ============================================================ */
+(function (global) {
+  'use strict';
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function formatRemaining(ms) {
+    if (ms <= 0) return '00:00:00';
+    var totalSec = Math.floor(ms / 1000);
+    var d = Math.floor(totalSec / 86400);
+    var h = Math.floor((totalSec % 86400) / 3600);
+    var m = Math.floor((totalSec % 3600) / 60);
+    var s = totalSec % 60;
+    if (d > 0) return d + 'd ' + pad(h) + ':' + pad(m) + ':' + pad(s);
+    return pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+  function init() {
+    var els = document.querySelectorAll('.tts-promo-countdown');
+    Array.prototype.forEach.call(els, function (el) {
+      var endAttr = el.getAttribute('data-end');
+      var durationAttr = el.getAttribute('data-duration');
+      var endTs = endAttr ? new Date(endAttr).getTime()
+        : (durationAttr ? Date.now() + (parseInt(durationAttr, 10) * 1000)
+        : Date.now() + 86400000);
+      var bEl = el.querySelector('b') || el;
+      function tick() {
+        var remaining = endTs - Date.now();
+        if (remaining <= 0) {
+          bEl.textContent = '00:00:00';
+          el.classList.add('expired');
+          return;
+        }
+        bEl.textContent = formatRemaining(remaining);
+        setTimeout(tick, 1000);
+      }
+      tick();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})(window);
+
+/* ============================================================
+ * TikTok Shop Buy Popup — modified to produce 24-field payload
+ * ============================================================ */
+(function (global) {
+  'use strict';
+  var settings = { webhookUrl: null, currency: 'VND', onSuccess: null, onError: null };
+  var _current = null;
+  var _selected = {};
+  var _qty = 1;
+  var _submitting = false;
+
+  function fmt(n) {
+    var v = parseInt(n, 10);
+    if (isNaN(v)) return '0đ';
+    return v.toLocaleString('vi-VN').replace(/,/g, '.') + 'đ';
+  }
+  function genOrderCode() {
+    var chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    var s = '';
+    if (window.crypto && window.crypto.getRandomValues) {
+      var arr = new Uint32Array(8);
+      window.crypto.getRandomValues(arr);
+      for (var i = 0; i < 8; i++) s += chars.charAt(arr[i] % chars.length);
+    } else {
+      for (var j = 0; j < 8; j++) s += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return s;
+  }
+  function el(tag, cls, html) {
+    var d = document.createElement(tag);
+    if (cls) d.className = cls;
+    if (html != null) d.innerHTML = html;
+    return d;
+  }
+  function calcUnitPrice() {
+    if (!_current) return 0;
+    var packKey = 'qty_pack';
+    if (_selected[packKey] && _current.options) {
+      var opt = _current.options.find(function (o) { return o.label === packKey; });
+      if (opt) {
+        var v = (opt.values || []).find(function (v) { return v.label === _selected[packKey]; });
+        if (v && v.qty) return Math.round(v.price / v.qty);
+      }
+    }
+    return _current.basePrice || 0;
+  }
+  function calcTotal() {
+    var packKey = 'qty_pack';
+    if (_selected[packKey] && _current && _current.options) {
+      var opt = _current.options.find(function (o) { return o.label === packKey; });
+      if (opt) {
+        var v = (opt.values || []).find(function (v) { return v.label === _selected[packKey]; });
+        if (v && v.price) return v.price;
+      }
+    }
+    return calcUnitPrice() * _qty;
+  }
+  function getQty() {
+    var packKey = 'qty_pack';
+    if (_selected[packKey] && _current && _current.options) {
+      var opt = _current.options.find(function (o) { return o.label === packKey; });
+      if (opt) {
+        var v = (opt.values || []).find(function (v) { return v.label === _selected[packKey]; });
+        if (v && v.qty) return v.qty;
+      }
+    }
+    return _qty;
+  }
+
+  function render() {
+    var overlay = document.getElementById('tts-buy-popup-overlay');
+    if (overlay) overlay.remove();
+    overlay = el('div', 'tts-popup-overlay');
+    overlay.id = 'tts-buy-popup-overlay';
+    var popup = el('div', 'tts-popup');
+    overlay.appendChild(popup);
+
+    var p = _current;
+    var closeBtn = el('button', 'tts-popup-close',
+      '<svg viewBox="0 0 24 24"><path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71l1.41-1.42L10.59 10.6l6.3-6.31z"/></svg>');
+    closeBtn.onclick = close;
+    popup.appendChild(closeBtn);
+
+    var header = el('div', 'tts-popup-header');
+    var img = el('img', 'tts-popup-img');
+    img.src = p.image || ''; img.alt = p.name || '';
+    header.appendChild(img);
+    var info = el('div', 'tts-popup-info');
+    info.appendChild(el('div', 'tts-popup-price', fmt(calcTotal())));
+    if (p.originalPrice && p.originalPrice > p.basePrice) {
+      info.appendChild(el('div', 'tts-popup-price-old', fmt(p.originalPrice) + ' / týp'));
+    }
+    info.appendChild(el('div', 'tts-popup-stock', 'Còn hàng — Giao 1-3 ngày'));
+    header.appendChild(info);
+    popup.appendChild(header);
+
+    var body = el('div', 'tts-popup-body');
+
+    if (p.options && p.options.length) {
+      p.options.forEach(function (opt) {
+        var sec = el('div', 'tts-popup-section');
+        sec.appendChild(el('div', 'tts-popup-label', 'Chọn gói <span class="req">*</span>'));
+        var optsWrap = el('div', 'tts-popup-options');
+        (opt.values || []).forEach(function (v) {
+          var btn = el('button', 'tts-popup-option', v.label);
+          btn.type = 'button';
+          if (_selected[opt.label] === v.label) btn.classList.add('selected');
+          btn.onclick = function () { _selected[opt.label] = v.label; render(); };
+          optsWrap.appendChild(btn);
+        });
+        sec.appendChild(optsWrap);
+        body.appendChild(sec);
+      });
+    }
+
+    var formFields = [
+      { key: 'fullname', label: 'Họ tên', required: true,  type: 'text',     placeholder: 'Nguyễn Thị A' },
+      { key: 'phone',    label: 'Số điện thoại', required: true,  type: 'tel',      placeholder: '0901234567 hoặc +84901234567' },
+      { key: 'address',  label: 'Địa chỉ giao hàng', required: true,  type: 'textarea', placeholder: 'Số nhà, đường, phường, quận, thành phố' },
+      { key: 'note',     label: 'Ghi chú', required: false, type: 'textarea', placeholder: 'Giao giờ hành chính (tuỳ chọn)' }
+    ];
+    formFields.forEach(function (f) {
+      var sec = el('div', 'tts-popup-section');
+      var labelHtml = f.label + (f.required ? ' <span class="req">*</span>' : '');
+      if (f.key === 'address') labelHtml += ' <span class="tts-popup-label-note">Quý khách vui lòng nhập địa chỉ trước khi sáp nhập.</span>';
+      sec.appendChild(el('div', 'tts-popup-label', labelHtml));
+      var input;
+      if (f.type === 'textarea') {
+        input = el('textarea', 'tts-popup-textarea');
+      } else {
+        input = el('input', 'tts-popup-input');
+        input.type = f.type;
+      }
+      input.placeholder = f.placeholder;
+      input.name = f.key;
+      input.dataset.field = f.key;
+      sec.appendChild(input);
+      sec.appendChild(el('div', 'tts-popup-error-msg'));
+      body.appendChild(sec);
+    });
+
+    var hpWrap = el('div', 'tts-honeypot');
+    hpWrap.setAttribute('aria-hidden', 'true');
+    var hpLbl = el('label', null, 'Website (không điền)');
+    hpLbl.setAttribute('for', 'tts-hp-website');
+    var hp = el('input');
+    hp.type = 'text'; hp.name = 'website'; hp.id = 'tts-hp-website';
+    hp.tabIndex = -1; hp.autocomplete = 'off';
+    hpWrap.appendChild(hpLbl);
+    hpWrap.appendChild(hp);
+    body.appendChild(hpWrap);
+
+    popup.appendChild(body);
+
+    var footer = el('div', 'tts-popup-footer');
+    var total = el('div', 'tts-popup-total');
+    total.appendChild(el('span', 'tts-popup-total-label', 'Tổng cộng'));
+    total.appendChild(el('span', 'tts-popup-total-value', fmt(calcTotal())));
+    footer.appendChild(total);
+    var submit = el('button', 'tts-popup-submit', 'Đặt hàng');
+    submit.type = 'button';
+    submit.onclick = function () { handleSubmit(popup); };
+    if (_submitting) { submit.disabled = true; submit.textContent = 'Đang gửi...'; }
+    footer.appendChild(submit);
+    popup.appendChild(footer);
+
+    document.body.appendChild(overlay);
+    requestAnimationFrame(function () { overlay.classList.add('open'); });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    overlay.addEventListener('blur', function (e) {
+      var t = e.target;
+      if (t && (t.matches('[data-field="phone"]') || t.matches('[data-field="fullname"]'))) {
+        if (t.matches('[data-field="phone"]') && t.value) {
+          var p = t.value.replace(/[\s.\-()]/g, '');
+          if (/^(0\d{9}|\+84\d{9})$/.test(p)) t.value = p;
+        }
+        reinitPixelMatching();
+      }
+    }, true);
+  }
+
+  function close() {
+    var overlay = document.getElementById('tts-buy-popup-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    setTimeout(function () { overlay.remove(); }, 300);
+  }
+
+  function getField(name) {
+    var overlay = document.getElementById('tts-buy-popup-overlay');
+    if (!overlay) return '';
+    var el = overlay.querySelector('[data-field="' + name + '"]');
+    return el ? (el.value || '').trim() : '';
+  }
+
+  function handleSubmit(popup) {
+    if (_submitting) return;
+    var p = _current;
+
+    if (p.options) {
+      for (var i = 0; i < p.options.length; i++) {
+        var opt = p.options[i];
+        if (!_selected[opt.label]) {
+          alert('Vui lòng chọn gói trước khi đặt hàng');
+          return;
+        }
+      }
+    }
+    var hp = popup.querySelector('.tts-honeypot input');
+    if (hp && hp.value && hp.value.trim()) { console.warn('[TikTokShopBuyPopup] Honeypot triggered — bot suspected'); return; }
+
+    var fullname = popup.querySelector('[data-field="fullname"]');
+    var phone    = popup.querySelector('[data-field="phone"]');
+    var address  = popup.querySelector('[data-field="address"]');
+    var noteEl   = popup.querySelector('[data-field="note"]');
+    var valid = true;
+    [fullname, phone, address].forEach(function (e) {
+      e.classList.remove('error');
+      var em = e.parentNode.querySelector('.tts-popup-error-msg');
+      if (em) em.textContent = '';
+    });
+    if (!fullname.value.trim()) {
+      fullname.classList.add('error');
+      var em1 = fullname.parentNode.querySelector('.tts-popup-error-msg');
+      if (em1) em1.textContent = 'Vui lòng nhập họ tên';
+      valid = false;
+    }
+    var phoneRaw = phone.value.replace(/[\s.\-()]/g, '');
+    if (!/^(0\d{9}|\+84\d{9})$/.test(phoneRaw)) {
+      phone.classList.add('error');
+      var em2 = phone.parentNode.querySelector('.tts-popup-error-msg');
+      if (em2) em2.textContent = 'SĐT không hợp lệ. Bắt đầu bằng 0 hoặc +84, theo sau 9 số';
+      valid = false;
+    } else {
+      phone.value = phoneRaw;
+    }
+    var blockedPhones = ['0944677784', '0913331679'];
+    if (blockedPhones.indexOf(phoneRaw) !== -1) {
+      phone.classList.add('error');
+      var emB = phone.parentNode.querySelector('.tts-popup-error-msg');
+      if (emB) emB.textContent = 'Số điện thoại này không thể đặt hàng. Vui lòng liên hệ fanpage để được hỗ trợ.';
+      valid = false;
+    }
+    if (!address.value.trim()) {
+      address.classList.add('error');
+      var em3 = address.parentNode.querySelector('.tts-popup-error-msg');
+      if (em3) em3.textContent = 'Vui lòng nhập địa chỉ';
+      valid = false;
+    }
+    if (!valid) return;
+
+    var orderCode = genOrderCode();
+    var unitPrice = calcUnitPrice();
+    var totalPrice = calcTotal();
+    var quantity = getQty();
+    var utm = getUTMParams();
+
+    var payload = {
+      order_code:         orderCode,
+      timestamp:          new Date().toISOString(),
+      fullname:           getField('fullname'),
+      phone:              getField('phone'),
+      address:            getField('address'),
+      note:               getField('note'),
+      product_name:       _current.name || 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+      product_sku:        _current.sku  || 'TUMILL-EXOSOME-TONEUP',
+      unit_price:         unitPrice,
+      quantity:           quantity,
+      total_value:        totalPrice,
+      currency:           'VND',
+      options:            Object.assign({}, _selected),
+      option_labels:      Object.keys(_selected).map(function(k){ return k + ':' + _selected[k]; }).join(' | '),
+      meta_pixel_id:      '1212419910852343',
+      utm_source:         utm.utm_source,
+      utm_campaign:       utm.utm_campaign,
+      utm_medium:         utm.utm_medium,
+      utm_term:           utm.utm_term,
+      utm_content:        utm.utm_content,
+      page_url:           window.location.href,
+      referrer:           document.referrer,
+      session_duration:   Math.floor((Date.now() - SESSION_START) / 1000),
+      client_ip_address:  CLIENT_IP,
+      client_user_agent:  navigator.userAgent || '',
+      fbc:                getFBC(),
+      fbp:                getFBP()
+    };
+
+    _submitting = true;
+    render();
+
+    if (!settings.webhookUrl) {
+      console.warn('[TikTokShopBuyPopup] No webhookUrl. Payload:', payload);
+      showSuccess(orderCode, payload);
+      return;
+    }
+    fetch(settings.webhookUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    }).then(function () {
+      showSuccess(orderCode, payload);
+    }).catch(function (err) {
+      console.error('[TikTokShopBuyPopup] Submit failed:', err);
+      showSuccess(orderCode, payload);
+    });
+  }
+
+  function showSuccess(orderCode, payload) {
+    _submitting = false;
+    var overlay = document.getElementById('tts-buy-popup-overlay');
+    if (!overlay) return;
+    var popup = overlay.querySelector('.tts-popup');
+    popup.innerHTML = '';
+    var closeBtn = el('button', 'tts-popup-close',
+      '<svg viewBox="0 0 24 24"><path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71l1.41-1.42L10.59 10.6l6.3-6.31z"/></svg>');
+    closeBtn.onclick = close;
+    popup.appendChild(closeBtn);
+    var success = el('div', 'tts-popup-success');
+    success.innerHTML =
+      '<div class="tts-popup-success-icon">&#10003;</div>' +
+      '<div class="tts-popup-success-title">Đặt hàng thành công!</div>' +
+      '<div class="tts-popup-success-msg">Cảm ơn bạn. Skin by THUY THANH NGUYEN sẽ liên hệ xác nhận đơn hàng trong 15 phút.</div>' +
+      '<div class="tts-popup-order-code">#' + orderCode + '</div>';
+    popup.appendChild(success);
+
+    try {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'CompleteRegistration', {
+          content_name: payload.product_name,
+          content_ids:  [payload.product_sku],
+          value:        payload.total_value,
+          currency:     payload.currency,
+          status:       true
+        });
+      }
+    } catch(e) {}
+
+    try {
+      if (typeof ttq !== 'undefined') {
+        ttq.track('PlaceAnOrder', {
+          content_id:   payload.product_sku  || 'TUMILL-EXOSOME-TONEUP',
+          content_name: payload.product_name || 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+          content_type: 'product',
+          quantity:     payload.quantity     || 1,
+          value:        payload.total_value  || 480000,
+          currency:     payload.currency     || 'VND'
+        });
+      }
+    } catch(e) {}
+
+    if (typeof settings.onSuccess === 'function') {
+      settings.onSuccess(orderCode, payload);
+    }
+  }
+
+  global.TikTokShopBuyPopup = {
+    config: function (opts) { Object.assign(settings, opts || {}); },
+    open: function (product) {
+      _current = product;
+      _selected = {};
+      _qty = 1;
+      _submitting = false;
+      if (product.options && product.options[0] && product.options[0].values && product.options[0].values[0]) {
+        _selected[product.options[0].label] = product.options[0].values[0].label;
+      }
+      render();
+    },
+    close: close
+  };
+})(window);
+
+/* ============================================================
+ * Buy Popup config + Buy CTA handler
+ * ============================================================ */
+TikTokShopBuyPopup.config({
+  webhookUrl: 'https://script.google.com/macros/s/AKfycbxTCkrT2XPRwWxgGmU_TNz2Q-zEMp0i1MfgzMn0ij7H0QPBMNsP-lCareWED5Ybdkxq/exec',
+  currency:   'VND',
+  onSuccess: function(orderCode, payload){
+    console.log('Order placed:', orderCode);
+  }
+});
+
+function onBuyClick(preselectQty) {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'InitiateCheckout', {
+      content_ids:  ['TUMILL-EXOSOME-TONEUP'],
+      content_name: 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+      value:        480000,
+      currency:     'VND'
+    });
+  }
+  try {
+    if (typeof ttq !== 'undefined') {
+      ttq.track('InitiateCheckout', {
+        content_id:   'TUMILL-EXOSOME-TONEUP',
+        content_name: 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+        content_type: 'product',
+        value:        480000,
+        currency:     'VND'
+      });
+    }
+  } catch(e) {}
+  /* Sắp xếp lại để gói vừa bấm (preselectQty) được auto-chọn khi mở popup —
+     nếu gọi không kèm tham số (nút "Mua ngay" chung) thì mặc định gói 3 tuýp bán chạy. */
+  var packValues = [
+    { label: '3 tuýp · 1.400.000đ · Tặng 2 mút + 2 mặt nạ<span class="tts-popup-option-badge">🔥 Bán chạy</span>', price: 1400000, qty: 3 },
+    { label: '2 tuýp · 940.000đ · Tặng 1 bông mút', price: 940000, qty: 2 },
+    { label: '1 tuýp · 480.000đ', price: 480000, qty: 1 }
+  ];
+  if (preselectQty) {
+    var idx = packValues.findIndex(function (v) { return v.qty === preselectQty; });
+    if (idx > 0) { packValues.unshift(packValues.splice(idx, 1)[0]); }
+  }
+  TikTokShopBuyPopup.open({
+    name:          'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+    image:         './assets/images/tumill-product-clean.png',
+    basePrice:     480000,
+    sku:           'TUMILL-EXOSOME-TONEUP',
+    /* label PHẢI là 'qty_pack' để popup tính đúng giá/số lượng theo gói chọn */
+    options: [ { label: 'qty_pack', values: packValues } ]
+  });
+}
+</script>
+
+<script>
+(function(){
+  var lb = document.getElementById('tm-lightbox');
+  var lbImg = document.getElementById('tm-lightbox-img');
+  function openLb(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeLb(){ lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
+  document.querySelectorAll('.tm-img-wrap img, .tts-hero-img, .tm-hero-full img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); openLb(this.src, this.alt); });
+  });
+  lb.addEventListener('click', closeLb);
+  document.getElementById('tm-lightbox-close').addEventListener('click', function(e){ e.stopPropagation(); closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+})();
+
+/* Nút "+ Theo dõi" — toggle trạng thái, chỉ để tăng cảm giác tương tác */
+(function(){
+  var btn = document.querySelector('.tm-follow-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    var following = btn.classList.toggle('following');
+    btn.textContent = following ? '✓ Đang theo dõi' : '+ Theo dõi';
+  });
+})();
+
+/* Thanh tiến trình đọc (reading progress) — thay cho tab-nav ngang của các trang trước */
+(function(){
+  var bar = document.getElementById('tm-progress-bar');
+  var page = document.querySelector('.tts-page');
+  if (!bar || !page) return;
+  function update(){
+    var max = page.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* Hiệu ứng xuất hiện dần khi cuộn tới từng section — có lưới an toàn để
+   KHÔNG BAO GIỜ có chữ/ảnh bị kẹt mờ vĩnh viễn (vd: cuộn nhanh/nhảy đoạn
+   khiến IntersectionObserver bỏ lỡ section). */
+(function(){
+  var els = document.querySelectorAll('.tm-reveal');
+  if (!els.length) return;
+  function revealAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+  if (!('IntersectionObserver' in window)) { revealAll(); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+  /* Lưới an toàn 1: section nào đã bị cuộn qua (nằm trên viewport hiện tại)
+     mà chưa kịp "in" thì hiện luôn — tránh trường hợp nhảy cuộn nhanh bỏ lỡ. */
+  function catchSkipped(){
+    els.forEach(function(el){
+      if (!el.classList.contains('in') && el.getBoundingClientRect().bottom < window.innerHeight * 1.5) {
+        el.classList.add('in');
+      }
+    });
+  }
+  window.addEventListener('scroll', catchSkipped, { passive: true });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){ setTimeout(catchSkipped, 400); });
+  });
+  /* Lưới an toàn 2: sau 4 giây hiện hết, phòng mọi trường hợp còn sót. */
+  setTimeout(revealAll, 4000);
+})();
+
+/* Bộ chọn gói (segmented toggle) — cập nhật giá/quà/nút mua theo gói đang chọn */
+(function(){
+  var opts = document.querySelectorAll('.tm-cfg-opt');
+  if (!opts.length) return;
+  var data = {
+    1: { price: '480.000đ', gifts: ['Miễn phí vận chuyển'] },
+    2: { price: '940.000đ', gifts: ['Tặng 1 bông mút', 'Miễn phí vận chuyển'] },
+    3: { price: '1.400.000đ', gifts: ['Tặng 2 bông mút', 'Tặng 2 mặt nạ', 'Miễn phí vận chuyển'] }
+  };
+  var checkSvg = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+  var priceEl = document.getElementById('tm-cfg-price');
+  var giftsEl = document.getElementById('tm-cfg-gifts');
+  var buyBtn = document.getElementById('tm-cfg-buy-btn');
+  function render(qty){
+    opts.forEach(function(o){ o.classList.toggle('active', o.dataset.qty === String(qty)); });
+    var d = data[qty];
+    if (!d || !priceEl || !giftsEl || !buyBtn) return;
+    priceEl.textContent = d.price;
+    giftsEl.innerHTML = d.gifts.map(function(g){ return '<div class="tm-gift-item">' + checkSvg + g + '</div>'; }).join('');
+    buyBtn.textContent = 'Chọn mua — ' + d.price;
+    buyBtn.setAttribute('onclick', 'onBuyClick(' + qty + ')');
+  }
+  opts.forEach(function(o){
+    o.addEventListener('click', function(){ render(o.dataset.qty); });
+  });
+  render(3);
+})();
+
+/* Review filter chips (Tất cả / 5 sao / Có ảnh) */
+(function(){
+  var chips = document.querySelectorAll('.tm-rev-chip');
+  var cards = document.querySelectorAll('#tm-rev-list .tm-rev-card');
+  var emptyMsg = document.getElementById('tm-rev-empty');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      var filter = chip.dataset.filter;
+      var visibleCount = 0;
+      cards.forEach(function(card){
+        var show = filter === 'all'
+          || (filter === '5star' && card.dataset.stars === '5')
+          || (filter === 'photo' && card.dataset.photo === 'true');
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+      emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>
