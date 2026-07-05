@@ -1643,11 +1643,10 @@ function reinitPixelMatching() {
  * Buy Popup config + Buy CTA handler
  * ============================================================ */
 TikTokShopBuyPopup.config({
-  /* PLACEHOLDER: đang dùng tạm webhook DÙNG CHUNG với landing khác (combo).
-     Sau khi deploy apps-script-tumill.gs (xem hướng dẫn trong file đó) để đơn
-     TUMILL đổ về tab "DonHang_TUMILL" riêng, thay URL dưới đây bằng URL /exec
-     mới. Việc này KHÔNG ảnh hưởng landing khác vì chỉ sửa ở file index.html này. */
-  webhookUrl: 'https://script.google.com/macros/s/AKfycbxTCkrT2XPRwWxgGmU_TNz2Q-zEMp0i1MfgzMn0ij7H0QPBMNsP-lCareWED5Ybdkxq/exec',
+  /* Webhook riêng cho TUMILL — ghi vào tab "DonHang_TUMILL" trong sheet
+     1oHV5gJu_C-33zDb1JwhQDS1VyQATCahXN7zqlJH5OkM (xem apps-script-tumill.gs).
+     Độc lập với webhook của landing khác (combo, PDRN...). */
+  webhookUrl: 'https://script.google.com/macros/s/AKfycbw_frVv3znEMCPi4Houg0zu28vTKCBpQONzyPcC3gDGmXgWs35lwHwzkk_rzTRA7znq/exec',
   currency:   'VND',
   onSuccess: function(orderCode, payload){
     console.log('Order placed:', orderCode);
