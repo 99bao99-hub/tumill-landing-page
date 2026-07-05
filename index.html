@@ -1386,8 +1386,7 @@ function reinitPixelMatching() {
     var formFields = [
       { key: 'fullname', label: 'Họ tên', required: true,  type: 'text',     placeholder: 'Nguyễn Thị A' },
       { key: 'phone',    label: 'Số điện thoại', required: true,  type: 'tel',      placeholder: '0901234567 hoặc +84901234567' },
-      { key: 'address',  label: 'Địa chỉ giao hàng', required: true,  type: 'textarea', placeholder: 'Số nhà, đường, phường, quận, thành phố' },
-      { key: 'note',     label: 'Ghi chú', required: false, type: 'textarea', placeholder: 'Giao giờ hành chính (tuỳ chọn)' }
+      { key: 'address',  label: 'Địa chỉ giao hàng', required: true,  type: 'textarea', placeholder: 'Số nhà, đường, phường, quận, thành phố' }
     ];
     formFields.forEach(function (f) {
       var sec = el('div', 'tts-popup-section');
@@ -1644,6 +1643,10 @@ function reinitPixelMatching() {
  * Buy Popup config + Buy CTA handler
  * ============================================================ */
 TikTokShopBuyPopup.config({
+  /* PLACEHOLDER: đang dùng tạm webhook DÙNG CHUNG với landing khác (combo).
+     Sau khi deploy apps-script-tumill.gs (xem hướng dẫn trong file đó) để đơn
+     TUMILL đổ về tab "DonHang_TUMILL" riêng, thay URL dưới đây bằng URL /exec
+     mới. Việc này KHÔNG ảnh hưởng landing khác vì chỉ sửa ở file index.html này. */
   webhookUrl: 'https://script.google.com/macros/s/AKfycbxTCkrT2XPRwWxgGmU_TNz2Q-zEMp0i1MfgzMn0ij7H0QPBMNsP-lCareWED5Ybdkxq/exec',
   currency:   'VND',
   onSuccess: function(orderCode, payload){
