@@ -83,7 +83,10 @@ function doPost(e) {
       data = JSON.parse(e.postData.contents);
     }
     var sheet = getSheet_();
-    var row = [ new Date() ]; // received_at (giờ server)
+    // received_at: ép cứng về giờ Việt Nam (Asia/Ho_Chi_Minh, +7) khi ghi vào Sheet —
+    // không dùng new Date() thô vì Sheet sẽ hiển thị theo timezone cấu hình của Sheet/Script,
+    // có thể lệch múi giờ (từng bị lệch -7h do Sheet để giờ UTC).
+    var row = [ Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'dd/MM/yyyy HH:mm:ss') ]; // received_at (giờ VN)
     for (var i = 1; i < HEADERS.length; i++) {
       var key = HEADERS[i];
       var v = data[key];
