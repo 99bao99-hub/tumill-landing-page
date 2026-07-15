@@ -368,6 +368,10 @@ a { color: inherit; text-decoration: none; }
 .tm-compare-cell.gold { color: var(--tm-text); font-weight: 600; background: rgba(228,207,160,0.14); }
 .tm-compare-cell.gold svg { width: 13px; height: 13px; color: var(--tm-gold-dark); flex-shrink: 0; }
 
+/* Nhãn giới thiệu ngắn trước dải ảnh điểm bán (tái dùng trong nhóm "Vì sao có thể tin TUMILL") */
+.tm-retail-teaser { font-size: 12.5px; color: var(--tm-text-muted); margin: 14px 0 10px; line-height: 1.5; }
+.tm-retail-teaser b { color: var(--tm-gold-dark); }
+
 /* Retail proof gallery */
 .tm-retail-scroll {
   display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -440,18 +444,6 @@ a { color: inherit; text-decoration: none; }
 .tm-spec-label { flex: 0 0 118px; font-weight: 700; color: var(--tm-text-muted); }
 .tm-spec-value { flex: 1; color: var(--tm-text); font-weight: 500; }
 
-/* Inline CTA block */
-.tm-cta-block { text-align: center; padding: 6px 0 4px; }
-.tm-cta-headline { font-size: 16px; font-weight: 700; color: var(--tm-charcoal); margin-bottom: 6px; }
-.tm-cta-headline b { color: var(--tm-gold-dark); }
-.tm-cta-sub { font-size: 12px; color: var(--tm-text-muted); margin-bottom: 14px; }
-.tm-cta-btn {
-  display: inline-flex; align-items: center; gap: 6px; padding: 14px 34px;
-  background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
-  color: #fff; font-size: 14.5px; font-weight: 700; border-radius: var(--tm-r-pill); box-shadow: var(--tm-shadow-gold);
-}
-.tm-cta-btn svg { width: 18px; height: 18px; fill: #fff; }
-
 /* Reviews */
 .tm-rev-summary { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 16px; }
 .tm-rev-big { font-size: 26px; font-weight: 800; color: var(--tm-gold-dark); font-family: 'Playfair Display', serif; }
@@ -470,6 +462,13 @@ a { color: inherit; text-decoration: none; }
 .tm-rev-content { font-size: 12.5px; color: var(--tm-text); line-height: 1.55; margin-top: 8px; }
 .tm-rev-meta { font-size: 11px; color: var(--tm-text-muted); margin-top: 8px; }
 .tm-rev-empty { text-align: center; font-size: 12.5px; color: var(--tm-text-muted); padding: 20px 0; }
+.tm-rev-hidden { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
+.tm-rev-hidden.show { display: flex; }
+.tm-rev-showmore {
+  display: block; width: 100%; margin-top: 12px; padding: 12px;
+  background: var(--tm-ivory); border: 1px solid var(--tm-border); border-radius: var(--tm-r-md);
+  font-size: 12.5px; font-weight: 700; color: var(--tm-gold-dark); text-align: center;
+}
 
 /* FAQ */
 .tm-faq-item { background: var(--tm-cream); border: 1px solid var(--tm-border-soft); border-radius: var(--tm-r-md); overflow: hidden; margin-bottom: 8px; }
@@ -711,27 +710,14 @@ a { color: inherit; text-decoration: none; }
   <section id="dacdiem">
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">01 — Vì sao cần TUMILL</div>
-      <h2 class="tm-section-title">Ce đang gặp tình trạng này không?</h2>
-      <p class="tm-section-sub">Nếu ce gật đầu với 2 trong số này — TUMILL Exosome Tone Up sinh ra là để dành cho ce.</p>
-      <div class="tm-pain-grid">
-        <div class="tm-pain-chip">Da xỉn màu, thiếu sức sống</div>
-        <div class="tm-pain-chip">Không đều màu da</div>
-        <div class="tm-pain-chip">Buổi sáng vội, không kịp trang điểm</div>
-        <div class="tm-pain-chip">Da khô căng sau tone-up</div>
-        <div class="tm-pain-chip">Muốn "da mộc" kiểu Hàn Quốc mà không cần makeup cầu kỳ</div>
-      </div>
-      <div class="tm-img-wrap tm-pain-photo">
-        <img src="./assets/images/tumill-lifestyle-apply.png" alt="Thoa TUMILL Exosome Tone Up buổi sáng">
-        <div class="tm-pain-photo-cap">TUMILL Exosome Tone Up giải quyết cả 5 vấn đề — chỉ 1 bước buổi sáng</div>
-      </div>
-    </div>
-
-    <!-- Công dụng — trình bày kiểu "tuyên ngôn thương hiệu", không dùng icon/thẻ như các mục khác -->
-    <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">02 — Công dụng</div>
+      <div class="tm-section-eyebrow">01 — Hiệu quả &amp; Công dụng</div>
       <h2 class="tm-section-title">TUMILL Mang Lại Điều Gì Cho Làn Da?</h2>
-      <p class="tm-section-sub">4 công dụng chính khi dùng đều đặn mỗi sáng.</p>
+      <p class="tm-section-sub">Da xỉn màu, không đều màu, khô căng sau tone-up, buổi sáng vội không kịp trang điểm — TUMILL giải quyết cả 4 vấn đề chỉ trong 1 bước buổi sáng.</p>
+      <div class="tm-img-wrap tm-ba-wrap">
+        <img src="./assets/images/tumill-before-after.png" alt="So sánh da trước và sau khi thoa TUMILL Exosome Tone Up">
+        <span class="tm-ba-chip before">Chưa thoa</span>
+        <span class="tm-ba-chip after">Đã thoa TUMILL</span>
+      </div>
       <div class="tm-benefit-list">
         <div class="tm-benefit-row">
           <div class="tm-benefit-title">Nâng tông trắng hồng tự nhiên</div>
@@ -750,13 +736,6 @@ a { color: inherit; text-decoration: none; }
           <div class="tm-benefit-desc">Kết cấu mỏng nhẹ giúp lớp nền lên mượt, không vón, không bết dính.</div>
         </div>
       </div>
-    </div>
-
-    <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">03 — Cảm nhận khi thoa</div>
-      <h2 class="tm-section-title">Kết Cấu Mềm Mịn, Dễ Tán</h2>
-      <p class="tm-section-sub">Tông trắng hồng nhẹ, không đục, không bết dính — hợp cả trước khi trang điểm.</p>
-      <div class="tm-img-wrap"><img src="./assets/images/tumill-texture-swatch.png" alt="Kết cấu kem TUMILL Exosome Tone Up trên da — mềm mịn, dễ tán"></div>
       <div class="tm-spec-inline">
         <span class="tm-spec-inline-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6.5 6.5 6.5 10.5a6.5 6.5 0 1 1-13 0C5.5 9.5 12 3 12 3z"/></svg>Không bết dính</span>
         <span class="tm-spec-inline-dot">◆</span>
@@ -768,22 +747,9 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">04 — Bằng chứng thực tế</div>
-      <h2 class="tm-section-title">TUMILL Xuất Hiện Ở Đâu?</h2>
-      <p class="tm-section-sub">Ảnh thực tế TUMILL Exosome Tone Up tại các điểm bán và cơ sở làm đẹp ở Hàn Quốc.</p>
-      <div class="tm-retail-scroll">
-        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-oliveyoung.png" alt="TUMILL tại Olive Young, Hàn Quốc"><div class="tm-retail-card-cap">Olive Young</div></div>
-        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-aritaum.png" alt="TUMILL tại Aritaum Live, Hàn Quốc"><div class="tm-retail-card-cap">Aritaum Live</div></div>
-        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-chicor.png" alt="TUMILL tại CHICOR, Hàn Quốc"><div class="tm-retail-card-cap">CHICOR</div></div>
-        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-pharmacy.png" alt="TUMILL tại nhà thuốc Ready Young Pharmacy, Hàn Quốc"><div class="tm-retail-card-cap">Ready Young Pharmacy</div></div>
-        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-spa.png" alt="TUMILL tại spa chăm sóc da, Myeongdong Seoul"><div class="tm-retail-card-cap">Spa Myeongdong, Seoul</div></div>
-      </div>
-    </div>
-
-    <!-- Ưu điểm — bảng so sánh 2 cột, dạng thuyết phục trực tiếp, không lặp lại kiểu list/lưới ở trên -->
+    <!-- Ưu điểm — bảng so sánh 2 cột + bằng chứng điểm bán, không lặp lại kiểu list/lưới ở trên -->
     <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">05 — Ưu điểm</div>
+      <div class="tm-section-eyebrow">02 — Vì Sao Có Thể Tin TUMILL</div>
       <h2 class="tm-section-title">Vì Sao Chọn TUMILL?</h2>
       <p class="tm-section-sub">So với kem tone-up thông thường trên thị trường. Thành phần tập trung vào hai mục tiêu: hỗ trợ da sáng đều màu và giữ da mềm, hạn chế khô căng.</p>
       <div class="tm-compare">
@@ -808,6 +774,16 @@ a { color: inherit; text-decoration: none; }
           <div class="tm-compare-cell gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Mua 3 tặng 2 mút + 2 mặt nạ, freeship</div>
         </div>
       </div>
+      <div class="tm-retail-teaser">
+        <span>📍 Có mặt tại <b>Olive Young, Aritaum, CHICOR</b> và các nhà thuốc lớn tại Hàn Quốc — ảnh thực tế:</span>
+      </div>
+      <div class="tm-retail-scroll">
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-oliveyoung.png" alt="TUMILL tại Olive Young, Hàn Quốc"><div class="tm-retail-card-cap">Olive Young</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-aritaum.png" alt="TUMILL tại Aritaum Live, Hàn Quốc"><div class="tm-retail-card-cap">Aritaum Live</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-chicor.png" alt="TUMILL tại CHICOR, Hàn Quốc"><div class="tm-retail-card-cap">CHICOR</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-pharmacy.png" alt="TUMILL tại nhà thuốc Ready Young Pharmacy, Hàn Quốc"><div class="tm-retail-card-cap">Ready Young Pharmacy</div></div>
+        <div class="tm-img-wrap tm-retail-card" style="margin-bottom:0;"><img src="./assets/images/tumill-retail-spa.png" alt="TUMILL tại spa chăm sóc da, Myeongdong Seoul"><div class="tm-retail-card-cap">Spa Myeongdong, Seoul</div></div>
+      </div>
     </div>
 
   </section>
@@ -818,37 +794,7 @@ a { color: inherit; text-decoration: none; }
   <section id="mota">
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">06 — Hiệu quả</div>
-      <h2 class="tm-section-title">Trước &amp; Sau Khi Thoa</h2>
-      <p class="tm-section-sub">Hiệu ứng nâng tông tức thì — da trông đều màu và sáng hơn ngay sau khi thoa.</p>
-      <div class="tm-img-wrap tm-ba-wrap">
-        <img src="./assets/images/tumill-before-after.png" alt="So sánh da trước và sau khi thoa TUMILL Exosome Tone Up">
-        <span class="tm-ba-chip before">Chưa thoa</span>
-        <span class="tm-ba-chip after">Đã thoa TUMILL</span>
-      </div>
-    </div>
-
-    <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">07 — Ưu đãi hôm nay</div>
-      <h2 class="tm-section-title">Chọn Gói Ưu Đãi</h2>
-      <p class="tm-section-sub">Mua càng nhiều — quà tặng càng nhiều. Miễn phí vận chuyển toàn quốc mọi đơn hàng.</p>
-      <!-- Chương trình quà tặng mới: Mua 1 tuýp tặng 1 bông mút -->
-      <div class="tm-img-wrap"><img src="./assets/images/tumill-promo-buy1-sponge.jpg" alt="Mua 1 tuýp TUMILL Exosome Tone Up tặng kèm 1 bông mút, miễn phí vận chuyển"></div>
-      <!-- Bộ chọn gói dạng segmented toggle — không dùng 3 thẻ xếp chồng như các trang trước -->
-      <div class="tm-cfg-toggle" role="tablist" aria-label="Chọn gói mua">
-        <button class="tm-cfg-opt active" type="button" data-qty="1">1 tuýp</button>
-        <button class="tm-cfg-opt" type="button" data-qty="2">2 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
-        <button class="tm-cfg-opt" type="button" data-qty="3">3 tuýp</button>
-      </div>
-      <div class="tm-cfg-display">
-        <div class="tm-cfg-price" id="tm-cfg-price">480.000đ</div>
-        <div class="tm-cfg-gifts" id="tm-cfg-gifts"></div>
-        <button class="tm-cfg-buy" type="button" id="tm-cfg-buy-btn" onclick="onBuyClick(1)">ĐẶT GÓI NÀY · 480.000đ</button>
-      </div>
-    </div>
-
-    <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">08 — Cách dùng</div>
+      <div class="tm-section-eyebrow">03 — Cách Dùng &amp; Thông Số</div>
       <h2 class="tm-section-title">Routine Sáng — Chỉ 1 Bước Thêm Vào</h2>
       <p class="tm-section-sub">Dùng sau bước dưỡng ẩm, trước kem chống nắng.</p>
       <div class="tm-img-wrap"><img src="./assets/images/tumill-apply-closeup.png" alt="Thoa TUMILL Exosome Tone Up vào buổi sáng"></div>
@@ -859,31 +805,20 @@ a { color: inherit; text-decoration: none; }
         <div class="tm-step"><span class="tm-step-num">4</span><div><div class="tm-step-name">Kem chống nắng</div><div class="tm-step-desc">Sản phẩm không thay thế kem chống nắng</div></div></div>
       </div>
       <div class="tm-note-box"><b>☀️ Lưu ý:</b> TUMILL không chứa SPF — luôn thoa kem chống nắng sau bước tone-up trước khi ra ngoài.</div>
-    </div>
-
-    <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">09 — Thông tin sản phẩm</div>
-      <h2 class="tm-section-title">Thông Số</h2>
-      <div class="tm-spec-table">
-        <div class="tm-spec-row"><div class="tm-spec-label">Thương hiệu</div><div class="tm-spec-value">TUMILL (Hàn Quốc)</div></div>
-        <div class="tm-spec-row"><div class="tm-spec-label">Dòng sản phẩm</div><div class="tm-spec-value">Exosome Tone Up Whitening Cream</div></div>
-        <div class="tm-spec-row"><div class="tm-spec-label">Dung tích</div><div class="tm-spec-value">50ml / 1.69 fl.oz.</div></div>
-        <div class="tm-spec-row"><div class="tm-spec-label">Thành phần chính</div><div class="tm-spec-value">Glutathione, Niacinamide, Panthenol (B5), Vitamin Tree Fruit Extract</div></div>
-        <div class="tm-spec-row"><div class="tm-spec-label">Loại da phù hợp</div><div class="tm-spec-value">Da thường, da khô, da hỗn hợp thiên khô</div></div>
-        <div class="tm-spec-row"><div class="tm-spec-label">Thời điểm dùng</div><div class="tm-spec-value">Buổi sáng, sau dưỡng ẩm — trước chống nắng</div></div>
-        <div class="tm-spec-row"><div class="tm-spec-label">Xuất xứ</div><div class="tm-spec-value">Hàng nhập khẩu Hàn Quốc</div></div>
-      </div>
-    </div>
-
-    <div class="tm-section tm-reveal">
-      <div class="tm-cta-block">
-        <div class="tm-cta-headline">1 bước buổi sáng — <b>thắp sáng hồng da chuẩn Hàn</b></div>
-        <div class="tm-cta-sub">Từ 480.000đ/tuýp · Mua 3 tặng 2 mút + 2 mặt nạ · Freeship</div>
-        <button class="tm-cta-btn" type="button" onclick="onBuyClick()">
-          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21 4.96 19.27 4H5.21l-.94-2H1z"/></svg>
-          ĐẶT HÀNG · TỪ 480.000đ
-        </button>
-      </div>
+      <details class="tm-faq-item" style="margin-top:14px;">
+        <summary class="tm-faq-q">Xem thông số sản phẩm</summary>
+        <div class="tm-faq-a">
+          <div class="tm-spec-table">
+            <div class="tm-spec-row"><div class="tm-spec-label">Thương hiệu</div><div class="tm-spec-value">TUMILL (Hàn Quốc)</div></div>
+            <div class="tm-spec-row"><div class="tm-spec-label">Dòng sản phẩm</div><div class="tm-spec-value">Exosome Tone Up Whitening Cream</div></div>
+            <div class="tm-spec-row"><div class="tm-spec-label">Dung tích</div><div class="tm-spec-value">50ml / 1.69 fl.oz.</div></div>
+            <div class="tm-spec-row"><div class="tm-spec-label">Thành phần chính</div><div class="tm-spec-value">Glutathione, Niacinamide, Panthenol (B5), Vitamin Tree Fruit Extract</div></div>
+            <div class="tm-spec-row"><div class="tm-spec-label">Loại da phù hợp</div><div class="tm-spec-value">Da thường, da khô, da hỗn hợp thiên khô</div></div>
+            <div class="tm-spec-row"><div class="tm-spec-label">Thời điểm dùng</div><div class="tm-spec-value">Buổi sáng, sau dưỡng ẩm — trước chống nắng</div></div>
+            <div class="tm-spec-row"><div class="tm-spec-label">Xuất xứ</div><div class="tm-spec-value">Hàng nhập khẩu Hàn Quốc</div></div>
+          </div>
+        </div>
+      </details>
     </div>
 
   </section>
@@ -894,7 +829,7 @@ a { color: inherit; text-decoration: none; }
   <section id="dexuat">
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">10 — Khách hàng nói gì</div>
+      <div class="tm-section-eyebrow">04 — Khách Hàng Nói Gì &amp; Giải Đáp</div>
       <h2 class="tm-section-title">Đánh Giá Từ Khách Hàng</h2>
       <div class="tm-rev-summary">
         <span class="tm-rev-big">5.0</span>
@@ -917,28 +852,28 @@ a { color: inherit; text-decoration: none; }
           <div class="tm-rev-content">Buổi sáng đi làm không có thời gian trang điểm nên mình rất cần loại kem tone-up nhẹ mà không bết. TUMILL đúng ý — thoa xong da đều màu hẳn, không thấy cảm giác bí da như vài loại mình dùng trước đây.</div>
           <div class="tm-rev-meta">10-05-2026 · Khách hàng đã xác minh</div>
         </div>
-        <div class="tm-rev-card" data-stars="5" data-photo="false">
-          <div class="tm-rev-head"><div class="tm-rev-avatar">T</div><div><div class="tm-rev-name">Thu Thảo</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da khô · 36t</span></div>
-          <div class="tm-rev-content">Da mình khô nên sợ dùng kem tone-up sẽ bị khô căng, nhưng TUMILL có Panthenol nên không bị vậy. Mua gói 2 tuýp được tặng bông mút dùng đánh kem cũng tiện. Sẽ ủng hộ tiếp.</div>
-          <div class="tm-rev-meta">05-05-2026 · Khách hàng đã xác minh</div>
-        </div>
-        <div class="tm-rev-card" data-stars="5" data-photo="false">
-          <div class="tm-rev-head"><div class="tm-rev-avatar">M</div><div><div class="tm-rev-name">Minh Trang</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da thường · 40t</span></div>
-          <div class="tm-rev-content">Đặt combo 3 tuýp vì thấy tặng nhiều quà nhất. Kem mỏng nhẹ, mùi dễ chịu, tông trắng hồng tự nhiên chứ không bị trắng bệch như lo lắng ban đầu. THUY THANH NGUYEN ship nhanh, đóng gói kỹ.</div>
-          <div class="tm-rev-meta">28-04-2026 · Đã mua 2 lần</div>
-        </div>
-        <div class="tm-rev-card" data-stars="5" data-photo="false">
-          <div class="tm-rev-head"><div class="tm-rev-avatar">B</div><div><div class="tm-rev-name">Bích Ngọc</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 31t</span></div>
-          <div class="tm-rev-content">Lần đầu biết đến brand TUMILL nên hơi ngại, nhưng THUY THANH NGUYEN tư vấn kỹ nên yên tâm đặt thử. Texture kem mình khá thích, tán đều tay là lên tone ngay, không cần dặm nhiều lớp nền.</div>
-          <div class="tm-rev-meta">20-04-2026 · Khách hàng đã xác minh</div>
+        <div class="tm-rev-hidden" id="tm-rev-more">
+          <div class="tm-rev-card" data-stars="5" data-photo="false">
+            <div class="tm-rev-head"><div class="tm-rev-avatar">T</div><div><div class="tm-rev-name">Thu Thảo</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da khô · 36t</span></div>
+            <div class="tm-rev-content">Da mình khô nên sợ dùng kem tone-up sẽ bị khô căng, nhưng TUMILL có Panthenol nên không bị vậy. Mua gói 2 tuýp được tặng bông mút dùng đánh kem cũng tiện. Sẽ ủng hộ tiếp.</div>
+            <div class="tm-rev-meta">05-05-2026 · Khách hàng đã xác minh</div>
+          </div>
+          <div class="tm-rev-card" data-stars="5" data-photo="false">
+            <div class="tm-rev-head"><div class="tm-rev-avatar">M</div><div><div class="tm-rev-name">Minh Trang</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da thường · 40t</span></div>
+            <div class="tm-rev-content">Đặt combo 3 tuýp vì thấy tặng nhiều quà nhất. Kem mỏng nhẹ, mùi dễ chịu, tông trắng hồng tự nhiên chứ không bị trắng bệch như lo lắng ban đầu. THUY THANH NGUYEN ship nhanh, đóng gói kỹ.</div>
+            <div class="tm-rev-meta">28-04-2026 · Đã mua 2 lần</div>
+          </div>
+          <div class="tm-rev-card" data-stars="5" data-photo="false">
+            <div class="tm-rev-head"><div class="tm-rev-avatar">B</div><div><div class="tm-rev-name">Bích Ngọc</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 31t</span></div>
+            <div class="tm-rev-content">Lần đầu biết đến brand TUMILL nên hơi ngại, nhưng THUY THANH NGUYEN tư vấn kỹ nên yên tâm đặt thử. Texture kem mình khá thích, tán đều tay là lên tone ngay, không cần dặm nhiều lớp nền.</div>
+            <div class="tm-rev-meta">20-04-2026 · Khách hàng đã xác minh</div>
+          </div>
         </div>
       </div>
+      <button class="tm-rev-showmore" type="button" id="tm-rev-showmore-btn">Xem thêm đánh giá</button>
       <div class="tm-rev-empty" id="tm-rev-empty" style="display:none;">Chưa có đánh giá kèm ảnh — quay lại sau nhé!</div>
-    </div>
 
-    <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">11 — Giải đáp</div>
-      <h2 class="tm-section-title">Câu Hỏi Thường Gặp</h2>
+      <div class="tm-benefit-title" style="margin-top:24px;">Câu Hỏi Thường Gặp</div>
       <details class="tm-faq-item">
         <summary class="tm-faq-q">TUMILL Exosome Tone Up dùng như thế nào?</summary>
         <div class="tm-faq-a">Dùng buổi sáng, sau bước dưỡng ẩm và trước kem chống nắng. Lấy lượng kem bằng hạt đậu, tán đều 2 bên má trước rồi lan ra toàn mặt và cổ. Có thể dùng thay lớp lót trang điểm cho ngày không makeup đậm.</div>
@@ -1999,6 +1934,17 @@ window.TM_PACKAGES = {
       });
       emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
     });
+  });
+})();
+
+/* "Xem thêm đánh giá" — rút gọn còn 2 review đầu, mở rộng khi khách bấm xem thêm */
+(function(){
+  var moreEl = document.getElementById('tm-rev-more');
+  var btn = document.getElementById('tm-rev-showmore-btn');
+  if (!moreEl || !btn) return;
+  btn.addEventListener('click', function(){
+    var expanded = moreEl.classList.toggle('show');
+    btn.textContent = expanded ? 'Ẩn bớt đánh giá' : 'Xem thêm đánh giá';
   });
 })();
 </script>
