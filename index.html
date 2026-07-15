@@ -377,14 +377,14 @@ a { color: inherit; text-decoration: none; }
 .tm-retail-teaser { font-size: 12.5px; color: var(--tm-text-muted); margin: 14px 0 10px; line-height: 1.5; }
 .tm-retail-teaser b { color: var(--tm-gold-dark); }
 
-/* Retail proof gallery */
+/* Retail proof gallery — không dùng scroll-snap để JS auto-scroll trôi liên tục không bị giật */
 .tm-retail-scroll {
-  display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+  display: flex; gap: 10px; overflow-x: auto;
   padding-bottom: 4px; scrollbar-width: none;
 }
 .tm-retail-scroll::-webkit-scrollbar { display: none; }
 .tm-retail-card {
-  position: relative; flex: 0 0 62%; scroll-snap-align: start;
+  position: relative; flex: 0 0 62%;
   aspect-ratio: 3/4; border-radius: var(--tm-r-lg); overflow: hidden;
   box-shadow: var(--tm-shadow-md); cursor: zoom-in;
 }
@@ -448,14 +448,15 @@ a { color: inherit; text-decoration: none; }
 .tm-rev-stars { color: var(--tm-gold); font-size: 14px; letter-spacing: 1px; }
 .tm-rev-count { font-size: 12px; color: var(--tm-text-muted); }
 
-/* Feedback conveyor — băng truyền ảnh chụp màn hình nhắn tin khách hàng */
+/* Feedback conveyor — băng truyền ảnh chụp màn hình nhắn tin khách hàng; không dùng
+   scroll-snap để JS auto-scroll trôi liên tục không bị giật */
 .tm-fb-scroll {
-  display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+  display: flex; gap: 10px; overflow-x: auto;
   padding-bottom: 4px; scrollbar-width: none;
 }
 .tm-fb-scroll::-webkit-scrollbar { display: none; }
 .tm-fb-card {
-  flex: 0 0 auto; height: 400px; scroll-snap-align: start;
+  flex: 0 0 auto; height: 400px;
   border-radius: var(--tm-r-lg); overflow: hidden; box-shadow: var(--tm-shadow-md);
   border: 1px solid var(--tm-border-soft);
 }
@@ -1029,6 +1030,45 @@ function reinitPixelMatching() {
   function init() {
     var galleries = document.querySelectorAll('.tts-hero');
     Array.prototype.forEach.call(galleries, function (g) { bind(g); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})(window);
+
+/* ============================================================
+ * Băng truyền tự động (retail proof + feedback) — trôi chậm liên tục,
+ * tạm dừng khi khách chạm/kéo/lăn chuột, tự chạy lại sau vài giây.
+ * ============================================================ */
+(function (global) {
+  'use strict';
+  if (global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function autoScroll(el, speedPerTick) {
+    var dir = 1;
+    var paused = false;
+    var resumeTimer = null;
+    function pauseThenResume() {
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function () { paused = false; }, 2500);
+    }
+    el.addEventListener('pointerdown', pauseThenResume, { passive: true });
+    el.addEventListener('touchstart', pauseThenResume, { passive: true });
+    el.addEventListener('wheel', pauseThenResume, { passive: true });
+    setInterval(function () {
+      if (paused) return;
+      var max = el.scrollWidth - el.clientWidth;
+      if (max <= 0) return;
+      el.scrollLeft += dir * speedPerTick;
+      if (el.scrollLeft >= max) { el.scrollLeft = max; dir = -1; }
+      else if (el.scrollLeft <= 0) { el.scrollLeft = 0; dir = 1; }
+    }, 30);
+  }
+  function init() {
+    var retail = document.querySelector('.tm-retail-scroll');
+    var feedback = document.querySelector('.tm-fb-scroll');
+    if (retail) autoScroll(retail, 0.6);
+    if (feedback) autoScroll(feedback, 0.6);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
