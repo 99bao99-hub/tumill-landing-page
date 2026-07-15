@@ -850,6 +850,8 @@ a { color: inherit; text-decoration: none; }
       <div class="tm-section-eyebrow">Ưu đãi hôm nay</div>
       <h2 class="tm-section-title">Chọn Gói Ưu Đãi</h2>
       <p class="tm-section-sub">Mua càng nhiều — quà tặng càng nhiều. Miễn phí vận chuyển toàn quốc mọi đơn hàng.</p>
+      <!-- Chương trình quà tặng mới: Mua 1 tuýp tặng 1 bông mút -->
+      <div class="tm-img-wrap"><img src="./assets/images/tumill-promo-buy1-sponge.jpg" alt="Mua 1 tuýp TUMILL Exosome Tone Up tặng kèm 1 bông mút, miễn phí vận chuyển"></div>
       <!-- Bộ chọn gói dạng segmented toggle — không dùng 3 thẻ xếp chồng như các trang trước -->
       <div class="tm-cfg-toggle" role="tablist" aria-label="Chọn gói mua">
         <button class="tm-cfg-opt" type="button" data-qty="1">1 tuýp</button>
@@ -969,7 +971,7 @@ a { color: inherit; text-decoration: none; }
       </details>
       <details class="tm-faq-item">
         <summary class="tm-faq-q">Mua 1, 2 hay 3 tuýp thì lợi hơn?</summary>
-        <div class="tm-faq-a">1 tuýp 480.000đ dùng thử. Mua 2 tuýp 940.000đ được tặng thêm 1 bông mút. Mua 3 tuýp 1.400.000đ (gói bán chạy nhất) được tặng 2 bông mút + 2 mặt nạ — hợp để dùng lâu dài hoặc tặng người thân. Tất cả đều được freeship toàn quốc.</div>
+        <div class="tm-faq-a">1 tuýp 480.000đ dùng thử, đã được tặng kèm 1 bông mút. Mua 2 tuýp 940.000đ được tặng thêm 1 bông mút. Mua 3 tuýp 1.400.000đ (gói bán chạy nhất) được tặng 2 bông mút + 2 mặt nạ — hợp để dùng lâu dài hoặc tặng người thân. Tất cả đều được freeship toàn quốc.</div>
       </details>
       <details class="tm-faq-item">
         <summary class="tm-faq-q">Hàng có chính hãng không?</summary>
@@ -1681,7 +1683,7 @@ function onBuyClick(preselectQty) {
   var packValues = [
     { label: '3 tuýp · 1.400.000đ · Tặng 2 mút + 2 mặt nạ<span class="tts-popup-option-badge">🔥 Bán chạy</span>', price: 1400000, qty: 3 },
     { label: '2 tuýp · 940.000đ · Tặng 1 bông mút', price: 940000, qty: 2 },
-    { label: '1 tuýp · 480.000đ', price: 480000, qty: 1 }
+    { label: '1 tuýp · 480.000đ · Tặng 1 bông mút', price: 480000, qty: 1 }
   ];
   if (preselectQty) {
     var idx = packValues.findIndex(function (v) { return v.qty === preselectQty; });
@@ -1773,7 +1775,7 @@ function onBuyClick(preselectQty) {
   var opts = document.querySelectorAll('.tm-cfg-opt');
   if (!opts.length) return;
   var data = {
-    1: { price: '480.000đ', gifts: ['Miễn phí vận chuyển'] },
+    1: { price: '480.000đ', gifts: ['Tặng 1 bông mút', 'Miễn phí vận chuyển'] },
     2: { price: '940.000đ', gifts: ['Tặng 1 bông mút', 'Miễn phí vận chuyển'] },
     3: { price: '1.400.000đ', gifts: ['Tặng 2 bông mút', 'Tặng 2 mặt nạ', 'Miễn phí vận chuyển'] }
   };
