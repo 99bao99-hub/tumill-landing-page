@@ -855,13 +855,13 @@ a { color: inherit; text-decoration: none; }
       <!-- Bộ chọn gói dạng segmented toggle — không dùng 3 thẻ xếp chồng như các trang trước -->
       <div class="tm-cfg-toggle" role="tablist" aria-label="Chọn gói mua">
         <button class="tm-cfg-opt" type="button" data-qty="1">1 tuýp</button>
-        <button class="tm-cfg-opt" type="button" data-qty="2">2 tuýp</button>
-        <button class="tm-cfg-opt active" type="button" data-qty="3">3 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
+        <button class="tm-cfg-opt active" type="button" data-qty="2">2 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
+        <button class="tm-cfg-opt" type="button" data-qty="3">3 tuýp</button>
       </div>
       <div class="tm-cfg-display">
-        <div class="tm-cfg-price" id="tm-cfg-price">1.400.000đ</div>
+        <div class="tm-cfg-price" id="tm-cfg-price">940.000đ</div>
         <div class="tm-cfg-gifts" id="tm-cfg-gifts"></div>
-        <button class="tm-cfg-buy" type="button" id="tm-cfg-buy-btn" onclick="onBuyClick(3)">Chọn mua — 1.400.000đ</button>
+        <button class="tm-cfg-buy" type="button" id="tm-cfg-buy-btn" onclick="onBuyClick(2)">Chọn mua — 940.000đ</button>
       </div>
     </div>
 
@@ -1679,10 +1679,10 @@ function onBuyClick(preselectQty) {
     }
   } catch(e) {}
   /* Sắp xếp lại để gói vừa bấm (preselectQty) được auto-chọn khi mở popup —
-     nếu gọi không kèm tham số (nút "Mua ngay" chung) thì mặc định gói 3 tuýp bán chạy. */
+     nếu gọi không kèm tham số (nút "Mua ngay" chung) thì mặc định gói 2 tuýp bán chạy. */
   var packValues = [
-    { label: '3 tuýp · 1.400.000đ · Tặng 2 mút + 2 mặt nạ<span class="tts-popup-option-badge">🔥 Bán chạy</span>', price: 1400000, qty: 3 },
-    { label: '2 tuýp · 940.000đ · Tặng 1 bông mút', price: 940000, qty: 2 },
+    { label: '2 tuýp · 940.000đ · Tặng 1 bông mút<span class="tts-popup-option-badge">🔥 Bán chạy</span>', price: 940000, qty: 2 },
+    { label: '3 tuýp · 1.400.000đ · Tặng 2 mút + 2 mặt nạ', price: 1400000, qty: 3 },
     { label: '1 tuýp · 480.000đ · Tặng 1 bông mút', price: 480000, qty: 1 }
   ];
   if (preselectQty) {
@@ -1795,7 +1795,7 @@ function onBuyClick(preselectQty) {
   opts.forEach(function(o){
     o.addEventListener('click', function(){ render(o.dataset.qty); });
   });
-  render(3);
+  render(2);
 })();
 
 /* Review filter chips (Tất cả / 5 sao / Có ảnh) */
