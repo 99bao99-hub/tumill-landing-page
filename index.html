@@ -219,23 +219,6 @@ a { color: inherit; text-decoration: none; }
 .tm-purchase-cta-sub { font-size: 12.5px; font-weight: 600; opacity: 0.95; }
 .tm-purchase-cta:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--tm-focus); }
 
-/* Stats bar — lưới 2×2 (thay 4 cột ngang) để chữ to hơn, dễ đọc hơn cho khách lớn tuổi */
-.tm-stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--tm-charcoal); }
-.tm-stat {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 3px; min-height: 56px; padding: 12px 4px; text-align: center;
-  border-right: 1px solid rgba(243,236,221,0.12); border-bottom: 1px solid rgba(243,236,221,0.12);
-}
-.tm-stat:nth-child(2n) { border-right: none; }
-.tm-stat:nth-child(3), .tm-stat:nth-child(4) { border-bottom: none; }
-.tm-stat b {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 18px; font-weight: 700; color: var(--tm-gold-light); line-height: 1; letter-spacing: 0.2px;
-}
-.tm-stat span {
-  font-size: 13.5px; font-weight: 600; color: var(--tm-text-onDark); opacity: 0.8;
-}
-
 /* Section đặt hàng inline — nằm ngay đầu trang, dùng chung logic với popup (xem TMOrder ở JS) */
 .tm-order-inline { padding: 20px 16px 22px; background: var(--tm-ivory); border-top: 1px solid var(--tm-border-soft); border-bottom: 1px solid var(--tm-border-soft); scroll-margin-top: 12px; }
 .tm-order-inline-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--tm-charcoal); margin-bottom: 4px; text-align: center; }
@@ -673,13 +656,6 @@ a { color: inherit; text-decoration: none; }
         <span class="tm-purchase-cta-main">ĐẶT HÀNG · 480.000đ</span>
         <span class="tm-purchase-cta-sub">Nhận hàng rồi thanh toán</span>
       </button>
-    </div>
-
-    <div class="tm-stats-bar">
-      <div class="tm-stat"><b>5.0★</b><span>Khách hàng đánh giá</span></div>
-      <div class="tm-stat"><b>100%</b><span>Hàng chính hãng</span></div>
-      <div class="tm-stat"><b>7 ngày</b><span>Hỗ trợ đổi trả</span></div>
-      <div class="tm-stat"><b>Freeship</b><span>Toàn quốc</span></div>
     </div>
 
     <div class="tm-trust-row">
