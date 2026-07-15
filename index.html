@@ -187,27 +187,23 @@ a { color: inherit; text-decoration: none; }
    giá/CTA/mô tả đã chuyển xuống purchase panel bên dưới để không lặp nội dung. */
 .tm-hero-full { position: relative; width: 100%; aspect-ratio: 6/7; overflow: hidden; background: var(--tm-charcoal); }
 .tm-hero-full img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
-.tm-hero-scrim {
-  position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(32,26,19,0.05) 0%, rgba(32,26,19,0) 32%, rgba(32,26,19,0.55) 100%);
-}
 .tm-hero-eyebrow {
   position: absolute; top: 16px; left: 16px;
   padding: 5px 12px; background: rgba(251,248,243,0.92); backdrop-filter: blur(4px);
   border-radius: var(--tm-r-pill); font-size: 10.5px; font-weight: 700; letter-spacing: 0.4px; color: var(--tm-charcoal);
 }
-.tm-hero-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px 22px; color: #fff; }
-.tm-hero-title { font-size: 25px; font-weight: 800; line-height: 1.18; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
 
-/* Purchase panel — thay cho titleblock cũ; đây là nơi DUY NHẤT hiện giá/CTA/mô tả (không lặp lại trên ảnh) */
+/* Purchase panel — thay cho titleblock cũ; đây là nơi DUY NHẤT hiện tên/giá/CTA/mô tả */
 .tm-purchase-panel {
   position: relative; margin-top: -14px; border-radius: 16px 16px 0 0;
   padding: 20px 16px 16px; background: var(--tm-cream);
 }
+.tm-purchase-title { font-size: 22px; font-weight: 700; color: var(--tm-charcoal); line-height: 1.3; margin-bottom: 10px; }
 .tm-purchase-benefit { font-size: 14.5px; font-weight: 600; color: var(--tm-text); margin-bottom: 6px; }
 .tm-purchase-spec { font-size: 12px; color: var(--tm-text-muted); line-height: 1.55; margin-bottom: 14px; }
 .tm-purchase-price { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--tm-charcoal); margin-bottom: 12px; }
 .tm-purchase-price span { font-size: 13px; font-weight: 500; color: var(--tm-text-muted); margin-left: 4px; }
+.tm-purchase-price-old { font-size: 15px; font-weight: 500; color: var(--tm-text-muted); text-decoration: line-through; margin-right: 8px; }
 .tm-purchase-cta {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
   width: 100%; height: 56px; border-radius: 14px;
@@ -495,33 +491,6 @@ a { color: inherit; text-decoration: none; }
 .tm-legal-sep { color: var(--tm-text-muted); font-size: 12px; }
 .tm-legal-copy { font-size: 10.5px; color: var(--tm-text-muted); line-height: 1.4; }
 
-/* Toast xã hội — thẻ nhỏ luân phiên báo "vừa đặt mua", không che progress-bar trên (z-index 50/51)
-   hay sticky CTA dưới (z-index 40); dùng lại đúng tên khách + gói hàng đã có trên trang, không bịa số liệu. */
-.tm-toast {
-  position: fixed; left: 50%; bottom: 76px; z-index: 35;
-  transform: translateX(-50%) translateY(10px);
-  width: calc(100% - 32px); max-width: 448px; box-sizing: border-box;
-  display: flex; align-items: center; gap: 10px;
-  background: var(--tm-cream); border: 1px solid var(--tm-border); border-radius: var(--tm-r-lg);
-  box-shadow: var(--tm-shadow-md); padding: 10px 12px;
-  opacity: 0; pointer-events: none; transition: opacity .35s ease, transform .35s ease;
-}
-.tm-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
-.tm-toast-avatar {
-  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--tm-gold-light); color: var(--tm-charcoal); font-weight: 700; font-size: 13px;
-}
-.tm-toast-body { flex: 1; min-width: 0; }
-.tm-toast-name { font-size: 12.5px; font-weight: 700; color: var(--tm-text); }
-.tm-toast-desc { font-size: 11.5px; color: var(--tm-text-muted); margin-top: 1px; }
-.tm-toast-close {
-  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; border: none;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--tm-text-muted); background: var(--tm-ivory);
-}
-.tm-toast-close svg { width: 12px; height: 12px; }
-
 /* Sticky CTA — chỉ còn đúng 2 lựa chọn: nút phụ Messenger (Hỏi shop) + nút chính Đặt hàng.
    Đã bỏ "Thêm giỏ" (không có giỏ hàng thật, mở cùng popup — nhãn sai chức năng) và
    "Cửa hàng" (đưa khách rời landing page sang Facebook). */
@@ -633,19 +602,16 @@ a { color: inherit; text-decoration: none; }
     <!-- Hero — chỉ giữ pill + tiêu đề trên ảnh. Giá/mô tả/CTA nằm ở purchase panel bên dưới, không lặp lại. -->
     <div class="tm-hero-full">
       <img src="./assets/images/tumill-before-after.png" alt="TUMILL Exosome Tone Up Whitening Cream — trước và sau khi thoa">
-      <div class="tm-hero-scrim"></div>
       <span class="tm-hero-eyebrow">TUMILL · K-Beauty 2026</span>
-      <div class="tm-hero-content">
-        <h1 class="tm-hero-title">Kem Ngày Thắp Sáng<br>Hồng Da Exosome TUMILL</h1>
-      </div>
     </div>
 
     <div class="tm-purchase-panel">
+      <h1 class="tm-purchase-title">Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL</h1>
       <div class="tm-purchase-benefit">Nâng tone nhẹ · Dưỡng sáng · Mềm mịn</div>
       <div class="tm-purchase-spec">50ml / 1.69 fl.oz — Glutathione, Niacinamide, Panthenol B5, Vitamin Tree Fruit Extract</div>
-      <div class="tm-purchase-price">480.000đ<span>/ tuýp</span></div>
+      <div class="tm-purchase-price"><span class="tm-purchase-price-old">750.000đ</span>480.000đ<span>/ tuýp</span></div>
       <button class="tm-purchase-cta" type="button" onclick="scrollToOrderForm()">
-        <span class="tm-purchase-cta-main">ĐẶT HÀNG · 480.000đ</span>
+        <span class="tm-purchase-cta-main">ĐẶT HÀNG</span>
         <span class="tm-purchase-cta-sub">Nhận hàng rồi thanh toán</span>
       </button>
     </div>
@@ -896,7 +862,7 @@ a { color: inherit; text-decoration: none; }
       <div class="tm-closing-sub">Thắp Sáng Hồng Da · Mua 3 Tặng 2 Mút + 2 Mặt Nạ · Freeship</div>
       <button class="tm-closing-btn" type="button" onclick="onBuyClick()">
         <svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>
-        Đặt Hàng · Từ 480.000đ
+        ĐẶT HÀNG
       </button>
     </div>
 
@@ -917,25 +883,13 @@ a { color: inherit; text-decoration: none; }
 
 </div>
 
-<!-- ========== SOCIAL-PROOF TOAST ========== -->
-<div class="tm-toast" id="tm-toast">
-  <div class="tm-toast-avatar" id="tm-toast-avatar">L</div>
-  <div class="tm-toast-body">
-    <div class="tm-toast-name" id="tm-toast-name">Lan Anh</div>
-    <div class="tm-toast-desc" id="tm-toast-desc">vừa đặt mua · Vừa xong</div>
-  </div>
-  <button class="tm-toast-close" type="button" onclick="tmDismissToast()" aria-label="Đóng thông báo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-  </button>
-</div>
-
 <!-- ========== STICKY CTA ========== -->
 <div class="tts-sticky-cta">
   <a class="tts-btn-chat" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener" aria-label="Nhắn tin hỏi shop qua Messenger">
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>Hỏi shop
   </a>
   <button class="tts-btn-buy" type="button" id="tm-sticky-buy" onclick="onBuyClick()">
-    <span class="tts-btn-buy-main" id="tm-sticky-buy-main">ĐẶT HÀNG · 480.000đ</span>
+    <span class="tts-btn-buy-main" id="tm-sticky-buy-main">ĐẶT HÀNG</span>
     <span class="tts-btn-buy-sub">Nhận hàng rồi thanh toán</span>
   </button>
 </div>
@@ -1708,58 +1662,6 @@ function onBuyClick(preselectQty) {
   setTimeout(revealAll, 4000);
 })();
 
-/* Toast "vừa đặt mua" — luân phiên nhẹ nhàng, dùng lại đúng tên + gói hàng
-   đã có sẵn trên trang (mục đánh giá khách hàng), không thêm số liệu bịa. */
-(function(){
-  var toast = document.getElementById('tm-toast');
-  if (!toast) return;
-  var nameEl = document.getElementById('tm-toast-name');
-  var descEl = document.getElementById('tm-toast-desc');
-  var avatarEl = document.getElementById('tm-toast-avatar');
-  var items = [
-    { name: 'Lan Anh',     qty: '1 tuýp' },
-    { name: 'Hà My',       qty: '2 tuýp' },
-    { name: 'Thu Thảo',    qty: '1 tuýp' },
-    { name: 'Minh Trang',  qty: '3 tuýp' },
-    { name: 'Bích Ngọc',   qty: '2 tuýp' },
-    { name: 'Ngọc Hân',    qty: '2 tuýp' },
-    { name: 'Thanh Tâm',   qty: '1 tuýp' },
-    { name: 'Phương Anh',  qty: '2 tuýp' },
-    { name: 'Diệu Linh',   qty: '1 tuýp' },
-    { name: 'Kim Ngân',    qty: '3 tuýp' },
-    { name: 'Hải Yến',     qty: '2 tuýp' },
-    { name: 'Quỳnh Chi',   qty: '1 tuýp' },
-    { name: 'Thùy Dương',  qty: '2 tuýp' },
-    { name: 'Bảo Trâm',    qty: '1 tuýp' },
-    { name: 'Mai Anh',     qty: '2 tuýp' },
-    { name: 'Ngọc Diệp',   qty: '3 tuýp' },
-    { name: 'Tuyết Nhi',   qty: '1 tuýp' },
-    { name: 'Cẩm Tú',      qty: '2 tuýp' },
-    { name: 'Hồng Nhung',  qty: '1 tuýp' },
-    { name: 'Vân Anh',     qty: '2 tuýp' }
-  ];
-  var i = 0, timer = null, dismissed = false;
-  function showNext(){
-    if (dismissed) return;
-    var it = items[i % items.length];
-    i++;
-    avatarEl.textContent = it.name.charAt(0);
-    nameEl.textContent = it.name;
-    descEl.textContent = 'vừa đặt mua ' + it.qty + ' · Vừa xong';
-    toast.classList.add('show');
-    setTimeout(function(){ toast.classList.remove('show'); }, 4800);
-  }
-  window.tmDismissToast = function(){
-    dismissed = true;
-    toast.classList.remove('show');
-    if (timer) clearInterval(timer);
-  };
-  setTimeout(function(){
-    showNext();
-    timer = setInterval(showNext, 9000);
-  }, 3500);
-})();
-
 /* Dữ liệu gói dùng CHUNG cho: section "Chọn Gói Ưu Đãi", section đặt hàng inline,
    thanh sticky CTA và popup (onBuyClick) — sửa 1 chỗ, mọi nơi đồng bộ theo. */
 window.TM_PACKAGES = {
@@ -1772,12 +1674,8 @@ window.TM_PACKAGES = {
    (section Ưu đãi hôm nay hoặc section đặt hàng inline đầu trang). */
 (function(){
   var checkSvg = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
-  var cfgPriceEl  = document.getElementById('tm-cfg-price');
-  var cfgGiftsEl  = document.getElementById('tm-cfg-gifts');
-  var cfgBuyBtn   = document.getElementById('tm-cfg-buy-btn');
   var orderGiftsEl  = document.getElementById('tm-order-gifts');
   var orderSubmitBtn = document.getElementById('tm-order-submit');
-  var stickyBuyMain = document.getElementById('tm-sticky-buy-main');
   var allToggleOpts = document.querySelectorAll('.tm-cfg-opt');
 
   function renderPackageUI(qty){
@@ -1787,12 +1685,10 @@ window.TM_PACKAGES = {
     if (!d) return;
     allToggleOpts.forEach(function(o){ o.classList.toggle('active', o.dataset.qty === String(qty)); });
     var giftsHtml = d.gifts.map(function(g){ return '<div class="tm-gift-item">' + checkSvg + g + '</div>'; }).join('');
-    if (cfgPriceEl) cfgPriceEl.textContent = d.price;
-    if (cfgGiftsEl) cfgGiftsEl.innerHTML = giftsHtml;
-    if (cfgBuyBtn) { cfgBuyBtn.textContent = 'ĐẶT GÓI NÀY · ' + d.price; cfgBuyBtn.setAttribute('onclick', 'onBuyClick(' + qty + ')'); }
     if (orderGiftsEl) orderGiftsEl.innerHTML = giftsHtml;
+    /* Nút "ĐẶT HÀNG" (sticky/purchase panel) giữ nguyên chữ tĩnh, không kèm giá theo yêu cầu —
+       chỉ nút xác nhận cuối cùng (XÁC NHẬN ĐẶT HÀNG) mới cần hiện đúng tổng tiền để khách xem trước khi gửi. */
     if (orderSubmitBtn) orderSubmitBtn.textContent = 'XÁC NHẬN ĐẶT HÀNG · ' + d.price;
-    if (stickyBuyMain) stickyBuyMain.textContent = 'ĐẶT HÀNG · ' + d.price;
   }
   allToggleOpts.forEach(function(o){
     o.addEventListener('click', function(){ renderPackageUI(o.dataset.qty); });
