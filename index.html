@@ -192,6 +192,10 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--tm-r-pill); font-size: 10.5px; font-weight: 700; letter-spacing: 0.4px; color: var(--tm-charcoal);
 }
 
+/* Hero — 1 ảnh poster tĩnh, đã có sẵn tên/giá/quà trong ảnh nên không phủ thêm eyebrow/CTA */
+.tm-hero-static { position: relative; width: 100%; aspect-ratio: 1122/1402; overflow: hidden; background: var(--tm-charcoal); }
+.tm-hero-static img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+
 /* Purchase panel — thay cho titleblock cũ; đây là nơi DUY NHẤT hiện tên/giá/CTA/mô tả */
 .tm-purchase-panel {
   position: relative; margin-top: -14px; border-radius: 16px 16px 0 0;
@@ -585,28 +589,9 @@ a { color: inherit; text-decoration: none; }
   <div class="tm-progress-track"><div class="tm-progress-bar" id="tm-progress-bar"></div></div>
 
   <section id="tongquan">
-    <!-- Hero gallery — 6 ảnh vuốt ngang, thay cho 1 ảnh tĩnh. Giá/mô tả/CTA nằm ở purchase panel bên dưới, không lặp lại. -->
-    <div class="tts-hero">
-      <div class="tts-hero-track">
-        <div class="tts-hero-slide"><img class="tts-hero-img" src="./assets/images/tumill-gallery-2.png" alt="Người mẫu thoa kem TUMILL lên má, kem tán mỏng mịn"></div>
-        <div class="tts-hero-slide"><img class="tts-hero-img" src="./assets/images/tumill-gallery-3.png" alt="Người mẫu cùng hộp và tuýp kem TUMILL Exosome Tone Up Whitening Cream"></div>
-        <div class="tts-hero-slide"><img class="tts-hero-img" src="./assets/images/tumill-gallery-5.png" alt="Người mẫu bên tuýp và hộp kem TUMILL trên bàn trang điểm"></div>
-        <div class="tts-hero-slide"><img class="tts-hero-img" src="./assets/images/tumill-gallery-1.png" alt="TUMILL Exosome Tone Up Whitening Cream — nâng tone nhẹ, dưỡng sáng, mềm mịn"></div>
-        <div class="tts-hero-slide"><img class="tts-hero-img" src="./assets/images/tumill-gallery-4.png" alt="Kết cấu kem TUMILL mềm mịn, tán đều trên da tay"></div>
-        <div class="tts-hero-slide"><img class="tts-hero-img" src="./assets/images/tumill-gallery-6.png" alt="Hộp và tuýp kem TUMILL Exosome Tone Up cùng nguyên liệu thiên nhiên"></div>
-      </div>
-      <button class="tts-hero-arrow prev" type="button" aria-label="Ảnh trước"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button class="tts-hero-arrow next" type="button" aria-label="Ảnh sau"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-      <span class="tm-hero-eyebrow">TUMILL · K-Beauty 2026</span>
-      <div class="tts-hero-counter">1/6</div>
-      <div class="tts-hero-dots">
-        <button class="tts-hero-dot active" type="button" aria-label="Xem ảnh 1"></button>
-        <button class="tts-hero-dot" type="button" aria-label="Xem ảnh 2"></button>
-        <button class="tts-hero-dot" type="button" aria-label="Xem ảnh 3"></button>
-        <button class="tts-hero-dot" type="button" aria-label="Xem ảnh 4"></button>
-        <button class="tts-hero-dot" type="button" aria-label="Xem ảnh 5"></button>
-        <button class="tts-hero-dot" type="button" aria-label="Xem ảnh 6"></button>
-      </div>
+    <!-- Hero — 1 ảnh poster tĩnh (đã có sẵn tên/giá/quà/freeship trong ảnh). -->
+    <div class="tm-hero-static">
+      <img src="./assets/images/tumill-hero-promo.jpg" alt="THUY THANH NGUYEN — Kem ngày thắp sáng hồng da Exosome TUMILL, giá gốc 750.000đ giảm còn 480.000đ, tặng kèm 1 bông mút, miễn phí ship">
     </div>
 
     <div class="tm-purchase-panel">
@@ -1570,7 +1555,7 @@ function onBuyClick(preselectQty) {
   var lbImg = document.getElementById('tm-lightbox-img');
   function openLb(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeLb(){ lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
-  document.querySelectorAll('.tm-img-wrap img, .tts-hero-img').forEach(function(img){
+  document.querySelectorAll('.tm-img-wrap img, .tts-hero-img, .tm-hero-static img').forEach(function(img){
     img.addEventListener('click', function(e){ e.stopPropagation(); openLb(this.src, this.alt); });
   });
   lb.addEventListener('click', closeLb);
