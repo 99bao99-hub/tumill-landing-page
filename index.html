@@ -18,7 +18,7 @@
   ============================================================
 -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL | Tone Up Whitening Cream | THUY THANH NGUYEN</title>
 <meta name="description" content="TUMILL Exosome Tone Up Whitening Cream — kem ngày nâng tông trắng hồng tự nhiên, dưỡng sáng với Glutathione, Niacinamide, Panthenol B5. Mua 3 tặng 2 bông mút + 2 mặt nạ, freeship toàn quốc.">
 
@@ -96,6 +96,10 @@ src="https://www.facebook.com/tr?id=1212419910852343&ev=PageView&noscript=1"/></
   --tm-charcoal:    #201A13;
   --tm-charcoal-2:  #2E251A;
   --tm-rose:        #A83246;
+  --tm-action:      #C2410C;
+  --tm-action-pressed: #9A3412;
+  --tm-action-soft: #FFF4ED;
+  --tm-focus:       rgba(194,65,12,0.28);
   --tm-text:        #2B2318;
   --tm-text-muted:  #7A7064;
   --tm-text-onDark: #F3ECDD;
@@ -113,7 +117,7 @@ src="https://www.facebook.com/tr?id=1212419910852343&ev=PageView&noscript=1"/></
   --tm-tabnav-height: 46px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px; line-height: 1.5;
@@ -121,7 +125,7 @@ body {
   background: #EFE9DD;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: 84px;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
 }
 h1, h2, h3, .tm-serif { font-family: 'Playfair Display', Georgia, serif; }
 img { max-width: 100%; display: block; }
@@ -149,35 +153,6 @@ a { color: inherit; text-decoration: none; }
 .tm-progress-track { position: sticky; top: 0; z-index: 51; height: 2px; background: var(--tm-border-soft); }
 .tm-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%); transition: width 0.1s linear; }
 
-/* Brand mark row */
-.tm-brandbar {
-  position: sticky; top: 2px; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 16px;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--tm-border-soft);
-}
-.tm-brandmark { display: flex; align-items: center; gap: 8px; }
-.tm-brandmark-dot {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--tm-charcoal);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--tm-gold-light); font-family: 'Playfair Display', serif;
-  font-weight: 700; font-size: 14px;
-  flex-shrink: 0;
-}
-.tm-brandmark-text { display: flex; flex-direction: column; line-height: 1.2; }
-.tm-brandmark-name { font-size: 12.5px; font-weight: 700; color: var(--tm-charcoal); }
-.tm-brandmark-sub { font-size: 10px; color: var(--tm-text-muted); letter-spacing: 0.3px; }
-.tm-follow-btn {
-  padding: 6px 14px;
-  border: 1px solid var(--tm-gold);
-  color: var(--tm-gold-dark);
-  font-size: 11.5px; font-weight: 700;
-  border-radius: var(--tm-r-pill);
-  transition: background 0.15s, color 0.15s;
-}
-.tm-follow-btn.following { background: var(--tm-charcoal); color: var(--tm-gold-light); border-color: var(--tm-charcoal); }
 
 /* Scroll reveal — chỉ áp dụng cho nội dung dưới màn hình đầu tiên */
 .tm-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -208,12 +183,13 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px; font-weight: 600; border-radius: var(--tm-r-pill); letter-spacing: 0.3px;
 }
 
-/* Hero — 1 ảnh full-bleed dạng editorial, không dùng carousel/đếm ảnh như các trang trước */
-.tm-hero-full { position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden; background: var(--tm-charcoal); }
+/* Hero — 1 ảnh full-bleed dạng editorial. Chỉ giữ pill + tiêu đề trên ảnh;
+   giá/CTA/mô tả đã chuyển xuống purchase panel bên dưới để không lặp nội dung. */
+.tm-hero-full { position: relative; width: 100%; aspect-ratio: 6/7; overflow: hidden; background: var(--tm-charcoal); }
 .tm-hero-full img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
 .tm-hero-scrim {
   position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(32,26,19,0) 38%, rgba(32,26,19,0.82) 100%);
+  background: linear-gradient(180deg, rgba(32,26,19,0.05) 0%, rgba(32,26,19,0) 32%, rgba(32,26,19,0.55) 100%);
 }
 .tm-hero-eyebrow {
   position: absolute; top: 16px; left: 16px;
@@ -221,63 +197,75 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--tm-r-pill); font-size: 10.5px; font-weight: 700; letter-spacing: 0.4px; color: var(--tm-charcoal);
 }
 .tm-hero-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px 22px; color: #fff; }
-.tm-hero-title { font-size: 27px; font-weight: 800; line-height: 1.18; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-.tm-hero-sub { font-size: 13px; color: rgba(255,255,255,0.82); margin-bottom: 14px; max-width: 280px; line-height: 1.5; }
-.tm-hero-pricetag {
-  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  padding: 8px 14px; background: rgba(32,26,19,0.5); backdrop-filter: blur(8px);
-  border: 1px solid rgba(228,207,160,0.35); border-radius: var(--tm-r-pill); margin-bottom: 14px;
-}
-.tm-hero-pricetag b { color: var(--tm-gold-light); font-size: 15px; font-weight: 800; }
-.tm-hero-pricetag span { font-size: 11px; color: rgba(255,255,255,0.8); }
-.tts-promo-countdown { display: inline-flex; align-items: center; }
-.tts-promo-countdown b {
-  display: inline-block; padding: 2px 7px;
-  background: rgba(0,0,0,0.4); border-radius: 4px;
-  font-size: 12.5px; font-weight: 800;
-  font-variant-numeric: tabular-nums; letter-spacing: 0.5px; color: var(--tm-gold-light);
-  min-width: 74px; text-align: center;
-}
-.tm-hero-cta-row { display: flex; gap: 10px; }
-.tm-hero-btn {
-  display: inline-flex; align-items: center; gap: 6px; padding: 12px 20px;
-  border-radius: var(--tm-r-pill); font-size: 13.5px; font-weight: 700;
-}
-.tm-hero-btn.primary { background: var(--tm-gold-light); color: var(--tm-charcoal); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
-.tm-hero-btn.ghost { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(6px); }
-.tm-hero-btn svg { width: 16px; height: 16px; }
+.tm-hero-title { font-size: 25px; font-weight: 800; line-height: 1.18; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
 
-/* Stats bar — dải số liệu ngay dưới hero, chỉ dùng dữ kiện đã có (rating/chính hãng/đổi trả/freeship) */
-.tm-stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--tm-charcoal); }
+/* Purchase panel — thay cho titleblock cũ; đây là nơi DUY NHẤT hiện giá/CTA/mô tả (không lặp lại trên ảnh) */
+.tm-purchase-panel {
+  position: relative; margin-top: -14px; border-radius: 16px 16px 0 0;
+  padding: 20px 16px 16px; background: var(--tm-cream);
+}
+.tm-purchase-benefit { font-size: 14.5px; font-weight: 600; color: var(--tm-text); margin-bottom: 6px; }
+.tm-purchase-spec { font-size: 12px; color: var(--tm-text-muted); line-height: 1.55; margin-bottom: 14px; }
+.tm-purchase-price { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--tm-charcoal); margin-bottom: 12px; }
+.tm-purchase-price span { font-size: 13px; font-weight: 500; color: var(--tm-text-muted); margin-left: 4px; }
+.tm-purchase-cta {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  width: 100%; height: 56px; border-radius: 14px;
+  background: var(--tm-action); color: #fff;
+  box-shadow: 0 4px 12px rgba(194,65,12,0.28);
+}
+.tm-purchase-cta:active { background: var(--tm-action-pressed); }
+.tm-purchase-cta-main { font-size: 17px; font-weight: 800; line-height: 1.15; }
+.tm-purchase-cta-sub { font-size: 12.5px; font-weight: 600; opacity: 0.95; }
+.tm-purchase-cta:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--tm-focus); }
+
+/* Stats bar — lưới 2×2 (thay 4 cột ngang) để chữ to hơn, dễ đọc hơn cho khách lớn tuổi */
+.tm-stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--tm-charcoal); }
 .tm-stat {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 3px; padding: 14px 4px; text-align: center;
-  border-right: 1px solid rgba(243,236,221,0.12);
+  gap: 3px; min-height: 56px; padding: 12px 4px; text-align: center;
+  border-right: 1px solid rgba(243,236,221,0.12); border-bottom: 1px solid rgba(243,236,221,0.12);
 }
-.tm-stat:last-child { border-right: none; }
+.tm-stat:nth-child(2n) { border-right: none; }
+.tm-stat:nth-child(3), .tm-stat:nth-child(4) { border-bottom: none; }
 .tm-stat b {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 17px; font-weight: 700; color: var(--tm-gold-light); line-height: 1; letter-spacing: 0.2px;
+  font-size: 18px; font-weight: 700; color: var(--tm-gold-light); line-height: 1; letter-spacing: 0.2px;
 }
 .tm-stat span {
-  font-size: 9.5px; font-weight: 600; color: var(--tm-text-onDark); opacity: 0.72;
-  text-transform: uppercase; letter-spacing: 0.6px;
+  font-size: 13.5px; font-weight: 600; color: var(--tm-text-onDark); opacity: 0.8;
 }
 
-/* Title block */
-.tm-titleblock { padding: 18px 16px 8px; background: var(--tm-cream); }
-.tm-tag-new {
-  display: inline-block; padding: 3px 10px; margin-bottom: 8px;
-  background: var(--tm-charcoal); color: var(--tm-gold-light);
-  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-  border-radius: var(--tm-r-sm);
+/* Section đặt hàng inline — nằm ngay đầu trang, dùng chung logic với popup (xem TMOrder ở JS) */
+.tm-order-inline { padding: 20px 16px 22px; background: var(--tm-ivory); border-top: 1px solid var(--tm-border-soft); border-bottom: 1px solid var(--tm-border-soft); scroll-margin-top: 12px; }
+.tm-order-inline-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--tm-charcoal); margin-bottom: 4px; text-align: center; }
+.tm-order-inline-sub { font-size: 12.5px; color: var(--tm-text-muted); text-align: center; margin-bottom: 16px; line-height: 1.5; }
+.tm-order-inline-gifts { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 16px; }
+.tm-order-inline-gifts .tm-gift-item { font-size: 12.5px; color: var(--tm-text); }
+.tm-order-field { margin-bottom: 14px; }
+.tm-order-label { display: block; font-size: 15px; font-weight: 700; color: var(--tm-text); margin-bottom: 6px; }
+.tm-order-label .req { color: var(--tm-action); }
+.tm-order-input {
+  width: 100%; padding: 12px 14px; font-size: 16px; font-family: inherit; color: var(--tm-text);
+  background: var(--tm-cream); border: 1.5px solid var(--tm-border); border-radius: var(--tm-r-md); outline: none;
 }
-.tm-title { font-size: 21px; font-weight: 700; color: var(--tm-charcoal); line-height: 1.3; margin-bottom: 6px; }
-.tm-subtitle { font-size: 13.5px; color: var(--tm-text-muted); margin-bottom: 12px; line-height: 1.5; }
-.tm-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12px; color: var(--tm-text-muted); padding-bottom: 14px; }
-.tm-meta-rating { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: var(--tm-text); }
-.tm-meta-rating svg { width: 14px; height: 14px; fill: var(--tm-gold); }
-.tm-meta-divider { color: var(--tm-border); }
+.tm-order-input:focus { border-color: var(--tm-action); box-shadow: 0 0 0 3px var(--tm-focus); }
+.tm-order-input.error { border-color: var(--tm-action); }
+.tm-order-textarea { min-height: 74px; resize: vertical; }
+.tm-order-hint { font-size: 12px; color: var(--tm-text-muted); margin-top: 5px; line-height: 1.4; }
+.tm-order-error { font-size: 12px; color: var(--tm-action); margin-top: 5px; }
+.tm-order-submit {
+  width: 100%; height: 56px; border-radius: 14px;
+  background: var(--tm-action); color: #fff; font-size: 16px; font-weight: 800;
+  box-shadow: 0 4px 12px rgba(194,65,12,0.28);
+}
+.tm-order-submit:active { background: var(--tm-action-pressed); }
+.tm-order-submit:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--tm-focus); }
+.tm-order-submit:disabled { opacity: 0.6; }
+.tm-order-support { font-size: 12.5px; color: var(--tm-text-muted); text-align: center; margin-top: 10px; }
+.tm-order-success { text-align: center; padding: 18px 6px 4px; }
+.tm-order-success-title { font-size: 17px; font-weight: 700; color: var(--tm-charcoal); margin-bottom: 6px; }
+.tm-order-success-msg { font-size: 13px; color: var(--tm-text-muted); line-height: 1.55; }
 
 /* Trust badges — thẻ 3 cột, icon có nền khối màu pastel riêng (thay cho dòng chữ liền 1 màu) */
 .tm-trust-row {
@@ -303,13 +291,6 @@ a { color: inherit; text-decoration: none; }
 .tm-trust-chip:nth-child(3) svg { color: #5C7A56; }
 .tm-trust-chip svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-/* Retail teaser line (in hero section) */
-.tm-retail-teaser {
-  display: flex; align-items: center; gap: 6px;
-  padding: 10px 16px; background: var(--tm-ivory);
-  font-size: 12px; color: var(--tm-text); border-bottom: 1px solid var(--tm-border-soft);
-}
-.tm-retail-teaser b { color: var(--tm-gold-dark); }
 
 /* Inline CTA row */
 .tm-inline-cta { display: flex; gap: 10px; padding: 14px 16px 18px; background: var(--tm-cream); }
@@ -528,15 +509,6 @@ a { color: inherit; text-decoration: none; }
 }
 .tm-closing-btn svg { width: 17px; height: 17px; fill: var(--tm-charcoal); }
 
-/* Brand footer */
-.tm-brand-footer { padding: 26px 16px; text-align: center; background: var(--tm-ivory); }
-.tm-brand-footer-name { font-size: 20px; font-weight: 800; color: var(--tm-charcoal); letter-spacing: 0.5px; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
-.tm-brand-footer-tag { font-size: 11px; font-weight: 700; color: var(--tm-gold-dark); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
-.tm-brand-footer-text { font-size: 12.5px; color: var(--tm-text-muted); line-height: 1.6; max-width: 380px; margin: 0 auto 14px; }
-.tm-brand-certs { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
-.tm-brand-cert { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; background: var(--tm-cream); border: 1px solid var(--tm-border); border-radius: var(--tm-r-pill); font-size: 11px; font-weight: 600; color: var(--tm-text-muted); }
-.tm-brand-cert svg { width: 12px; height: 12px; fill: var(--tm-gold-dark); }
-
 /* Legal footer */
 .tm-legal-footer { background: #E7DFCF; padding: 18px 16px 22px; text-align: center; }
 .tm-legal-distrib { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #D8CCAF; }
@@ -575,27 +547,32 @@ a { color: inherit; text-decoration: none; }
 }
 .tm-toast-close svg { width: 12px; height: 12px; }
 
-/* Sticky CTA */
+/* Sticky CTA — chỉ còn đúng 2 lựa chọn: nút phụ Messenger (Hỏi shop) + nút chính Đặt hàng.
+   Đã bỏ "Thêm giỏ" (không có giỏ hàng thật, mở cùng popup — nhãn sai chức năng) và
+   "Cửa hàng" (đưa khách rời landing page sang Facebook). */
 .tts-sticky-cta {
   position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
   width: 100%; max-width: var(--tm-container); z-index: 40;
   background: var(--tm-cream); border-top: 1px solid var(--tm-border);
-  padding: 10px 16px; display: flex; gap: 14px; align-items: center;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); display: flex; gap: 8px; align-items: stretch;
   box-shadow: 0 -4px 16px rgba(32,26,19,0.10); box-sizing: border-box;
 }
 @media (min-width: 768px) { .tts-sticky-cta { border-radius: 0 0 18px 18px; } }
-.tts-cta-sidegroup { display: flex; gap: 16px; padding-right: 8px; border-right: 1px solid var(--tm-border); }
-.tts-cta-side { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 40px; color: var(--tm-text-muted); font-size: 10px; font-weight: 500; }
-.tts-cta-side:hover { color: var(--tm-gold-dark); }
-.tts-cta-side svg { width: 21px; height: 21px; fill: var(--tm-text-muted); }
-.tts-cta-side:hover svg { fill: var(--tm-gold-dark); }
-.tts-cta-buy { flex: 1; display: flex; gap: 10px; }
-.tts-btn-cart { flex: 1; padding: 12px 10px; background: var(--tm-cream); border: 1.5px solid var(--tm-charcoal); color: var(--tm-charcoal); font-size: 13px; font-weight: 700; border-radius: var(--tm-r-pill); white-space: nowrap; }
-.tts-btn-buy {
-  flex: 1.3; padding: 12px 14px; background: linear-gradient(90deg, var(--tm-gold) 0%, var(--tm-gold-dark) 100%);
-  color: #fff; font-size: 14px; font-weight: 800; border-radius: var(--tm-r-pill); box-shadow: var(--tm-shadow-gold); white-space: nowrap; letter-spacing: 0.3px;
+.tts-btn-chat {
+  width: 72px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  background: var(--tm-cream); border: 1.5px solid var(--tm-border); border-radius: 14px;
+  color: var(--tm-gold-dark); font-size: 12.5px; font-weight: 700;
 }
-.tts-btn-buy:hover { filter: brightness(1.05); }
+.tts-btn-chat svg { width: 20px; height: 20px; fill: var(--tm-gold-dark); }
+.tts-btn-buy {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  background: var(--tm-action); color: #fff; border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(194,65,12,0.28); white-space: nowrap;
+}
+.tts-btn-buy:active { background: var(--tm-action-pressed); }
+.tts-btn-buy:focus-visible, .tts-btn-chat:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--tm-focus); }
+.tts-btn-buy-main { font-size: 15.5px; font-weight: 800; }
+.tts-btn-buy-sub { font-size: 11px; font-weight: 600; opacity: 0.95; }
 
 /* Buy popup */
 .tts-popup-overlay {
@@ -617,7 +594,7 @@ a { color: inherit; text-decoration: none; }
 .tts-popup-price { font-size: 21px; font-weight: 800; color: var(--tm-gold-dark); line-height: 1.2; }
 .tts-popup-price-old { font-size: 12px; color: var(--tm-text-muted); text-decoration: line-through; margin-top: 2px; }
 .tts-popup-stock { font-size: 12px; color: var(--tm-text-muted); margin-top: 4px; }
-.tts-popup-close { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(32,26,19,0.06); z-index: 1; }
+.tts-popup-close { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(32,26,19,0.06); z-index: 1; }
 .tts-popup-close svg { width: 18px; height: 18px; fill: var(--tm-text-muted); }
 .tts-popup-body { flex: 1; overflow-y: auto; padding: 16px; }
 .tts-popup-section { margin-bottom: 16px; }
@@ -676,61 +653,33 @@ a { color: inherit; text-decoration: none; }
 
   <!-- ========== HEADER ZONE ========== -->
   <div class="tm-progress-track"><div class="tm-progress-bar" id="tm-progress-bar"></div></div>
-  <div class="tm-brandbar">
-    <div class="tm-brandmark">
-      <div class="tm-brandmark-dot">T</div>
-      <div class="tm-brandmark-text">
-        <span class="tm-brandmark-name">TUMILL × THUY THANH NGUYEN</span>
-        <span class="tm-brandmark-sub">Mỹ phẩm nhập khẩu Hàn Quốc 🇰🇷</span>
-      </div>
-    </div>
-    <button class="tm-follow-btn" type="button">+ Theo dõi</button>
-  </div>
 
   <section id="tongquan">
-    <!-- Hero — 1 ảnh full-bleed, tiêu đề + giá lồng trên ảnh, không dùng carousel/đếm ảnh -->
+    <!-- Hero — chỉ giữ pill + tiêu đề trên ảnh. Giá/mô tả/CTA nằm ở purchase panel bên dưới, không lặp lại. -->
     <div class="tm-hero-full">
       <img src="./assets/images/tumill-before-after.png" alt="TUMILL Exosome Tone Up Whitening Cream — trước và sau khi thoa">
       <div class="tm-hero-scrim"></div>
       <span class="tm-hero-eyebrow">TUMILL · K-Beauty 2026</span>
       <div class="tm-hero-content">
         <h1 class="tm-hero-title">Kem Ngày Thắp Sáng<br>Hồng Da Exosome TUMILL</h1>
-        <p class="tm-hero-sub">Kem ngày thắp sáng hồng da — nâng tone nhẹ, dưỡng sáng, mềm mịn.</p>
-        <div class="tm-hero-pricetag">
-          <b>480.000đ</b><span>/ tuýp · còn</span>
-          <span class="tts-promo-countdown" data-duration="86400"><b>23:59:59</b></span>
-        </div>
-        <div class="tm-hero-cta-row">
-          <a class="tm-hero-btn ghost" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-            Nhắn tin
-          </a>
-          <button class="tm-hero-btn primary" type="button" onclick="onBuyClick()">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>
-            Mua ngay
-          </button>
-        </div>
       </div>
+    </div>
+
+    <div class="tm-purchase-panel">
+      <div class="tm-purchase-benefit">Nâng tone nhẹ · Dưỡng sáng · Mềm mịn</div>
+      <div class="tm-purchase-spec">50ml / 1.69 fl.oz — Glutathione, Niacinamide, Panthenol B5, Vitamin Tree Fruit Extract</div>
+      <div class="tm-purchase-price">480.000đ<span>/ tuýp</span></div>
+      <button class="tm-purchase-cta" type="button" onclick="scrollToOrderForm()">
+        <span class="tm-purchase-cta-main">ĐẶT HÀNG · 480.000đ</span>
+        <span class="tm-purchase-cta-sub">Nhận hàng rồi thanh toán</span>
+      </button>
     </div>
 
     <div class="tm-stats-bar">
-      <div class="tm-stat"><b>5.0★</b><span>Đánh giá</span></div>
-      <div class="tm-stat"><b>100%</b><span>Chính hãng</span></div>
-      <div class="tm-stat"><b>7 ngày</b><span>Đổi trả</span></div>
-      <div class="tm-stat"><b>Free</b><span>Vận chuyển</span></div>
-    </div>
-
-    <div class="tm-titleblock">
-      <span class="tm-tag-new">Mới</span>
-      <h2 class="tm-title">Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL</h2>
-      <p class="tm-subtitle">50ml / 1.69 fl.oz — Glutathione, Niacinamide, Panthenol B5, Vitamin Tree Fruit Extract.</p>
-      <div class="tm-meta">
-        <span class="tm-meta-rating"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>5.0/5</span>
-        <span class="tm-meta-divider">|</span>
-        <span>Chính hãng 100%</span>
-        <span class="tm-meta-divider">|</span>
-        <span>Miễn phí vận chuyển</span>
-      </div>
+      <div class="tm-stat"><b>5.0★</b><span>Khách hàng đánh giá</span></div>
+      <div class="tm-stat"><b>100%</b><span>Hàng chính hãng</span></div>
+      <div class="tm-stat"><b>7 ngày</b><span>Hỗ trợ đổi trả</span></div>
+      <div class="tm-stat"><b>Freeship</b><span>Toàn quốc</span></div>
     </div>
 
     <div class="tm-trust-row">
@@ -739,21 +688,43 @@ a { color: inherit; text-decoration: none; }
       <span class="tm-trust-chip"><span class="tm-trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4z"/></svg></span>Tư vấn miễn phí</span>
     </div>
 
-    <div class="tm-retail-teaser">
-      <span>📍 TUMILL có mặt tại <b>Olive Young, Aritaum, CHICOR</b> và các nhà thuốc lớn tại Hàn Quốc — xem ảnh thực tế bên dưới ↓</span>
+    <!-- Section đặt hàng inline — phục vụ khách đã bị thuyết phục sẵn (vd xem video quảng cáo),
+         chỉ cần cuộn tới đây điền thông tin, không cần đọc thêm. Dùng chung logic validate/tính
+         giá/gửi webhook với popup (xem hàm TMOrder.* cuối file) để không lệch dữ liệu giữa 2 nơi. -->
+    <div class="tm-order-inline" id="dat-hang">
+      <div class="tm-order-inline-title">Đặt Hàng TUMILL</div>
+      <div class="tm-order-inline-sub">Chọn gói và điền 3 thông tin. Shop sẽ kiểm tra và xác nhận đơn trước khi giao.</div>
+      <div class="tm-cfg-toggle" role="tablist" aria-label="Chọn gói mua" id="tm-order-toggle">
+        <button class="tm-cfg-opt active" type="button" data-qty="1">1 tuýp</button>
+        <button class="tm-cfg-opt" type="button" data-qty="2">2 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
+        <button class="tm-cfg-opt" type="button" data-qty="3">3 tuýp</button>
+      </div>
+      <div class="tm-order-inline-gifts" id="tm-order-gifts"></div>
+      <div class="tm-order-field">
+        <label class="tm-order-label" for="tm-order-fullname">Họ và tên <span class="req">*</span></label>
+        <input class="tm-order-input" type="text" id="tm-order-fullname" placeholder="Ví dụ: Nguyễn Thị Lan">
+        <div class="tm-order-error" id="tm-order-err-fullname"></div>
+      </div>
+      <div class="tm-order-field">
+        <label class="tm-order-label" for="tm-order-phone">Số điện thoại <span class="req">*</span></label>
+        <input class="tm-order-input" type="tel" id="tm-order-phone" placeholder="Ví dụ: 0912 345 678">
+        <div class="tm-order-hint">Shop dùng số này để liên hệ xác nhận đơn.</div>
+        <div class="tm-order-error" id="tm-order-err-phone"></div>
+      </div>
+      <div class="tm-order-field">
+        <label class="tm-order-label" for="tm-order-address">Địa chỉ nhận hàng <span class="req">*</span></label>
+        <textarea class="tm-order-input tm-order-textarea" id="tm-order-address" placeholder="Số nhà/thôn xóm, xã/phường, tỉnh/thành"></textarea>
+        <div class="tm-order-error" id="tm-order-err-address"></div>
+      </div>
+      <button class="tm-order-submit" type="button" id="tm-order-submit">XÁC NHẬN ĐẶT HÀNG · 480.000đ</button>
+      <div class="tm-order-support">Nhận hàng rồi thanh toán · Miễn phí vận chuyển</div>
+      <div class="tm-order-success" id="tm-order-success" style="display:none;">
+        <div class="tm-order-success-title">Shop đã nhận đơn hàng</div>
+        <div class="tm-order-success-msg">Shop sẽ liên hệ xác nhận trong giờ làm việc gần nhất. Vui lòng để ý điện thoại hoặc Messenger.</div>
+      </div>
     </div>
 
-    <div class="tm-inline-cta">
-      <a class="tm-btn outline" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        Nhắn tin hỏi
-      </a>
-      <button class="tm-btn solid" type="button" onclick="onBuyClick()">
-        <svg viewBox="0 0 24 24"><path fill="#fff" d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>
-        Mua ngay · Từ 480.000đ
-      </button>
-    </div>
-    <div style="padding:0 16px 20px; background:var(--tm-cream);">
+    <div style="padding:16px 16px 20px; background:var(--tm-cream);">
       <div class="tm-img-wrap" style="margin-bottom:0;"><img src="./assets/images/tumill-hold-influencer.jpg" alt="Khách hàng cầm TUMILL Exosome Tone Up Whitening Cream"></div>
     </div>
   </section>
@@ -805,33 +776,8 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">03 — Thành phần nổi bật</div>
-      <h2 class="tm-section-title">4 Dưỡng Chất Chính Trong TUMILL</h2>
-      <p class="tm-section-sub">In rõ trên bao bì — kết hợp nâng tông tức thì và dưỡng sáng khi dùng đều đặn.</p>
-      <div class="tm-img-wrap"><img src="./assets/images/tumill-ingredient-hero.png" alt="TUMILL Exosome Tone Up Whitening Cream — Glutathione, Niacinamide, Panthenol B5, Vitamin Tree Fruit Extract"></div>
-      <div class="tm-ing-list">
-        <div class="tm-ing-row">
-          <span class="tm-ing-num">01</span>
-          <div><div class="tm-feat-name">Glutathione</div><div class="tm-feat-desc">Chống oxy hóa, hỗ trợ da trông rạng rỡ hơn</div></div>
-        </div>
-        <div class="tm-ing-row">
-          <span class="tm-ing-num">02</span>
-          <div><div class="tm-feat-name">Niacinamide</div><div class="tm-feat-desc">Hỗ trợ đều màu da, củng cố hàng rào bảo vệ</div></div>
-        </div>
-        <div class="tm-ing-row">
-          <span class="tm-ing-num">03</span>
-          <div><div class="tm-feat-name">Panthenol B5</div><div class="tm-feat-desc">Cấp ẩm, làm dịu — không khô sau tone-up</div></div>
-        </div>
-        <div class="tm-ing-row">
-          <span class="tm-ing-num">04</span>
-          <div><div class="tm-feat-name">Vitamin Tree Extract</div><div class="tm-feat-desc">Chiết xuất thực vật, hỗ trợ chống oxy hóa</div></div>
-        </div>
-      </div>
-    </div>
-
     <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">04 — Cảm nhận khi thoa</div>
+      <div class="tm-section-eyebrow">03 — Cảm nhận khi thoa</div>
       <h2 class="tm-section-title">Kết Cấu Mềm Mịn, Dễ Tán</h2>
       <p class="tm-section-sub">Tông trắng hồng nhẹ, không đục, không bết dính — hợp cả trước khi trang điểm.</p>
       <div class="tm-img-wrap"><img src="./assets/images/tumill-texture-swatch.png" alt="Kết cấu kem TUMILL Exosome Tone Up trên da — mềm mịn, dễ tán"></div>
@@ -847,7 +793,7 @@ a { color: inherit; text-decoration: none; }
     </div>
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">05 — Bằng chứng thực tế</div>
+      <div class="tm-section-eyebrow">04 — Bằng chứng thực tế</div>
       <h2 class="tm-section-title">TUMILL Xuất Hiện Ở Đâu?</h2>
       <p class="tm-section-sub">Ảnh thực tế TUMILL Exosome Tone Up tại các điểm bán và cơ sở làm đẹp ở Hàn Quốc.</p>
       <div class="tm-retail-scroll">
@@ -861,9 +807,9 @@ a { color: inherit; text-decoration: none; }
 
     <!-- Ưu điểm — bảng so sánh 2 cột, dạng thuyết phục trực tiếp, không lặp lại kiểu list/lưới ở trên -->
     <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">06 — Ưu điểm</div>
+      <div class="tm-section-eyebrow">05 — Ưu điểm</div>
       <h2 class="tm-section-title">Vì Sao Chọn TUMILL?</h2>
-      <p class="tm-section-sub">So với kem tone-up thông thường trên thị trường.</p>
+      <p class="tm-section-sub">So với kem tone-up thông thường trên thị trường. Thành phần tập trung vào hai mục tiêu: hỗ trợ da sáng đều màu và giữ da mềm, hạn chế khô căng.</p>
       <div class="tm-compare">
         <div class="tm-compare-head">
           <div class="tm-compare-col-label muted">Tone-up thông thường</div>
@@ -896,7 +842,7 @@ a { color: inherit; text-decoration: none; }
   <section id="mota">
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">07 — Hiệu quả</div>
+      <div class="tm-section-eyebrow">06 — Hiệu quả</div>
       <h2 class="tm-section-title">Trước &amp; Sau Khi Thoa</h2>
       <p class="tm-section-sub">Hiệu ứng nâng tông tức thì — da trông đều màu và sáng hơn ngay sau khi thoa.</p>
       <div class="tm-img-wrap tm-ba-wrap">
@@ -907,26 +853,26 @@ a { color: inherit; text-decoration: none; }
     </div>
 
     <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">08 — Ưu đãi hôm nay</div>
+      <div class="tm-section-eyebrow">07 — Ưu đãi hôm nay</div>
       <h2 class="tm-section-title">Chọn Gói Ưu Đãi</h2>
       <p class="tm-section-sub">Mua càng nhiều — quà tặng càng nhiều. Miễn phí vận chuyển toàn quốc mọi đơn hàng.</p>
       <!-- Chương trình quà tặng mới: Mua 1 tuýp tặng 1 bông mút -->
       <div class="tm-img-wrap"><img src="./assets/images/tumill-promo-buy1-sponge.jpg" alt="Mua 1 tuýp TUMILL Exosome Tone Up tặng kèm 1 bông mút, miễn phí vận chuyển"></div>
       <!-- Bộ chọn gói dạng segmented toggle — không dùng 3 thẻ xếp chồng như các trang trước -->
       <div class="tm-cfg-toggle" role="tablist" aria-label="Chọn gói mua">
-        <button class="tm-cfg-opt" type="button" data-qty="1">1 tuýp</button>
-        <button class="tm-cfg-opt active" type="button" data-qty="2">2 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
+        <button class="tm-cfg-opt active" type="button" data-qty="1">1 tuýp</button>
+        <button class="tm-cfg-opt" type="button" data-qty="2">2 tuýp<span class="tm-cfg-badge">🔥 Bán chạy</span></button>
         <button class="tm-cfg-opt" type="button" data-qty="3">3 tuýp</button>
       </div>
       <div class="tm-cfg-display">
-        <div class="tm-cfg-price" id="tm-cfg-price">940.000đ</div>
+        <div class="tm-cfg-price" id="tm-cfg-price">480.000đ</div>
         <div class="tm-cfg-gifts" id="tm-cfg-gifts"></div>
-        <button class="tm-cfg-buy" type="button" id="tm-cfg-buy-btn" onclick="onBuyClick(2)">Chọn mua — 940.000đ</button>
+        <button class="tm-cfg-buy" type="button" id="tm-cfg-buy-btn" onclick="onBuyClick(1)">ĐẶT GÓI NÀY · 480.000đ</button>
       </div>
     </div>
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">09 — Cách dùng</div>
+      <div class="tm-section-eyebrow">08 — Cách dùng</div>
       <h2 class="tm-section-title">Routine Sáng — Chỉ 1 Bước Thêm Vào</h2>
       <p class="tm-section-sub">Dùng sau bước dưỡng ẩm, trước kem chống nắng.</p>
       <div class="tm-img-wrap"><img src="./assets/images/tumill-apply-closeup.png" alt="Thoa TUMILL Exosome Tone Up vào buổi sáng"></div>
@@ -940,7 +886,7 @@ a { color: inherit; text-decoration: none; }
     </div>
 
     <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">10 — Thông tin sản phẩm</div>
+      <div class="tm-section-eyebrow">09 — Thông tin sản phẩm</div>
       <h2 class="tm-section-title">Thông Số</h2>
       <div class="tm-spec-table">
         <div class="tm-spec-row"><div class="tm-spec-label">Thương hiệu</div><div class="tm-spec-value">TUMILL (Hàn Quốc)</div></div>
@@ -956,10 +902,10 @@ a { color: inherit; text-decoration: none; }
     <div class="tm-section tm-reveal">
       <div class="tm-cta-block">
         <div class="tm-cta-headline">1 bước buổi sáng — <b>thắp sáng hồng da chuẩn Hàn</b></div>
-        <div class="tm-cta-sub">Từ 480.000đ/tuýp · Mua 3 tặng 2 mút + 2 mặt nạ · Freeship · COD</div>
+        <div class="tm-cta-sub">Từ 480.000đ/tuýp · Mua 3 tặng 2 mút + 2 mặt nạ · Freeship</div>
         <button class="tm-cta-btn" type="button" onclick="onBuyClick()">
           <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21 4.96 19.27 4H5.21l-.94-2H1z"/></svg>
-          Mua Ngay — Từ 480.000đ
+          ĐẶT HÀNG · TỪ 480.000đ
         </button>
       </div>
     </div>
@@ -972,7 +918,7 @@ a { color: inherit; text-decoration: none; }
   <section id="dexuat">
 
     <div class="tm-section tm-reveal">
-      <div class="tm-section-eyebrow">11 — Khách hàng nói gì</div>
+      <div class="tm-section-eyebrow">10 — Khách hàng nói gì</div>
       <h2 class="tm-section-title">Đánh Giá Từ Khách Hàng</h2>
       <div class="tm-rev-summary">
         <span class="tm-rev-big">5.0</span>
@@ -1015,7 +961,7 @@ a { color: inherit; text-decoration: none; }
     </div>
 
     <div class="tm-section alt tm-reveal">
-      <div class="tm-section-eyebrow">12 — Giải đáp</div>
+      <div class="tm-section-eyebrow">11 — Giải đáp</div>
       <h2 class="tm-section-title">Câu Hỏi Thường Gặp</h2>
       <details class="tm-faq-item">
         <summary class="tm-faq-q">TUMILL Exosome Tone Up dùng như thế nào?</summary>
@@ -1031,7 +977,7 @@ a { color: inherit; text-decoration: none; }
       </details>
       <details class="tm-faq-item">
         <summary class="tm-faq-q">Mua 1, 2 hay 3 tuýp thì lợi hơn?</summary>
-        <div class="tm-faq-a">1 tuýp 480.000đ dùng thử, đã được tặng kèm 1 bông mút. Mua 2 tuýp 940.000đ được tặng thêm 1 bông mút. Mua 3 tuýp 1.400.000đ (gói bán chạy nhất) được tặng 2 bông mút + 2 mặt nạ — hợp để dùng lâu dài hoặc tặng người thân. Tất cả đều được freeship toàn quốc.</div>
+        <div class="tm-faq-a">1 tuýp 480.000đ dùng thử, đã được tặng kèm 1 bông mút. Mua 2 tuýp 940.000đ (gói bán chạy nhất) được tặng 1 bông mút + 1 mặt nạ collagen. Mua 3 tuýp 1.400.000đ được tặng 2 bông mút + 2 mặt nạ — hợp để dùng lâu dài hoặc tặng người thân. Tất cả đều được freeship toàn quốc.</div>
       </details>
       <details class="tm-faq-item">
         <summary class="tm-faq-q">Hàng có chính hãng không?</summary>
@@ -1045,22 +991,11 @@ a { color: inherit; text-decoration: none; }
 
     <div class="tm-closing">
       <div class="tm-closing-title">🎁 Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL — <b>Từ 480.000đ</b></div>
-      <div class="tm-closing-sub">Thắp Sáng Hồng Da · Mua 3 Tặng 2 Mút + 2 Mặt Nạ · Freeship · COD</div>
-      <a class="tm-closing-btn" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        Inbox THUY THANH NGUYEN Ngay Để Đặt Hàng
-      </a>
-    </div>
-
-    <div class="tm-brand-footer">
-      <div class="tm-brand-footer-name">SKIN BY THUY THANH NGUYEN</div>
-      <div class="tm-brand-footer-tag">Phân Phối Mỹ Phẩm Nhập Khẩu</div>
-      <div class="tm-brand-footer-text">THUY THANH NGUYEN chuyên nhập khẩu và phân phối mỹ phẩm Hàn Quốc — có ảnh thực tế và video unbox khi khách yêu cầu. THUY THANH NGUYEN tư vấn miễn phí — không mua cũng không sao!</div>
-      <div class="tm-brand-certs">
-        <span class="tm-brand-cert"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Hàng nhập khẩu 🇰🇷</span>
-        <span class="tm-brand-cert"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Freeship toàn quốc</span>
-        <span class="tm-brand-cert"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Đổi trả 7 ngày</span>
-      </div>
+      <div class="tm-closing-sub">Thắp Sáng Hồng Da · Mua 3 Tặng 2 Mút + 2 Mặt Nạ · Freeship</div>
+      <button class="tm-closing-btn" type="button" onclick="onBuyClick()">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>
+        Đặt Hàng · Từ 480.000đ
+      </button>
     </div>
 
     <div class="tm-legal-footer">
@@ -1094,18 +1029,13 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ========== STICKY CTA ========== -->
 <div class="tts-sticky-cta">
-  <div class="tts-cta-sidegroup">
-    <a class="tts-cta-side" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>Chat
-    </a>
-    <a class="tts-cta-side" href="https://www.facebook.com/ThuyThanhNguyennnn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>Cửa hàng
-    </a>
-  </div>
-  <div class="tts-cta-buy">
-    <button class="tts-btn-cart" type="button" onclick="onBuyClick()">Thêm giỏ</button>
-    <button class="tts-btn-buy" type="button" onclick="onBuyClick()">Mua ngay</button>
-  </div>
+  <a class="tts-btn-chat" href="https://m.me/ThuyThanhNguyennnn" target="_blank" rel="noopener" aria-label="Nhắn tin hỏi shop qua Messenger">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>Hỏi shop
+  </a>
+  <button class="tts-btn-buy" type="button" id="tm-sticky-buy" onclick="onBuyClick()">
+    <span class="tts-btn-buy-main" id="tm-sticky-buy-main">ĐẶT HÀNG · 480.000đ</span>
+    <span class="tts-btn-buy-sub">Nhận hàng rồi thanh toán</span>
+  </button>
 </div>
 
 <!-- Lightbox -->
@@ -1425,6 +1355,7 @@ function reinitPixelMatching() {
     var p = _current;
     var closeBtn = el('button', 'tts-popup-close',
       '<svg viewBox="0 0 24 24"><path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71l1.41-1.42L10.59 10.6l6.3-6.31z"/></svg>');
+    closeBtn.setAttribute('aria-label', 'Đóng form đặt hàng');
     closeBtn.onclick = close;
     popup.appendChild(closeBtn);
 
@@ -1452,7 +1383,11 @@ function reinitPixelMatching() {
           var btn = el('button', 'tts-popup-option', v.label);
           btn.type = 'button';
           if (_selected[opt.label] === v.label) btn.classList.add('selected');
-          btn.onclick = function () { _selected[opt.label] = v.label; render(); };
+          btn.onclick = function () {
+            _selected[opt.label] = v.label;
+            if (v.qty) window.TM_SELECTED_QTY = v.qty;
+            render();
+          };
           optsWrap.appendChild(btn);
         });
         sec.appendChild(optsWrap);
@@ -1461,14 +1396,14 @@ function reinitPixelMatching() {
     }
 
     var formFields = [
-      { key: 'fullname', label: 'Họ tên', required: true,  type: 'text',     placeholder: 'Nguyễn Thị A' },
-      { key: 'phone',    label: 'Số điện thoại', required: true,  type: 'tel',      placeholder: '0901234567 hoặc +84901234567' },
-      { key: 'address',  label: 'Địa chỉ giao hàng', required: true,  type: 'textarea', placeholder: 'Số nhà, đường, phường, quận, thành phố' }
+      { key: 'fullname', label: 'Họ và tên', required: true,  type: 'text',     placeholder: 'Ví dụ: Nguyễn Thị Lan' },
+      { key: 'phone',    label: 'Số điện thoại', required: true,  type: 'tel',      placeholder: 'Ví dụ: 0912 345 678', note: 'Shop dùng số này để liên hệ xác nhận đơn.' },
+      { key: 'address',  label: 'Địa chỉ nhận hàng', required: true,  type: 'textarea', placeholder: 'Số nhà/thôn xóm, xã/phường, tỉnh/thành', note: 'Có thể ghi địa chỉ cũ hoặc mới.' }
     ];
     formFields.forEach(function (f) {
       var sec = el('div', 'tts-popup-section');
       var labelHtml = f.label + (f.required ? ' <span class="req">*</span>' : '');
-      if (f.key === 'address') labelHtml += ' <span class="tts-popup-label-note">Quý khách vui lòng nhập địa chỉ trước khi sáp nhập.</span>';
+      if (f.note) labelHtml += ' <span class="tts-popup-label-note">' + f.note + '</span>';
       sec.appendChild(el('div', 'tts-popup-label', labelHtml));
       var input;
       if (f.type === 'textarea') {
@@ -1503,7 +1438,7 @@ function reinitPixelMatching() {
     total.appendChild(el('span', 'tts-popup-total-label', 'Tổng cộng'));
     total.appendChild(el('span', 'tts-popup-total-value', fmt(calcTotal())));
     footer.appendChild(total);
-    var submit = el('button', 'tts-popup-submit', 'Đặt hàng');
+    var submit = el('button', 'tts-popup-submit', 'XÁC NHẬN ĐẶT HÀNG · ' + fmt(calcTotal()));
     submit.type = 'button';
     submit.onclick = function () { handleSubmit(popup); };
     if (_submitting) { submit.disabled = true; submit.textContent = 'Đang gửi...'; }
@@ -1652,24 +1587,9 @@ function reinitPixelMatching() {
     });
   }
 
-  function showSuccess(orderCode, payload) {
-    _submitting = false;
-    var overlay = document.getElementById('tts-buy-popup-overlay');
-    if (!overlay) return;
-    var popup = overlay.querySelector('.tts-popup');
-    popup.innerHTML = '';
-    var closeBtn = el('button', 'tts-popup-close',
-      '<svg viewBox="0 0 24 24"><path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71l1.41-1.42L10.59 10.6l6.3-6.31z"/></svg>');
-    closeBtn.onclick = close;
-    popup.appendChild(closeBtn);
-    var success = el('div', 'tts-popup-success');
-    success.innerHTML =
-      '<div class="tts-popup-success-icon">&#10003;</div>' +
-      '<div class="tts-popup-success-title">Đặt hàng thành công!</div>' +
-      '<div class="tts-popup-success-msg">Cảm ơn bạn. Skin by THUY THANH NGUYEN sẽ liên hệ xác nhận đơn hàng trong 15 phút.</div>' +
-      '<div class="tts-popup-order-code">#' + orderCode + '</div>';
-    popup.appendChild(success);
-
+  /* Bắn pixel CompleteRegistration/PlaceAnOrder — dùng chung cho cả popup và form inline
+     (form inline gọi qua TikTokShopBuyPopup.trackOrder() để không lặp code). */
+  function trackOrderPixels(payload) {
     try {
       if (typeof fbq !== 'undefined') {
         fbq('track', 'CompleteRegistration', {
@@ -1681,7 +1601,6 @@ function reinitPixelMatching() {
         });
       }
     } catch(e) {}
-
     try {
       if (typeof ttq !== 'undefined') {
         ttq.track('PlaceAnOrder', {
@@ -1694,6 +1613,28 @@ function reinitPixelMatching() {
         });
       }
     } catch(e) {}
+  }
+
+  function showSuccess(orderCode, payload) {
+    _submitting = false;
+    var overlay = document.getElementById('tts-buy-popup-overlay');
+    if (!overlay) return;
+    var popup = overlay.querySelector('.tts-popup');
+    popup.innerHTML = '';
+    var closeBtn = el('button', 'tts-popup-close',
+      '<svg viewBox="0 0 24 24"><path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71l1.41-1.42L10.59 10.6l6.3-6.31z"/></svg>');
+    closeBtn.setAttribute('aria-label', 'Đóng form đặt hàng');
+    closeBtn.onclick = close;
+    popup.appendChild(closeBtn);
+    var success = el('div', 'tts-popup-success');
+    success.innerHTML =
+      '<div class="tts-popup-success-icon">&#10003;</div>' +
+      '<div class="tts-popup-success-title">Shop đã nhận đơn hàng</div>' +
+      '<div class="tts-popup-success-msg">Shop sẽ liên hệ xác nhận trong giờ làm việc gần nhất. Vui lòng để ý điện thoại hoặc Messenger.</div>' +
+      '<div class="tts-popup-order-code">#' + orderCode + '</div>';
+    popup.appendChild(success);
+
+    trackOrderPixels(payload);
 
     if (typeof settings.onSuccess === 'function') {
       settings.onSuccess(orderCode, payload);
@@ -1702,13 +1643,38 @@ function reinitPixelMatching() {
 
   global.TikTokShopBuyPopup = {
     config: function (opts) { Object.assign(settings, opts || {}); },
+    formatPrice: fmt,
+    generateOrderCode: genOrderCode,
+    /* API dùng chung cho form đặt hàng inline (ngoài popup) — cùng 1 endpoint webhook,
+       cùng cách bắn pixel, để không lệch logic giữa 2 nơi. */
+    submitPayload: function (payload, callbacks) {
+      callbacks = callbacks || {};
+      function done(){ trackOrderPixels(payload); if (callbacks.onSuccess) callbacks.onSuccess(payload); }
+      if (!settings.webhookUrl) {
+        console.warn('[TikTokShopBuyPopup] No webhookUrl. Payload:', payload);
+        done();
+        return;
+      }
+      fetch(settings.webhookUrl, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
+      }).then(done).catch(function (err) {
+        console.error('[TikTokShopBuyPopup] Submit failed:', err);
+        done();
+      });
+    },
     open: function (product) {
       _current = product;
       _selected = {};
       _qty = 1;
       _submitting = false;
-      if (product.options && product.options[0] && product.options[0].values && product.options[0].values[0]) {
-        _selected[product.options[0].label] = product.options[0].values[0].label;
+      if (product.options && product.options[0] && product.options[0].values && product.options[0].values.length) {
+        var opt0 = product.options[0];
+        /* preselectValue cho phép chọn sẵn 1 gói theo giá trị mà KHÔNG cần đổi thứ tự
+           hiển thị mảng — gói luôn hiện đúng thứ tự 1→2→3 dù đang chọn sẵn gói nào. */
+        var pre = product.preselectValue && opt0.values.find(function (v) { return v.label === product.preselectValue; });
+        _selected[opt0.label] = (pre || opt0.values[0]).label;
       }
       render();
     },
@@ -1730,6 +1696,13 @@ TikTokShopBuyPopup.config({
   }
 });
 
+/* Cuộn tới section đặt hàng inline. Tính lại vị trí NGAY LÚC BẤM (không dùng href="#..."
+   tĩnh) để tránh lệch vị trí do ảnh/font tải xong làm đổi chiều cao trang sau khi tải. */
+function scrollToOrderForm() {
+  var target = document.getElementById('dat-hang');
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function onBuyClick(preselectQty) {
   if (typeof fbq !== 'undefined') {
     fbq('track', 'InitiateCheckout', {
@@ -1750,22 +1723,23 @@ function onBuyClick(preselectQty) {
       });
     }
   } catch(e) {}
-  /* Sắp xếp lại để gói vừa bấm (preselectQty) được auto-chọn khi mở popup —
-     nếu gọi không kèm tham số (nút "Mua ngay" chung) thì mặc định gói 2 tuýp bán chạy. */
+  /* Thứ tự gói LUÔN cố định 1→2→3 (không đảo gói bán chạy lên đầu) — "Bán chạy" chỉ là
+     nhãn/badge. Nếu không truyền preselectQty, dùng lại gói khách vừa chọn gần nhất
+     (window.TM_SELECTED_QTY, đồng bộ với section chọn gói + form inline); mặc định gói 1. */
+  var qty = preselectQty || window.TM_SELECTED_QTY || 1;
+  window.TM_SELECTED_QTY = qty;
   var packValues = [
-    { label: '2 tuýp · 940.000đ · Tặng 1 bông mút<span class="tts-popup-option-badge">🔥 Bán chạy</span>', price: 940000, qty: 2 },
-    { label: '3 tuýp · 1.400.000đ · Tặng 2 mút + 2 mặt nạ', price: 1400000, qty: 3 },
-    { label: '1 tuýp · 480.000đ · Tặng 1 bông mút', price: 480000, qty: 1 }
+    { label: '1 tuýp · 480.000đ · Tặng 1 bông mút', price: 480000, qty: 1 },
+    { label: '2 tuýp · 940.000đ · Tặng 1 bông mút + 1 mặt nạ collagen<span class="tts-popup-option-badge">🔥 Bán chạy</span>', price: 940000, qty: 2 },
+    { label: '3 tuýp · 1.400.000đ · Tặng 2 mút + 2 mặt nạ', price: 1400000, qty: 3 }
   ];
-  if (preselectQty) {
-    var idx = packValues.findIndex(function (v) { return v.qty === preselectQty; });
-    if (idx > 0) { packValues.unshift(packValues.splice(idx, 1)[0]); }
-  }
+  var preselectValue = (packValues.find(function (v) { return v.qty === qty; }) || packValues[0]).label;
   TikTokShopBuyPopup.open({
     name:          'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
     image:         './assets/images/tumill-product-clean.png',
     basePrice:     480000,
     sku:           'TUMILL-EXOSOME-TONEUP',
+    preselectValue: preselectValue,
     /* label PHẢI là 'qty_pack' để popup tính đúng giá/số lượng theo gói chọn */
     options: [ { label: 'qty_pack', values: packValues } ]
   });
@@ -1784,16 +1758,6 @@ function onBuyClick(preselectQty) {
   lb.addEventListener('click', closeLb);
   document.getElementById('tm-lightbox-close').addEventListener('click', function(e){ e.stopPropagation(); closeLb(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
-})();
-
-/* Nút "+ Theo dõi" — toggle trạng thái, chỉ để tăng cảm giác tương tác */
-(function(){
-  var btn = document.querySelector('.tm-follow-btn');
-  if (!btn) return;
-  btn.addEventListener('click', function(){
-    var following = btn.classList.toggle('following');
-    btn.textContent = following ? '✓ Đang theo dõi' : '+ Theo dõi';
-  });
 })();
 
 /* Thanh tiến trình đọc (reading progress) — thay cho tab-nav ngang của các trang trước */
@@ -1894,32 +1858,149 @@ function onBuyClick(preselectQty) {
   }, 3500);
 })();
 
-/* Bộ chọn gói (segmented toggle) — cập nhật giá/quà/nút mua theo gói đang chọn */
+/* Dữ liệu gói dùng CHUNG cho: section "Chọn Gói Ưu Đãi", section đặt hàng inline,
+   thanh sticky CTA và popup (onBuyClick) — sửa 1 chỗ, mọi nơi đồng bộ theo. */
+window.TM_PACKAGES = {
+  1: { price: '480.000đ', gifts: ['Tặng 1 bông mút', 'Miễn phí vận chuyển'] },
+  2: { price: '940.000đ', gifts: ['Tặng 1 bông mút', 'Tặng 1 mặt nạ collagen', 'Miễn phí vận chuyển'] },
+  3: { price: '1.400.000đ', gifts: ['Tặng 2 bông mút', 'Tặng 2 mặt nạ', 'Miễn phí vận chuyển'] }
+};
+
+/* Đồng bộ mọi nơi hiển thị giá/quà/gói đang chọn khi khách bấm 1 trong 2 bộ toggle
+   (section Ưu đãi hôm nay hoặc section đặt hàng inline đầu trang). */
 (function(){
-  var opts = document.querySelectorAll('.tm-cfg-opt');
-  if (!opts.length) return;
-  var data = {
-    1: { price: '480.000đ', gifts: ['Tặng 1 bông mút', 'Miễn phí vận chuyển'] },
-    2: { price: '940.000đ', gifts: ['Tặng 1 bông mút', 'Miễn phí vận chuyển'] },
-    3: { price: '1.400.000đ', gifts: ['Tặng 2 bông mút', 'Tặng 2 mặt nạ', 'Miễn phí vận chuyển'] }
-  };
   var checkSvg = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
-  var priceEl = document.getElementById('tm-cfg-price');
-  var giftsEl = document.getElementById('tm-cfg-gifts');
-  var buyBtn = document.getElementById('tm-cfg-buy-btn');
-  function render(qty){
-    opts.forEach(function(o){ o.classList.toggle('active', o.dataset.qty === String(qty)); });
-    var d = data[qty];
-    if (!d || !priceEl || !giftsEl || !buyBtn) return;
-    priceEl.textContent = d.price;
-    giftsEl.innerHTML = d.gifts.map(function(g){ return '<div class="tm-gift-item">' + checkSvg + g + '</div>'; }).join('');
-    buyBtn.textContent = 'Chọn mua — ' + d.price;
-    buyBtn.setAttribute('onclick', 'onBuyClick(' + qty + ')');
+  var cfgPriceEl  = document.getElementById('tm-cfg-price');
+  var cfgGiftsEl  = document.getElementById('tm-cfg-gifts');
+  var cfgBuyBtn   = document.getElementById('tm-cfg-buy-btn');
+  var orderGiftsEl  = document.getElementById('tm-order-gifts');
+  var orderSubmitBtn = document.getElementById('tm-order-submit');
+  var stickyBuyMain = document.getElementById('tm-sticky-buy-main');
+  var allToggleOpts = document.querySelectorAll('.tm-cfg-opt');
+
+  function renderPackageUI(qty){
+    qty = parseInt(qty, 10) || 1;
+    window.TM_SELECTED_QTY = qty;
+    var d = window.TM_PACKAGES[qty];
+    if (!d) return;
+    allToggleOpts.forEach(function(o){ o.classList.toggle('active', o.dataset.qty === String(qty)); });
+    var giftsHtml = d.gifts.map(function(g){ return '<div class="tm-gift-item">' + checkSvg + g + '</div>'; }).join('');
+    if (cfgPriceEl) cfgPriceEl.textContent = d.price;
+    if (cfgGiftsEl) cfgGiftsEl.innerHTML = giftsHtml;
+    if (cfgBuyBtn) { cfgBuyBtn.textContent = 'ĐẶT GÓI NÀY · ' + d.price; cfgBuyBtn.setAttribute('onclick', 'onBuyClick(' + qty + ')'); }
+    if (orderGiftsEl) orderGiftsEl.innerHTML = giftsHtml;
+    if (orderSubmitBtn) orderSubmitBtn.textContent = 'XÁC NHẬN ĐẶT HÀNG · ' + d.price;
+    if (stickyBuyMain) stickyBuyMain.textContent = 'ĐẶT HÀNG · ' + d.price;
   }
-  opts.forEach(function(o){
-    o.addEventListener('click', function(){ render(o.dataset.qty); });
+  allToggleOpts.forEach(function(o){
+    o.addEventListener('click', function(){ renderPackageUI(o.dataset.qty); });
   });
-  render(2);
+  window.renderPackageUI = renderPackageUI;
+  renderPackageUI(1);
+})();
+
+/* Section đặt hàng inline (#dat-hang) — validate/tính tổng/gửi webhook dùng chung
+   với popup qua TikTokShopBuyPopup.submitPayload()/formatPrice()/generateOrderCode(),
+   không viết riêng 1 bộ logic thứ hai để tránh lệch dữ liệu giữa 2 nơi. */
+(function(){
+  var form = document.getElementById('dat-hang');
+  if (!form) return;
+  var fullnameEl = document.getElementById('tm-order-fullname');
+  var phoneEl    = document.getElementById('tm-order-phone');
+  var addressEl  = document.getElementById('tm-order-address');
+  var submitBtn  = document.getElementById('tm-order-submit');
+  var successEl  = document.getElementById('tm-order-success');
+  var blockedPhones = ['0944677784', '0913331679'];
+  var submitting = false;
+
+  function clearErrors(){
+    [fullnameEl, phoneEl, addressEl].forEach(function(el){ el.classList.remove('error'); });
+    ['fullname','phone','address'].forEach(function(k){
+      var em = document.getElementById('tm-order-err-' + k);
+      if (em) em.textContent = '';
+    });
+  }
+  function setError(el, key, msg){
+    el.classList.add('error');
+    var em = document.getElementById('tm-order-err-' + key);
+    if (em) em.textContent = msg;
+  }
+
+  submitBtn.addEventListener('click', function(){
+    if (submitting) return;
+    clearErrors();
+    var valid = true;
+    if (!fullnameEl.value.trim()) { setError(fullnameEl, 'fullname', 'Vui lòng nhập họ và tên.'); valid = false; }
+    var phoneRaw = phoneEl.value.replace(/[\s.\-()]/g, '');
+    if (!/^(0\d{9}|\+84\d{9})$/.test(phoneRaw)) {
+      setError(phoneEl, 'phone', 'Số điện thoại chưa đúng. Vui lòng kiểm tra lại.'); valid = false;
+    } else if (blockedPhones.indexOf(phoneRaw) !== -1) {
+      setError(phoneEl, 'phone', 'Số điện thoại này không thể đặt hàng. Vui lòng liên hệ fanpage để được hỗ trợ.'); valid = false;
+    } else {
+      phoneEl.value = phoneRaw;
+    }
+    if (!addressEl.value.trim()) { setError(addressEl, 'address', 'Vui lòng nhập địa chỉ nhận hàng.'); valid = false; }
+    if (!valid) {
+      var firstError = form.querySelector('.tm-order-input.error');
+      if (firstError) firstError.focus();
+      return;
+    }
+
+    var qty = window.TM_SELECTED_QTY || 1;
+    var d = window.TM_PACKAGES[qty];
+    var totalPrice = parseInt(d.price.replace(/\D/g, ''), 10);
+    var unitPrice = Math.round(totalPrice / qty);
+    var utm = getUTMParams();
+    var orderCode = TikTokShopBuyPopup.generateOrderCode();
+
+    var payload = {
+      order_code:         orderCode,
+      timestamp:          new Date().toISOString(),
+      fullname:           fullnameEl.value.trim(),
+      phone:              phoneEl.value.trim(),
+      address:            addressEl.value.trim(),
+      note:               '',
+      product_name:       'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+      product_sku:        'TUMILL-EXOSOME-TONEUP',
+      unit_price:         unitPrice,
+      quantity:           qty,
+      total_value:        totalPrice,
+      currency:           'VND',
+      options:            { qty_pack: qty + ' tuýp' },
+      option_labels:      'qty_pack:' + qty + ' tuýp',
+      meta_pixel_id:      '1212419910852343',
+      utm_source:         utm.utm_source,
+      utm_campaign:       utm.utm_campaign,
+      utm_medium:         utm.utm_medium,
+      utm_term:           utm.utm_term,
+      utm_content:        utm.utm_content,
+      page_url:           window.location.href,
+      referrer:           document.referrer,
+      session_duration:   Math.floor((Date.now() - SESSION_START) / 1000),
+      client_ip_address:  CLIENT_IP,
+      client_user_agent:  navigator.userAgent || '',
+      fbc:                getFBC(),
+      fbp:                getFBP()
+    };
+
+    submitting = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Đang gửi...';
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout', {
+        content_ids: ['TUMILL-EXOSOME-TONEUP'],
+        content_name: 'Kem Ngày Thắp Sáng Hồng Da Exosome TUMILL',
+        value: totalPrice, currency: 'VND'
+      });
+    }
+    TikTokShopBuyPopup.submitPayload(payload, {
+      onSuccess: function(){
+        submitting = false;
+        form.querySelectorAll('.tm-order-field, #tm-order-submit, .tm-order-support').forEach(function(el){ el.style.display = 'none'; });
+        successEl.style.display = '';
+      }
+    });
+  });
 })();
 
 /* Review filter chips (Tất cả / 5 sao / Có ảnh) */
