@@ -444,26 +444,19 @@ a { color: inherit; text-decoration: none; }
 .tm-rev-big { font-size: 26px; font-weight: 800; color: var(--tm-gold-dark); font-family: 'Playfair Display', serif; }
 .tm-rev-stars { color: var(--tm-gold); font-size: 14px; letter-spacing: 1px; }
 .tm-rev-count { font-size: 12px; color: var(--tm-text-muted); }
-.tm-rev-filters { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
-.tm-rev-chip { padding: 6px 14px; border-radius: var(--tm-r-pill); border: 1px solid var(--tm-border); font-size: 12px; font-weight: 600; color: var(--tm-text-muted); }
-.tm-rev-chip.active { background: var(--tm-charcoal); color: var(--tm-gold-light); border-color: var(--tm-charcoal); }
-.tm-rev-list { display: flex; flex-direction: column; gap: 10px; }
-.tm-rev-card { padding: 14px; background: var(--tm-ivory); border-radius: var(--tm-r-md); border: 1px solid var(--tm-border-soft); }
-.tm-rev-head { display: flex; align-items: center; gap: 8px; }
-.tm-rev-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--tm-charcoal); color: var(--tm-gold-light); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.tm-rev-name { font-size: 13px; font-weight: 700; color: var(--tm-text); }
-.tm-rev-stars-sm { color: var(--tm-gold); font-size: 11px; letter-spacing: 1px; }
-.tm-rev-skin { margin-left: auto; font-size: 10px; background: var(--tm-gold-light); color: var(--tm-gold-dark); padding: 2px 8px; border-radius: var(--tm-r-pill); font-weight: 700; }
-.tm-rev-content { font-size: 12.5px; color: var(--tm-text); line-height: 1.55; margin-top: 8px; }
-.tm-rev-meta { font-size: 11px; color: var(--tm-text-muted); margin-top: 8px; }
-.tm-rev-empty { text-align: center; font-size: 12.5px; color: var(--tm-text-muted); padding: 20px 0; }
-.tm-rev-hidden { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
-.tm-rev-hidden.show { display: flex; }
-.tm-rev-showmore {
-  display: block; width: 100%; margin-top: 12px; padding: 12px;
-  background: var(--tm-ivory); border: 1px solid var(--tm-border); border-radius: var(--tm-r-md);
-  font-size: 12.5px; font-weight: 700; color: var(--tm-gold-dark); text-align: center;
+
+/* Feedback conveyor — băng truyền ảnh chụp màn hình nhắn tin khách hàng */
+.tm-fb-scroll {
+  display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 4px; scrollbar-width: none;
 }
+.tm-fb-scroll::-webkit-scrollbar { display: none; }
+.tm-fb-card {
+  flex: 0 0 auto; height: 400px; scroll-snap-align: start;
+  border-radius: var(--tm-r-lg); overflow: hidden; box-shadow: var(--tm-shadow-md);
+  border: 1px solid var(--tm-border-soft);
+}
+.tm-fb-card img { display: block; height: 100%; width: auto; }
 
 /* FAQ */
 .tm-faq-item { background: var(--tm-cream); border: 1px solid var(--tm-border-soft); border-radius: var(--tm-r-md); overflow: hidden; margin-bottom: 8px; }
@@ -781,44 +774,15 @@ a { color: inherit; text-decoration: none; }
       <div class="tm-rev-summary">
         <span class="tm-rev-big">5.0</span>
         <span class="tm-rev-stars">★★★★★</span>
-        <span class="tm-rev-count">Đánh giá xác thực từ khách hàng</span>
+        <span class="tm-rev-count">Khách hàng nhắn tin phản hồi thực tế</span>
       </div>
-      <div class="tm-rev-filters">
-        <button class="tm-rev-chip active" type="button" data-filter="all">Tất cả (5)</button>
-        <button class="tm-rev-chip" type="button" data-filter="5star">5 sao (5)</button>
-        <button class="tm-rev-chip" type="button" data-filter="photo">Có ảnh (0)</button>
+      <div class="tm-fb-scroll">
+        <div class="tm-fb-card"><img src="./assets/images/tumill-feedback-1.jpg" alt="Khách hàng Hà My nhắn tin phản hồi da mềm mịn, không vón bết sau khi dùng TUMILL" loading="lazy"></div>
+        <div class="tm-fb-card"><img src="./assets/images/tumill-feedback-2.jpg" alt="Khách hàng Minh Châu nhắn tin phản hồi da sáng nhẹ tự nhiên sau khi dùng TUMILL" loading="lazy"></div>
+        <div class="tm-fb-card"><img src="./assets/images/tumill-feedback-3.jpg" alt="Khách hàng Phương Linh gửi ảnh da sáng mịn, tự nhiên sau khi dùng TUMILL" loading="lazy"></div>
+        <div class="tm-fb-card"><img src="./assets/images/tumill-feedback-4.jpg" alt="Khách hàng Khánh Vy nhắn tin phản hồi da tươi sáng, không bết mặt sau khi dùng TUMILL" loading="lazy"></div>
+        <div class="tm-fb-card"><img src="./assets/images/tumill-feedback-5.jpg" alt="Khách hàng Thanh Huyền nhắn tin phản hồi da sáng nhẹ, không bí da sau khi dùng TUMILL" loading="lazy"></div>
       </div>
-      <div class="tm-rev-list" id="tm-rev-list">
-        <div class="tm-rev-card" data-stars="5" data-photo="false">
-          <div class="tm-rev-head"><div class="tm-rev-avatar">L</div><div><div class="tm-rev-name">Lan Anh</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 33t</span></div>
-          <div class="tm-rev-content">Mình mua thử 1 tuýp trước, dùng thấy da sáng hồng lên hẳn sau khi thoa, lớp nền lên mượt hơn hẳn. Thấm khá nhanh, không nhờn dính. Đặt thêm combo 3 tuýp luôn vì có tặng mút với mặt nạ nữa. THUY THANH NGUYEN tư vấn nhiệt tình, đóng hàng cẩn thận.</div>
-          <div class="tm-rev-meta">15-05-2026 · Đã mua 2 lần</div>
-        </div>
-        <div class="tm-rev-card" data-stars="5" data-photo="false">
-          <div class="tm-rev-head"><div class="tm-rev-avatar">H</div><div><div class="tm-rev-name">Hà My</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 28t</span></div>
-          <div class="tm-rev-content">Buổi sáng đi làm không có thời gian trang điểm nên mình rất cần loại kem tone-up nhẹ mà không bết. TUMILL đúng ý — thoa xong da đều màu hẳn, không thấy cảm giác bí da như vài loại mình dùng trước đây.</div>
-          <div class="tm-rev-meta">10-05-2026 · Khách hàng đã xác minh</div>
-        </div>
-        <div class="tm-rev-hidden" id="tm-rev-more">
-          <div class="tm-rev-card" data-stars="5" data-photo="false">
-            <div class="tm-rev-head"><div class="tm-rev-avatar">T</div><div><div class="tm-rev-name">Thu Thảo</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da khô · 36t</span></div>
-            <div class="tm-rev-content">Da mình khô nên sợ dùng kem tone-up sẽ bị khô căng, nhưng TUMILL có Panthenol nên không bị vậy. Mua gói 2 tuýp được tặng bông mút dùng đánh kem cũng tiện. Sẽ ủng hộ tiếp.</div>
-            <div class="tm-rev-meta">05-05-2026 · Khách hàng đã xác minh</div>
-          </div>
-          <div class="tm-rev-card" data-stars="5" data-photo="false">
-            <div class="tm-rev-head"><div class="tm-rev-avatar">M</div><div><div class="tm-rev-name">Minh Trang</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da thường · 40t</span></div>
-            <div class="tm-rev-content">Đặt combo 3 tuýp vì thấy tặng nhiều quà nhất. Kem mỏng nhẹ, mùi dễ chịu, tông trắng hồng tự nhiên chứ không bị trắng bệch như lo lắng ban đầu. THUY THANH NGUYEN ship nhanh, đóng gói kỹ.</div>
-            <div class="tm-rev-meta">28-04-2026 · Đã mua 2 lần</div>
-          </div>
-          <div class="tm-rev-card" data-stars="5" data-photo="false">
-            <div class="tm-rev-head"><div class="tm-rev-avatar">B</div><div><div class="tm-rev-name">Bích Ngọc</div><div class="tm-rev-stars-sm">★★★★★</div></div><span class="tm-rev-skin">Da hỗn hợp · 31t</span></div>
-            <div class="tm-rev-content">Lần đầu biết đến brand TUMILL nên hơi ngại, nhưng THUY THANH NGUYEN tư vấn kỹ nên yên tâm đặt thử. Texture kem mình khá thích, tán đều tay là lên tone ngay, không cần dặm nhiều lớp nền.</div>
-            <div class="tm-rev-meta">20-04-2026 · Khách hàng đã xác minh</div>
-          </div>
-        </div>
-      </div>
-      <button class="tm-rev-showmore" type="button" id="tm-rev-showmore-btn">Xem thêm đánh giá</button>
-      <div class="tm-rev-empty" id="tm-rev-empty" style="display:none;">Chưa có đánh giá kèm ảnh — quay lại sau nhé!</div>
 
       <div class="tm-benefit-title" style="margin-top:24px;">Câu Hỏi Thường Gặp</div>
       <details class="tm-faq-item">
@@ -1782,39 +1746,6 @@ window.TM_PACKAGES = {
   });
 })();
 
-/* Review filter chips (Tất cả / 5 sao / Có ảnh) */
-(function(){
-  var chips = document.querySelectorAll('.tm-rev-chip');
-  var cards = document.querySelectorAll('#tm-rev-list .tm-rev-card');
-  var emptyMsg = document.getElementById('tm-rev-empty');
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chips.forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
-      var filter = chip.dataset.filter;
-      var visibleCount = 0;
-      cards.forEach(function(card){
-        var show = filter === 'all'
-          || (filter === '5star' && card.dataset.stars === '5')
-          || (filter === 'photo' && card.dataset.photo === 'true');
-        card.style.display = show ? '' : 'none';
-        if (show) visibleCount++;
-      });
-      emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
-    });
-  });
-})();
-
-/* "Xem thêm đánh giá" — rút gọn còn 2 review đầu, mở rộng khi khách bấm xem thêm */
-(function(){
-  var moreEl = document.getElementById('tm-rev-more');
-  var btn = document.getElementById('tm-rev-showmore-btn');
-  if (!moreEl || !btn) return;
-  btn.addEventListener('click', function(){
-    var expanded = moreEl.classList.toggle('show');
-    btn.textContent = expanded ? 'Ẩn bớt đánh giá' : 'Xem thêm đánh giá';
-  });
-})();
 </script>
 </body>
 </html>
