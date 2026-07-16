@@ -625,17 +625,17 @@ a { color: inherit; text-decoration: none; }
       <div class="tm-order-inline-gifts" id="tm-order-gifts"></div>
       <div class="tm-order-field">
         <label class="tm-order-label" for="tm-order-fullname">Họ và tên <span class="req">*</span></label>
-        <input class="tm-order-input" type="text" id="tm-order-fullname" placeholder="Ví dụ: Nguyễn Thị Lan" autocomplete="name">
+        <input class="tm-order-input" type="text" id="tm-order-fullname" placeholder="Ví dụ: Nguyễn Thị Lan">
         <div class="tm-order-error" id="tm-order-err-fullname"></div>
       </div>
       <div class="tm-order-field">
         <label class="tm-order-label" for="tm-order-phone">Số điện thoại <span class="req">*</span></label>
-        <input class="tm-order-input" type="tel" id="tm-order-phone" placeholder="Ví dụ: 0912 345 678" autocomplete="tel" inputmode="tel">
+        <input class="tm-order-input" type="tel" id="tm-order-phone" placeholder="Ví dụ: 0912 345 678">
         <div class="tm-order-error" id="tm-order-err-phone"></div>
       </div>
       <div class="tm-order-field">
         <label class="tm-order-label" for="tm-order-address">Địa chỉ nhận hàng <span class="req">*</span></label>
-        <textarea class="tm-order-input tm-order-textarea" id="tm-order-address" placeholder="Số nhà/thôn xóm, xã/phường, tỉnh/thành" autocomplete="street-address"></textarea>
+        <textarea class="tm-order-input tm-order-textarea" id="tm-order-address" placeholder="Số nhà/thôn xóm, xã/phường, tỉnh/thành"></textarea>
         <div class="tm-order-hint">Vui lòng ghi theo địa chỉ cũ, trước khi sáp nhập.</div>
         <div class="tm-order-error" id="tm-order-err-address"></div>
       </div>
@@ -1239,9 +1239,9 @@ function reinitPixelMatching() {
     }
 
     var formFields = [
-      { key: 'fullname', label: 'Họ và tên', required: true,  type: 'text',     placeholder: 'Ví dụ: Nguyễn Thị Lan', autocomplete: 'name' },
-      { key: 'phone',    label: 'Số điện thoại', required: true,  type: 'tel',      placeholder: 'Ví dụ: 0912 345 678', autocomplete: 'tel', inputmode: 'tel' },
-      { key: 'address',  label: 'Địa chỉ nhận hàng', required: true,  type: 'textarea', placeholder: 'Số nhà/thôn xóm, xã/phường, tỉnh/thành', note: 'Vui lòng ghi theo địa chỉ cũ, trước khi sáp nhập.', autocomplete: 'street-address' }
+      { key: 'fullname', label: 'Họ và tên', required: true,  type: 'text',     placeholder: 'Ví dụ: Nguyễn Thị Lan' },
+      { key: 'phone',    label: 'Số điện thoại', required: true,  type: 'tel',      placeholder: 'Ví dụ: 0912 345 678' },
+      { key: 'address',  label: 'Địa chỉ nhận hàng', required: true,  type: 'textarea', placeholder: 'Số nhà/thôn xóm, xã/phường, tỉnh/thành', note: 'Vui lòng ghi theo địa chỉ cũ, trước khi sáp nhập.' }
     ];
     formFields.forEach(function (f) {
       var sec = el('div', 'tts-popup-section');
@@ -1258,8 +1258,6 @@ function reinitPixelMatching() {
       input.placeholder = f.placeholder;
       input.name = f.key;
       input.dataset.field = f.key;
-      if (f.autocomplete) input.autocomplete = f.autocomplete;
-      if (f.inputmode) input.inputMode = f.inputmode;
       sec.appendChild(input);
       sec.appendChild(el('div', 'tts-popup-error-msg'));
       body.appendChild(sec);
